@@ -1,12 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagerWeb", "ProjectManagerWeb\ProjectManagerWeb.csproj", "{FA08BF3F-5B22-4D78-A354-6AFA2931C073}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagerTest", "ProjectManagerTest\ProjectManagerTest.csproj", "{338A964C-E0A5-425B-9E67-3745A544F16D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9A201998-583F-4F89-9096-83BCBA96C63E}"
 	ProjectSection(SolutionItems) = preProject
 		Local.testsettings = Local.testsettings
