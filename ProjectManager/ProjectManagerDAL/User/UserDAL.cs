@@ -35,7 +35,7 @@ namespace ProjectManagerDAL
                                 user.TeamName = Convert.ToString(sqlDataReader["TeamName"]);
                             }
                         }
-
+                        sqlDataReader.Close();
                     }
                 }
                 sqlConnection.Close();

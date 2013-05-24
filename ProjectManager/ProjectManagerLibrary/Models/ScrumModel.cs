@@ -5,9 +5,9 @@ using System.Text;
 
 namespace ProjectManagerLibrary.Models
 {
-    public class Scrum 
+    public class ScrumModel 
     {
         public int UserId { get; set; }
-
+        public Dictionary<int, string> QuestionsTable { get; set; }
     }
 }

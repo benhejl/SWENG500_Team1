@@ -62,7 +62,7 @@ namespace ProjectManagerTest
         #endregion
 
         [TestMethod]
-        public void TestInputNewScrum()
+        public void TestGetUserInfo()
         {
             UserController userController = new UserController();
             User user = userController.GetUserInfo("jlw923");

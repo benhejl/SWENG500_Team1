@@ -65,7 +65,7 @@ namespace ProjectManagerTest
         public void TestInputNewScrum()
         {
             ScrumController scrumController = new ScrumController();
-            Scrum scrum = new Scrum();
+            ScrumModel scrum = new ScrumModel();
             scrum.UserId = 1;
             Assert.IsTrue(scrumController.InputNewScrum(scrum));
         }
@@ -73,7 +73,7 @@ namespace ProjectManagerTest
         public void TestEditScrum()
         {
             ScrumController scrumController = new ScrumController();
-            Scrum scrum = new Scrum();
+            ScrumModel scrum = new ScrumModel();
             scrum.UserId = 1;
             Assert.IsTrue(scrumController.EditScrum(scrum));
         }
@@ -81,7 +81,7 @@ namespace ProjectManagerTest
         public void ViewScrum()
         {
             ScrumController scrumController = new ScrumController();
-            Scrum scrum = new Scrum();
+            ScrumModel scrum = new ScrumModel();
             scrum.UserId = 1;
             Assert.IsTrue(scrumController.ViewScrum(scrum));
         }
@@ -89,9 +89,16 @@ namespace ProjectManagerTest
         public void ViewScrumDetails()
         {
             ScrumController scrumController = new ScrumController();
-            Scrum scrum = new Scrum();
+            ScrumModel scrum = new ScrumModel();
             scrum.UserId = 1;
             Assert.IsTrue(scrumController.ViewScrumDetails(scrum));
+        }
+        [TestMethod]
+        public void TestGetScrumQuestions()
+        {
+            ScrumController scrumController = new ScrumController();
+            ScrumModel scrum = scrumController.GetScrumQuestions();
+            Assert.IsTrue(scrum.QuestionsTable.Count > 0);
         }
     }
 }

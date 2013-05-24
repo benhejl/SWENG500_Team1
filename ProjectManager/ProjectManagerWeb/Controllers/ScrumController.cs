@@ -3,26 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using ProjectManagerLibrary.Models;
-
+using ProjectManagerBLL.Scrum;
 namespace ProjectManagerWeb.Controllers
 {
     public class ScrumController
     {
-        public bool InputNewScrum(Scrum scrum)
+        public bool InputNewScrum(ScrumModel scrum)
         {
             return true;
         }
-        public bool EditScrum(Scrum scrum)
+        public bool EditScrum(ScrumModel scrum)
         {
             return true;
         }
-        public bool ViewScrum(Scrum scrum)
+        public bool ViewScrum(ScrumModel scrum)
         {
             return true;
         }
-        public bool ViewScrumDetails(Scrum scrum)
+        public bool ViewScrumDetails(ScrumModel scrum)
         {
             return true;
+        }
+        public ScrumModel GetScrumQuestions()
+        {
+            return new ScrumBLL().GetScrumQuestions();
         }
     }
 }
