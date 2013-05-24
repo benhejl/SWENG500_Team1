@@ -64,6 +64,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScrumTestUnit.cs" />
     <Compile Include="TeamRoomTestUnit.cs" />
+    <Compile Include="UserTestUnit.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProjectManagerBLL\ProjectManagerBLL.csproj">
