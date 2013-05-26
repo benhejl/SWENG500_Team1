@@ -61,8 +61,11 @@
   <ItemGroup>
     <Compile Include="CalendarControllerTest.cs" />
     <Compile Include="IssueControllerTest.cs" />
+    <Compile Include="DateRangeTest.cs" />
+    <Compile Include="DefectTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScrumTestUnit.cs" />
+    <Compile Include="TaskTest.cs" />
     <Compile Include="TeamRoomTestUnit.cs" />
     <Compile Include="UserTestUnit.cs" />
   </ItemGroup>
