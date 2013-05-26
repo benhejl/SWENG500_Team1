@@ -11,7 +11,7 @@ namespace ProjectManagerTest
     ///to contain all DefectTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class DefectTest
+    public class IssueTest
     {
 
 
@@ -65,15 +65,15 @@ namespace ProjectManagerTest
 
 
         /// <summary>
-        ///A test for Defect Constructor
+        ///A test for Issue Constructor
         ///</summary>
         [TestMethod()]
-        public void DefectConstructorTest()
+        public void IssueConstructorTest()
         {
-            Defect target = new Defect();
-            Assert.IsInstanceOfType(target, typeof(Defect));
-            Assert.Equals(target.CurrentPriority, Defect.DefectPriority.Medium);
-            Assert.Equals(target.CurrentStatus, Defect.DefectStatus.Unresolved);
+            Issue target = new Issue();
+            Assert.IsInstanceOfType(target, typeof(Issue));
+            Assert.AreEqual(target.CurrentPriority, Issue.IssuePriority.Medium);
+            Assert.AreEqual(target.CurrentStatus, Issue.IssueStatus.Unresolved);
         }
     }
 }

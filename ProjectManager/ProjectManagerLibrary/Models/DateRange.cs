@@ -12,6 +12,12 @@ namespace ProjectManagerLibrary.Models
 
         public DateRange(DateTime start, DateTime finish)
         {
+            if (start > finish)
+            {
+                throw new ArgumentException();
+            }
+            StartTime = start;
+            FinishTime = finish;
         }
     }
 }

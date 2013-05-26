@@ -74,8 +74,8 @@ namespace ProjectManagerTest
             DateTime finish = new DateTime(2013, 5, 19);
             DateRange target = new DateRange(start, finish);
             Assert.IsInstanceOfType(target, typeof(DateRange));
-            Assert.Equals(target.StartTime, start);
-            Assert.Equals(target.FinishTime, finish);
+            Assert.AreEqual(target.StartTime, start);
+            Assert.AreEqual(target.FinishTime, finish);
         }
 
         /// <summary>
