@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting.Web;
 
+
 namespace ProjectManagerTest
 {
     
@@ -64,64 +65,64 @@ namespace ProjectManagerTest
         //
         #endregion
 
-        [TestMethod()]
-        public void AddNewIssueTest()
-        {
-            IssueController target = new IssueController();
-            bool expected = true;
-            bool actual;
-            actual = target.AddNewIssue();
-            Assert.AreEqual(expected, actual);
-        }
+        //[TestMethod()]
+        //public void AddNewIssueTest()
+        //{
+        //    IssueController target = new IssueController();
+        //    bool expected = true;
+        //    bool actual;
+        //    actual = target.AddNewIssue();
+        //    Assert.AreEqual(expected, actual);
+        //}
 
-        [TestMethod()]
-        public void DeleteIssueTest()
-        {
-            IssueController target = new IssueController();
-            bool expected = true;
-            bool actual;
-            actual = target.DeleteIssue();
-            Assert.AreEqual(expected, actual);
-        }
+        //[TestMethod()]
+        //public void DeleteIssueTest()
+        //{
+        //    IssueController target = new IssueController();
+        //    bool expected = true;
+        //    bool actual;
+        //    actual = target.DeleteIssue();
+        //    Assert.AreEqual(expected, actual);
+        //}
 
-        [TestMethod()]
-        public void AddAssigneeToIssueTest()
-        {
-            IssueController target = new IssueController();
-            bool expected = true;
-            bool actual;
-            actual = target.AddAssigneeToIssue();
-            Assert.AreEqual(expected, actual);
-        }
+        //[TestMethod()]
+        //public void AddAssigneeToIssueTest()
+        //{
+        //    IssueController target = new IssueController();
+        //    bool expected = true;
+        //    bool actual;
+        //    actual = target.AddAssigneeToIssue();
+        //    Assert.AreEqual(expected, actual);
+        //}
 
-        [TestMethod()]
-        public void DeleteAssigneeFromIssueTest()
-        {
-            IssueController target = new IssueController();
-            bool expected = true;
-            bool actual;
-            actual = target.DeleteAssigneeFromIssue();
-            Assert.AreEqual(expected, actual);
-        }
+        //[TestMethod()]
+        //public void DeleteAssigneeFromIssueTest()
+        //{
+        //    IssueController target = new IssueController();
+        //    bool expected = true;
+        //    bool actual;
+        //    actual = target.DeleteAssigneeFromIssue();
+        //    Assert.AreEqual(expected, actual);
+        //}
 
-        [TestMethod()]
-        public void EditIssueDetailsTest()
-        {
-            IssueController target = new IssueController();
-            bool expected = true;
-            bool actual;
-            actual = target.EditIssueDetails();
-            Assert.AreEqual(expected, actual);
-        }
+        //[TestMethod()]
+        //public void EditIssueDetailsTest()
+        //{
+        //    IssueController target = new IssueController();
+        //    bool expected = true;
+        //    bool actual;
+        //    actual = target.EditIssueDetails();
+        //    Assert.AreEqual(expected, actual);
+        //}
 
-        [TestMethod()]
-        public void ViewIssueListTest()
-        {
-            IssueController target = new IssueController();
-            bool expected = true;
-            bool actual;
-            actual = target.ViewIssueList();
-            Assert.AreEqual(expected, actual);
-        }
+        //[TestMethod()]
+        //public void ViewIssueListTest()
+        //{
+        //    IssueController target = new IssueController();
+        //    bool expected = true;
+        //    bool actual;
+        //    actual = target.ViewIssueList();
+        //    Assert.AreEqual(expected, actual);
+        //}
     }
 }
