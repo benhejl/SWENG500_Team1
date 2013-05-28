@@ -45,7 +45,7 @@ namespace ProjectManagerWeb.Controllers
                 if (IsValid(user.UserName, user.Password))
                 {
                     FormsAuthentication.SetAuthCookie(user.UserName, user.rememberme);
-                    return RedirectToAction("Index", "Issue");
+                    return RedirectToAction("Index", "Dashboard");
                 }
                 else
                 {
@@ -99,7 +99,7 @@ namespace ProjectManagerWeb.Controllers
                         db.SaveChanges();
 
                         FormsAuthentication.SetAuthCookie(user.UserName, false);
-                        return RedirectToAction("Index", "Issue");
+                        return RedirectToAction("Index", "Dashboard");
 
 
                     }
