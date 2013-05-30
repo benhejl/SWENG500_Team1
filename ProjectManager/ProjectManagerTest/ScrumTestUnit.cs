@@ -78,7 +78,7 @@ namespace ProjectManagerTest
             Assert.IsTrue(scrumController.EditScrum(scrum));
         }
         [TestMethod]
-        public void ViewScrum()
+        public void TestViewScrum()
         {
             ScrumController scrumController = new ScrumController();
             ScrumModel scrum = new ScrumModel();
@@ -86,7 +86,7 @@ namespace ProjectManagerTest
             Assert.IsTrue(scrumController.ViewScrum(scrum));
         }
         [TestMethod]
-        public void ViewScrumDetails()
+        public void TestViewScrumDetails()
         {
             ScrumController scrumController = new ScrumController();
             ScrumModel scrum = new ScrumModel();
