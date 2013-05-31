@@ -68,5 +68,29 @@ namespace ProjectManagerTest
             User user = userController.GetUserInfo("jlw923");
             Assert.IsTrue(user.FirstName.Equals("Jennifer"));
         }
+        [TestMethod]
+        public void TestLogin()
+        {
+            UserController userController = new UserController();
+            Assert.IsTrue(userController.Login("jlw923", "password"));
+        }
+        [TestMethod]
+        public void TestLogout()
+        {
+            UserController userController = new UserController();
+            Assert.IsTrue(userController.Logout("jlw923"));
+        }
+        [TestMethod]
+        public void TestSignup()
+        {
+            UserController userController = new UserController();
+            Assert.IsTrue(userController.NewUser(new User()));
+        }
+        [TestMethod]
+        public void TestResetPassword()
+        {
+            UserController userController = new UserController();
+            Assert.IsTrue(userController.ResetPassword(new User()));
+        }
     }
 }
