@@ -2,21 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
 using ProjectManagerLibrary.Models;
-
-
 
 namespace ProjectManagerWeb.Controllers
 {
-    [Authorize]
-    public class IssueController : Controller
+    public class IssueController
     {
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public bool AddNewIssue()
         {
             return true;
