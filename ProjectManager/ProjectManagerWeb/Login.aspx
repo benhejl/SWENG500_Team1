@@ -3,68 +3,69 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <style type="text/css">
-      /* Override some defaults */
-      html, body {
-        background-color: #eee;
-      }
-      body {
-        padding-top: 40px; 
-      }
-      .container {
-        width: 300px;
-      }
-
-      /* The white background content wrapper */
-      .container > .content {
-        background-color: #fff;
-        padding: 20px;
-        margin: 0 -20px; 
-        -webkit-border-radius: 10px 10px 10px 10px;
-           -moz-border-radius: 10px 10px 10px 10px;
-                border-radius: 10px 10px 10px 10px;
-        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-                box-shadow: 0 1px 2px rgba(0,0,0,.15);
-      }
-
-	  .login-form {
-		margin-left: 65px;
-	  }
-	
-	  legend {
-		margin-right: -50px;
-		font-weight: bold;
-	  	color: #404040;
-	  }
-
-    </style>
-
+<head id="Head1" runat="server">
+    <title>Login</title>
+    <link href="Styles/Site.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <div class="content">
-          <div class="row">
-            <div class="login-form">
-              <h2>Login</h2>
-              <form action="">
-                <fieldset>
-                  <div class="clearfix">
-                    <input type="text" placeholder="Username">
-                  </div>
-                  <div class="clearfix">
-                    <input type="password" placeholder="Password">
-                  </div>
-                  <button class="btn primary" type="submit">Sign in</button>
-                </fieldset>
-              </form>
+
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <h1>
+                    Welcome To (Our Project Name)
+                </h1>
             </div>
-          </div>
+            
+            <div class="clear hideSkiplink">
+<div class="menu" id="NavigationMenu">
+	<ul class="level1">
+	</ul>
+</div><a id="NavigationMenu_SkipLink"></a>
+            </div>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width: 199px; height: 446px; background-color:#bdbdbd;">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="main" >
+
+                Username: <asp:TextBox ID="txtusername" runat="server" Width="150" ></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                                ErrorMessage="Username is required." ControlToValidate="txtusername" 
+                                ForeColor="Red"></asp:RequiredFieldValidator>
+                <br />
+                Password: <asp:TextBox ID="txtpassword" TextMode="Password" runat="server" Width="150"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                                ErrorMessage="Password is required." ControlToValidate="txtpassword" 
+                                ForeColor="Red"></asp:RequiredFieldValidator>
+                
+                            <br /><br />
+                            <asp:CheckBox ID="chbxRememberMe" runat="server" Text="Remember Me" />
+                
+                <br />
+                            <asp:Label ID="errLable" runat="server" Text="" ForeColor="Red"></asp:Label>
+                <br />
+                    <asp:Button ID="btnLogin" runat="server" Text="Login" Width="75px" 
+                                onclick="btnLogin_Click" />
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            
         </div>
-      </div> <!-- /container -->
-    </form>
+
+        
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>
+ </form>   
 </body>
 </html>

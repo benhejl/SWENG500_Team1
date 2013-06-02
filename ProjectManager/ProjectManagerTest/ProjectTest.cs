@@ -64,17 +64,18 @@ namespace ProjectManagerTest
         //
         #endregion
 
+        int DEFAULT_PROJECTID = 1;
         string DEFAULT_NAME = "Project Name";
         DateTime DEFAULT_START_DATE = DateTime.Today;
         DateTime DEFAULT_END_DATE = DateTime.Today + new TimeSpan(1, 0, 0, 0);
         DateTime DEFAULT_DUE_DATE = DateTime.Today + new TimeSpan(2, 0, 0, 0);
-        int DEFAULT_STATUS = 0;
+        string DEFAULT_STATUS = "Open";
         string DEFAULT_DESCRIPTION = "Project Status";
         string DEFAULT_CATEGORY = "Project Category";
 
         private Project BuildDefaultProject()
         {
-            return new Project(DEFAULT_NAME, DEFAULT_START_DATE, DEFAULT_END_DATE, DEFAULT_STATUS, DEFAULT_DESCRIPTION, DEFAULT_CATEGORY, DEFAULT_DUE_DATE);
+            return new Project(DEFAULT_PROJECTID, DEFAULT_NAME, DEFAULT_START_DATE, DEFAULT_END_DATE, DEFAULT_STATUS, DEFAULT_DESCRIPTION, DEFAULT_CATEGORY, DEFAULT_DUE_DATE);
         }
 
         /// <summary>
@@ -146,7 +147,7 @@ namespace ProjectManagerTest
         [ExpectedException(typeof(ArgumentException))]
         public void ProjectConstructorInvalidEndDate()
         {
-            Project project = new Project("", new DateTime(2013, 5, 26), new DateTime(2013, 5, 25), 0, "", "", new DateTime(2013, 5, 27));
+            Project project = new Project(1, "", new DateTime(2013, 5, 26), new DateTime(2013, 5, 25), "Open", "", "", new DateTime(2013, 5, 27));
         }
 
         /// <summary>
@@ -156,7 +157,7 @@ namespace ProjectManagerTest
         [ExpectedException(typeof(ArgumentException))]
         public void ProjectConstructorInvalidDueDate()
         {
-            Project project = new Project("", new DateTime(2013, 5, 26), new DateTime(2013, 5, 27), 0, "", "", new DateTime(2013, 5, 25));
+            Project project = new Project(1, "", new DateTime(2013, 5, 26), new DateTime(2013, 5, 27), "Open", "", "", new DateTime(2013, 5, 25));
         }
 
         /// <summary>
@@ -166,7 +167,7 @@ namespace ProjectManagerTest
         [ExpectedException(typeof(ArgumentException))]
         public void ProjectConstructorInvalidName()
         {
-            Project project = new Project("", new DateTime(2013, 5, 25), new DateTime(2013, 5, 26), 0, "", "", new DateTime(2013, 5, 27));
+            Project project = new Project(1, "", new DateTime(2013, 5, 25), new DateTime(2013, 5, 26), "Open", "", "", new DateTime(2013, 5, 27));
         }
 
         /// <summary>

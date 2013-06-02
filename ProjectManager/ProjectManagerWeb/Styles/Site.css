@@ -300,7 +300,7 @@ div.accountInfo
     display: block;
     text-align: right;
     padding: 10px;
-    color: White;
+    color: 0px;;
 }
 
 .loginDisplay a:link
@@ -334,3 +334,16 @@ div.accountInfo
     text-align: right;
     padding-right: 10px;
 }
+
+/* Styles for tables
+-----------------------------------------------------------*/
+table {
+	width: 100%;
+	border: 1px solid #cef;
+	text-align: left; }
+th {
+	font-weight: bold;
+	background-color: #acf;
+	border-bottom: 1px solid #cef; }
+td,th {
+	padding: 4px 5px; }
