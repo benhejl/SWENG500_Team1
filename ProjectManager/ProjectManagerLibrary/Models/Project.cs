@@ -2,27 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjectManagerLibrary.Models
 {
-    class Project
+    public class Project
     {
+        public int ProjectID { get; set; }
+        [Required(ErrorMessage = "Project Name field is required.")]
         public string Name { get; private set; }
         public DateTime StartDate { get; private set; }
         public DateTime EndDate { get; private set; }
-        public int Status { get; private set; }
+        public string Status { get; private set; }
         public string Description { get; private set; }
         public string Category { get; private set; }
         public DateTime DueDate { get; private set; }
-        public List<Issue> Issues { get; private set; }
+        public List<Issue> Issues { get; set; }
 
-        public Project(string name, DateTime startDate, DateTime endDate, int status, string description, string category, DateTime dueDate)
+        public Project(int projectid, string name, DateTime startDate, DateTime endDate, string status, string description, string category, DateTime dueDate)
         {
             if (startDate > endDate || startDate > dueDate || 0 == name.Length)
             {
                 throw new ArgumentException("Project start date must proceed the end date and the due date.");
             }
-
+            ProjectID = projectid;
             Name = name;
             StartDate = startDate;
             EndDate = endDate;
@@ -31,6 +35,11 @@ namespace ProjectManagerLibrary.Models
             Category = category;
             DueDate = dueDate;
             Issues = new List<Issue>();
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
 
         public void AddIssue(Issue issue)
@@ -45,12 +54,29 @@ namespace ProjectManagerLibrary.Models
 
         public int OpenIssues()
         {
-            return 0;
+            int count = 0;
+            foreach (Issue issue in Issues)
+            {
+                if (issue.CurrentStatus == Issue.IssueStatus.Unresolved)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
-        public int ResovledIssues()
+        public int ResolvedIssues()
         {
-            return 0;
+            int count = 0;
+            foreach (Issue issue in Issues)
+            {
+                if (issue.CurrentStatus == Issue.IssueStatus.Resolved)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
     }
+
 }

@@ -28,6 +28,16 @@
                     </LoggedInTemplate>
                 </asp:LoginView>
             </div>--%>
+            <div class="loginDisplay">
+             <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                <LoggedInTemplate>
+                        Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
+                        [ <asp:LinkButton ID="lnk" runat="server" Text="Logout" ForeColor="blue" 
+                        onclick="lnkLogout_Click" CausesValidation="false"></asp:LinkButton> ]
+                    
+                </LoggedInTemplate>
+            </asp:LoginView>
+            </div>
             <div class="clear hideSkiplink">
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" 
                 EnableViewState="false" 
@@ -36,10 +46,10 @@
                >
                     <Items>
                         <asp:MenuItem NavigateUrl="" Text="Home"/>
-                        <asp:MenuItem NavigateUrl="" Text="Tracking"/>
+                        <asp:MenuItem NavigateUrl="~/Issues.aspx" Text="Tracking"/>
                         <asp:MenuItem NavigateUrl="" Text="Collaboration"/>
                         <asp:MenuItem NavigateUrl="" Text="Calendar"/>
-                        <asp:MenuItem NavigateUrl="" Text="Reports"/>
+                        <asp:MenuItem NavigateUrl="~/Reports.aspx" Text="Reports"/>
                     </Items>
                 </asp:Menu>
             </div>

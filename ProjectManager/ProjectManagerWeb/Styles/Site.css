@@ -160,7 +160,6 @@ div.menu ul
     margin: 0px;
     padding: 10px;
     width: auto;
-    list-style-type: none;
 }
 
 div.menu ul li a, div.menu ul li a:visited
@@ -301,7 +300,7 @@ div.accountInfo
     display: block;
     text-align: right;
     padding: 10px;
-    color: White;
+    color: 0px;;
 }
 
 .loginDisplay a:link
@@ -336,26 +335,15 @@ div.accountInfo
     padding-right: 10px;
 }
 
-.navcontainer ul
-{
-margin: 0;
-padding: 0;
-list-style-type: none;
-text-align: center;
-}
-
-.navcontainer ul li { display: inline; }
-
-.navcontainer ul li a
-{
-text-decoration: none;
-padding: .2em 1em;
-color: #fff;
-background-color: #036;
-}
-
-.navcontainer ul li a:hover
-{
-color: #fff;
-background-color: #369;
-}
+/* Styles for tables
+-----------------------------------------------------------*/
+table {
+	width: 100%;
+	border: 1px solid #cef;
+	text-align: left; }
+th {
+	font-weight: bold;
+	background-color: #acf;
+	border-bottom: 1px solid #cef; }
+td,th {
+	padding: 4px 5px; }

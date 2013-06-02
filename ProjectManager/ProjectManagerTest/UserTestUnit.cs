@@ -5,6 +5,9 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ProjectManagerWeb.Controllers;
 using ProjectManagerLibrary.Models;
+using ProjectManagerBLL;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace ProjectManagerTest
 {
@@ -64,9 +67,58 @@ namespace ProjectManagerTest
         [TestMethod]
         public void TestGetUserInfo()
         {
-            //UserController userController = new UserController();
-            //User user = userController.GetUserInfo("jlw923");
-            //Assert.IsTrue(user.FirstName.Equals("Jennifer"));
+            UserController userController = new UserController();
+            User user = userController.GetUserInfo("jlw923");
+            Assert.IsTrue(user.FirstName.Equals("Jennifer"));
+        }
+
+        /// <summary>
+        /// A test case for user successful login (string username, string password)
+        /// </summary>
+        [TestMethod]
+        public void LoginTest()
+        {
+            string username = "jlw923";
+            string password = "password";
+
+            var user = new UserBLL();
+            var isValidUser = user.Login(username, password);
+
+            Assert.IsTrue(isValidUser);
+
+        }
+
+        /// <summary>
+        /// Required password test.
+        /// </summary>
+        [TestMethod]
+        public void RequiredPasswordFieldTest()
+        {
+            var user = new User() 
+            {
+                UserName = "test",
+                Password = ""
+            };
+
+            var context = new ValidationContext(user, serviceProvider: null, items: null);
+            var results = new List<ValidationResult>();
+
+            var isValid = Validator.TryValidateObject(user, context, results);
+
+            var sb = new StringBuilder();
+
+            if (!isValid)
+            {
+                foreach (var validationResult in results)
+                {
+                    // add validation error message to string builder.
+                    sb.Append(validationResult.ErrorMessage);
+                }
+            }
+
+            // check if "The Password field is required." is in the error message.
+            Assert.IsTrue(sb.ToString().Contains("The Password field is required."));
+
         }
     }
 }
