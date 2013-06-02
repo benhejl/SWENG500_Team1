@@ -96,7 +96,7 @@ namespace ProjectManagerTest
             Assert.AreEqual(target.Issues.Count, 0);
 
             int openIssues = target.OpenIssues();
-            int resolvedIssues = target.ResovledIssues();
+            int resolvedIssues = target.ResolvedIssues();
             Assert.AreEqual(openIssues, 0);
             Assert.AreEqual(resolvedIssues, 0);
         }
@@ -127,17 +127,35 @@ namespace ProjectManagerTest
         public void OpenIssuesTest()
         {
             Project project = BuildDefaultProject();
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            Issue issue = new Issue();
+            project.AddIssue(issue);
+
+            Assert.AreEqual(project.OpenIssues(), 1);
+            issue.CurrentStatus = Issue.IssueStatus.Resolved;
+
+            Assert.AreEqual(project.OpenIssues(), 0);
+
+            project.AddIssue(new Issue());
+            Assert.AreEqual(project.OpenIssues(), 1);
         }
 
         /// <summary>
-        ///A test for ResovledIssues
+        ///A test for ResolvedIssues
         ///</summary>
         [TestMethod()]
         public void ResovledIssuesTest()
         {
             Project project = BuildDefaultProject();
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            Issue issue = new Issue();
+            project.AddIssue(issue);
+
+            Assert.AreEqual(project.ResolvedIssues(), 0);
+            issue.CurrentStatus = Issue.IssueStatus.Resolved;
+
+            Assert.AreEqual(project.ResolvedIssues(), 1);
+
+            project.AddIssue(new Issue());
+            Assert.AreEqual(project.ResolvedIssues(), 1);
         }
 
         /// <summary>
@@ -179,6 +197,16 @@ namespace ProjectManagerTest
         {
             Project project = BuildDefaultProject();
             project.AddIssue(null);
+        }
+
+        /// <summary>
+        /// Verify the ToString method returns the same value as the Name property.
+        /// </summary>
+        [TestMethod()]
+        public void ProjectToStringTest()
+        {
+            Project project = BuildDefaultProject();
+            Assert.AreEqual(project.ToString(), project.Name);
         }
     }
 }

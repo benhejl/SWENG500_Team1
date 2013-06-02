@@ -37,6 +37,11 @@ namespace ProjectManagerLibrary.Models
             Issues = new List<Issue>();
         }
 
+        public override string ToString()
+        {
+            return Name;
+        }
+
         public void AddIssue(Issue issue)
         {
             if (null == issue)
@@ -49,12 +54,28 @@ namespace ProjectManagerLibrary.Models
 
         public int OpenIssues()
         {
-            return 0;
+            int count = 0;
+            foreach (Issue issue in Issues)
+            {
+                if (issue.CurrentStatus == Issue.IssueStatus.Unresolved)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
-        public int ResovledIssues()
+        public int ResolvedIssues()
         {
-            return 0;
+            int count = 0;
+            foreach (Issue issue in Issues)
+            {
+                if (issue.CurrentStatus == Issue.IssueStatus.Resolved)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
     }
 

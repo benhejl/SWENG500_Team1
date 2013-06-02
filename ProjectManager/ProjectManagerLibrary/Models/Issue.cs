@@ -16,7 +16,8 @@ namespace ProjectManagerLibrary.Models
         }
         public enum IssueStatus
         {
-            Unresolved
+            Unresolved,
+            Resolved
         }
 
         public int IssueID { get; set; }

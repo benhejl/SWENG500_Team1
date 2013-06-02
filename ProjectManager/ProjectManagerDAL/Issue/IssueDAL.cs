@@ -33,6 +33,7 @@ namespace ProjectManagerDAL
                                  IssueID = iaJoin.IssueID,
                                  Subject = i.Subject,
                                  Priority = i.Priority,
+                                 Status = i.Status,
                                  ProjectID = i.ProjectID,
                                  UserID = uJoin.UserID,
                                  Username = uJoin.UserName,
@@ -55,6 +56,7 @@ namespace ProjectManagerDAL
                     {
                         IssueID = item.IssueID,
                         Subject = item.Subject,
+                        CurrentStatus = (Issue.IssueStatus)Enum.Parse(typeof(Issue.IssueStatus), item.Status),
                         CurrentPriority = (Issue.IssuePriority)Enum.Parse(typeof(Issue.IssuePriority), item.Priority),
                         ProjectID = item.ProjectID
                      };
