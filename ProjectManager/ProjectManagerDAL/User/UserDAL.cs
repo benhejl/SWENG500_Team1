@@ -8,8 +8,40 @@ using ProjectManagerLibrary.Models;
 
 namespace ProjectManagerDAL
 {
-    public class UserDAL
+    public partial class UserDAL
     {
+
+        /// <summary>
+        /// Authenticate
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns>bool</returns>
+        public bool Authenticate(string username, string password)
+        {
+            var isValid = false;
+
+            if (!String.IsNullOrEmpty(username) && !String.IsNullOrEmpty(password))
+            {
+                using (var db = new ProjectManagerDAL.ProjectManagerEntities())
+                {
+                    var query = db.UserDALs.FirstOrDefault(u => u.UserName == username && u.Password == password);
+
+                    if (query != null)
+                    {
+                        // username and password matched - valid user.
+                        isValid = true;
+                    }
+                }
+            }
+            return isValid;
+        }
+
+
+        /// <summary>
+        /// GetUserInfo
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns>User Object</returns>
         public User GetUserInfo(string userName)
         {
             User user = new User();
@@ -40,7 +72,6 @@ namespace ProjectManagerDAL
                 }
                 sqlConnection.Close();
             }
-
             return user;
         }
     }

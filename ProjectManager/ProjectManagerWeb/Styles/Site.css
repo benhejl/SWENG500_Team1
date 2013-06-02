@@ -40,7 +40,7 @@ p
 h1, h2, h3, h4, h5, h6
 {
     font-size: 1.5em;
-    color: #666666;
+    color: #3a4f63;
     font-variant: small-caps;
     text-transform: none;
     font-weight: 200;
@@ -99,8 +99,9 @@ first child of the left and right table columns */
     position: relative;
     margin: 0px;
     padding: 0px;
-    background: #4b6c9e;
+    background: #FFFFFF;
     width: 100%;
+    
 }
 
 .header h1
@@ -108,10 +109,10 @@ first child of the left and right table columns */
     font-weight: 700;
     margin: 0px;
     padding: 0px 0px 0px 20px;
-    color: #f9f9f9;
+    color: #3a4f63;
     border: none;
     line-height: 2em;
-    font-size: 2em;
+    font-size: 2.5em;
 }
 
 .main
@@ -157,17 +158,17 @@ div.menu ul
 {
     list-style: none;
     margin: 0px;
-    padding: 0px;
+    padding: 10px;
     width: auto;
-    list-style-type: none;
 }
 
 div.menu ul li a, div.menu ul li a:visited
 {
     background-color: #465c71;
     border: 1px #4e667d solid;
-    color: #dde4ec;
+    color: #D6D64D;
     display: block;
+    font-size: 2.25em;
     line-height: 1.35em;
     padding: 4px 20px;
     text-decoration: none;
@@ -188,6 +189,46 @@ div.menu ul li a:active
     text-decoration: none;
 }
 
+
+
+
+
+
+
+
+div.menu2
+{
+    padding: 4px 0px 4px 8px;
+    text-align: left;
+}
+
+div.menu2 ul
+{
+    list-style: none;
+    margin: 0px;
+    padding: 5px;
+    width: auto;
+}
+
+div.menu2 ul li a, div.menu2 ul li a:visited
+{
+    display: block;
+    font-size: 1.75em;
+    line-height: 1.35em;
+    padding: 4px 20px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+div.menu2 ul li a:hover
+{
+    text-decoration: none;
+}
+
+div.menu2 ul li a:active
+{
+    text-decoration: none;
+}
 /* FORM ELEMENTS   
 ----------------------------------------------------------*/
 
@@ -259,7 +300,7 @@ div.accountInfo
     display: block;
     text-align: right;
     padding: 10px;
-    color: White;
+    color: 0px;;
 }
 
 .loginDisplay a:link
@@ -294,26 +335,15 @@ div.accountInfo
     padding-right: 10px;
 }
 
-.navcontainer ul
-{
-margin: 0;
-padding: 0;
-list-style-type: none;
-text-align: center;
-}
-
-.navcontainer ul li { display: inline; }
-
-.navcontainer ul li a
-{
-text-decoration: none;
-padding: .2em 1em;
-color: #fff;
-background-color: #036;
-}
-
-.navcontainer ul li a:hover
-{
-color: #fff;
-background-color: #369;
-}
+/* Styles for tables
+-----------------------------------------------------------*/
+table {
+	width: 100%;
+	border: 1px solid #cef;
+	text-align: left; }
+th {
+	font-weight: bold;
+	background-color: #acf;
+	border-bottom: 1px solid #cef; }
+td,th {
+	padding: 4px 5px; }

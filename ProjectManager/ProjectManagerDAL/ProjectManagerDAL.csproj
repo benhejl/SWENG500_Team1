@@ -58,6 +58,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Issue\IssueDAL.cs" />
+    <Compile Include="ProjectManagerEntityModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectManagerEntityModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Project\ProjectDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scrum\ScrumDAL.cs" />
     <Compile Include="User\UserDAL.cs" />
@@ -99,6 +106,13 @@
       <ProductName>Windows Installer 4.5</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="ProjectManagerEntityModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ProjectManagerEntityModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

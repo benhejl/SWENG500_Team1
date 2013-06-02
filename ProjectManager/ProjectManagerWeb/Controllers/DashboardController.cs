@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ProjectManagerWeb.Controllers
 {
-    public class HomeController
+    public class DashboardController
     {
     }
 }

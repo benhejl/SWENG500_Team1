@@ -1,6 +1,12 @@
-﻿using ProjectManagerLibrary.Models;
+﻿using System;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+using ProjectManagerWeb.Controllers;
+using ProjectManagerLibrary.Models;
+using ProjectManagerBLL;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjectManagerTest
 {
@@ -75,5 +81,40 @@ namespace ProjectManagerTest
             Assert.AreEqual(target.CurrentPriority, Issue.IssuePriority.Medium);
             Assert.AreEqual(target.CurrentStatus, Issue.IssueStatus.Unresolved);
         }
+
+
+        /// <summary>
+        /// Required Issue Subject field test.
+        /// </summary>
+        [TestMethod]
+        public void RequiredPasswordFieldTest()
+        {
+            var issue = new Issue()
+            {
+                Subject = ""
+                
+            };
+
+            var context = new ValidationContext(issue, serviceProvider: null, items: null);
+            var results = new List<ValidationResult>();
+
+            var isValid = Validator.TryValidateObject(issue, context, results);
+
+            var sb = new StringBuilder();
+
+            if (!isValid)
+            {
+                foreach (var validationResult in results)
+                {
+                    // add validation error message to string builder.
+                    sb.Append(validationResult.ErrorMessage);
+                }
+            }
+
+            // check if "The Subject field is required." is in the error message.
+            Assert.IsTrue(sb.ToString().Contains("The Subject field is required."));
+
+        }
+
     }
 }
