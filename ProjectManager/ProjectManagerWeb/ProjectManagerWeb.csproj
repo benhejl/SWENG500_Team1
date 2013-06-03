@@ -64,6 +64,7 @@
     <Content Include="Home.aspx" />
     <Content Include="Issues.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Scrum\EnterScrumData.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
@@ -112,6 +113,13 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scrum\EnterScrumData.aspx.cs">
+      <DependentUpon>EnterScrumData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Scrum\EnterScrumData.aspx.designer.cs">
+      <DependentUpon>EnterScrumData.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -129,7 +137,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
-    <Folder Include="Scrum\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site.Master" />
@@ -143,18 +150,6 @@
       <Project>{F815AFCE-457A-47F7-BC11-7501A3C950F1}</Project>
       <Name>ProjectManagerLibrary</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Issue\Index.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\User\LogIn.cshtml" />
-    <Content Include="Views\User\LogOut.cshtml" />
-    <Content Include="Views\User\Registration.cshtml" />
-    <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
