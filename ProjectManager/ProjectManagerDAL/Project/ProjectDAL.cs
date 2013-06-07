@@ -11,40 +11,90 @@ namespace ProjectManagerDAL
     {
 
         /// <summary>
+        /// GetProject
+        /// </summary>
+        /// <param name="projectID">int</param>
+        /// <returns>Project</returns>
+        public static Project GetProject(int projectID)
+        {
+            try
+            {   // get the project info from database.
+                using (var db = new ProjectManagerEntities())
+                {
+                    var query = (from p in db.ProjectDALs
+                                 where p.ProjectID == projectID
+                                select p).FirstOrDefault();
+
+                    if (query != null)
+                    {
+                        var proj = new Project
+                                 (
+                                      query.ProjectID,
+                                      query.Name,
+                                      DateTime.Parse(query.StartDate.ToString()),
+                                      DateTime.Parse(query.EndDate.ToString()),
+                                      query.Status,
+                                      query.Description,
+                                      query.ProjectCategoryID.ToString(),
+                                      DateTime.Parse(query.DueDate.ToString())
+                                 );
+
+                        return proj;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return null;
+
+        }
+
+        /// <summary>
         /// GetProjectList
         /// </summary>
         /// <returns>List<IssueModel></returns>
-        public List<Project> GetProjectList()
+        public static List<Project> GetProjectList()
         {
             List<Project> projects = new List<Project>();
 
-            using (var db = new ProjectManagerEntities())
+            try
             {
-                var query = from p in db.ProjectDALs
-                            select p;
-
-                // get the list of projects.
-                foreach (var q in query)
+                using (var db = new ProjectManagerEntities())
                 {
-                    var proj = new Project
-                             (
-                                  q.ProjectID,
-                                  q.Name,
-                                  DateTime.Parse(q.StartDate.ToString()),
-                                  DateTime.Parse(q.EndDate.ToString()),
-                                  q.Status,
-                                  q.Description,
-                                  q.ProjectCategoryID.ToString(),
-                                  DateTime.Parse(q.DueDate.ToString())
-                             );
-                    var issueDals = new IssueDAL();
-                    // get the list of issues for the specific projectID.
-                    proj.Issues = issueDals.GetIssueList(proj.ProjectID);
-                    // add to the project list
-                    projects.Add(proj);
- 
+                    var query = from p in db.ProjectDALs
+                                select p;
+
+                    // get the list of projects.
+                    foreach (var q in query)
+                    {
+                        var proj = new Project
+                                 (
+                                      q.ProjectID,
+                                      q.Name,
+                                      DateTime.Parse(q.StartDate.ToString()),
+                                      DateTime.Parse(q.EndDate.ToString()),
+                                      q.Status,
+                                      q.Description,
+                                      q.ProjectCategoryID.ToString(),
+                                      DateTime.Parse(q.DueDate.ToString())
+                                 );
+                        var issueDals = new IssueDAL();
+                        // get the list of issues for the specific projectID.
+                        proj.Issues = issueDals.GetIssueList(proj.ProjectID);
+                        // add to the project list
+                        projects.Add(proj);
+
+                    }
+
                 }
 
+            }
+            catch (Exception)
+            {
+                throw;
             }
             return projects;
         }

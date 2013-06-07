@@ -62,6 +62,7 @@
       <DependentUpon>ProjectManager.mdf</DependentUpon>
     </Content>
     <Content Include="Home.aspx" />
+    <Content Include="IssueDetails.aspx" />
     <Content Include="Issues.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Scrum\EnterScrumData.aspx" />
@@ -97,6 +98,13 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IssueDetails.aspx.cs">
+      <DependentUpon>IssueDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IssueDetails.aspx.designer.cs">
+      <DependentUpon>IssueDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Issues.aspx.cs">
       <DependentUpon>Issues.aspx</DependentUpon>
