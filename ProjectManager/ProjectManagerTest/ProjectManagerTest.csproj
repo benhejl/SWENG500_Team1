@@ -50,6 +50,7 @@
     <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.Extensions" />
@@ -67,6 +68,7 @@
     <Compile Include="IssueControllerTest.cs" />
     <Compile Include="DateRangeTest.cs" />
     <Compile Include="IssueTest.cs" />
+    <Compile Include="OpenVsResolvedStrategyTest.cs" />
     <Compile Include="ProjectTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScrumTestUnit.cs" />
@@ -87,6 +89,9 @@
       <Project>{FA08BF3F-5B22-4D78-A354-6AFA2931C073}</Project>
       <Name>ProjectManagerWeb</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Shadow Include="Test References\ProjectManagerLibrary.accessor" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
