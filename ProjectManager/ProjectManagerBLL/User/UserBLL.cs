@@ -19,13 +19,21 @@ namespace ProjectManagerBLL
         public bool Login(string Username, string Password)
         {
             var isValid = false;
-
-            if (Username != null && Password != null)
+            try
             {
-                // inistantiate a UserDAL object & authenticate
-                var userDAL = new ProjectManagerDAL.UserDAL();
-                isValid = userDAL.Authenticate(Username, Password);
+                if (Username != null && Password != null)
+                {
+                    // inistantiate a UserDAL object & authenticate
+                    var userDAL = new ProjectManagerDAL.UserDAL();
+                    isValid = userDAL.Authenticate(Username, Password);
+                }
             }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+
             return isValid;
         }
 
@@ -36,7 +44,16 @@ namespace ProjectManagerBLL
         /// <returns>User</returns>
         public User GetUserInfo(string userName)
         {
-            return new ProjectManagerDAL.UserDAL().GetUserInfo(userName);
+            try
+            {
+                return new ProjectManagerDAL.UserDAL().GetUserInfo(userName);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            
 
         }
 

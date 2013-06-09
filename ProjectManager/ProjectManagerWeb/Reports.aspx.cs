@@ -14,8 +14,7 @@ namespace ProjectManagerWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var proj = new ProjectManagerBLL.Project.ProjectBLL();
-            var projects = proj.GetProjectList();
+            var projects = ProjectManagerBLL.ProjectBLL.GetProjectList();
 
             if (projects.Count > 0)
             {
@@ -35,8 +34,7 @@ namespace ProjectManagerWeb
 
         protected void ProjectNames_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var proj = new ProjectManagerBLL.Project.ProjectBLL();
-            var projects = proj.GetProjectList();
+            var projects = ProjectManagerBLL.ProjectBLL.GetProjectList();
 
             IssuesTable.Visible = false;
             if (projects.Count > 0)
