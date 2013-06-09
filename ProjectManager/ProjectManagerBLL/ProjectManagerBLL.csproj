@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calendar\CalendarBLL.cs" />
     <Compile Include="Issue\IssueBLL.cs" />
     <Compile Include="Project\ProjectBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

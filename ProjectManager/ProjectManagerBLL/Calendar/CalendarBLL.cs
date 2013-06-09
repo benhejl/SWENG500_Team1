@@ -1,41 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using ProjectManagerLibrary.Models;
+using System.Text;
 
-namespace ProjectManagerWeb.Controllers
+namespace ProjectManagerBLL.Calendar
 {
-    public class CalendarController
+    class CalendarBLL
     {
         public bool CreateNewCalendar()
         {
             return true;
         }
+
         public bool DeleteExistingCalendar()
         {
             return true;
         }
-        public bool AddEventToCalendar()
+
+        public bool AddEvent()
         {
             return true;
         }
-        public bool DeleteEventFromCalendar()
+
+        public bool DeleteEvent()
         {
             return true;
         }
-        public bool AddNewUsersToCalendar()
+
+        public bool AddUsers()
         {
             return true;
         }
-        public bool DeleteUsersFromCalendar()
+
+        public bool DeleteUsers()
         {
             return true;
         }
-        public bool AlterCalendarInformation()
+
+        public bool AlterCalendarInfo()
         {
             return true;
         }
+
         public bool ViewEvent()
         {
             return true;

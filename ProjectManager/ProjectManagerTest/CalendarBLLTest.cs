@@ -1,18 +1,17 @@
-﻿using ProjectManagerWeb.Controllers;
+﻿using ProjectManagerBLL.Calendar;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting.Web;
 
 namespace ProjectManagerTest
 {
     
     
     /// <summary>
-    ///This is a test class for CalendarControllerTest and is intended
-    ///to contain all CalendarControllerTest Unit Tests
+    ///This is a test class for CalendarBLLTest and is intended
+    ///to contain all CalendarBLLTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class CalendarControllerTest
+    public class CalendarBLLTest
     {
 
 
@@ -64,80 +63,115 @@ namespace ProjectManagerTest
         //
         #endregion
 
+
+        /// <summary>
+        ///A test for DeleteUsers
+        ///</summary>
         [TestMethod()]
-        public void DeleteEventFromCalendarTest()
+        public void DeleteUsersTest()
         {
-            CalendarController target = new CalendarController();
+            CalendarBLL target = new CalendarBLL();
             bool expected = true;
             bool actual;
-            actual = target.DeleteEventFromCalendar();
+            actual = target.DeleteUsers();
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod()]
-        public void DeleteExistingCalendarTest()
-        {
-            CalendarController target = new CalendarController();
-            bool expected = true;
-            bool actual;
-            actual = target.DeleteExistingCalendar();
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
-        public void DeleteUsersFromCalendarTest()
-        {
-            CalendarController target = new CalendarController();
-            bool expected = true;
-            bool actual;
-            actual = target.DeleteUsersFromCalendar();
-            Assert.AreEqual(expected, actual);
-        }
-
+        /// <summary>
+        ///A test for CreateNewCalendar
+        ///</summary>
         [TestMethod()]
         public void CreateNewCalendarTest()
         {
-            CalendarController target = new CalendarController();
+            CalendarBLL target = new CalendarBLL();
             bool expected = true;
             bool actual;
             actual = target.CreateNewCalendar();
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        ///A test for AddEvent
+        ///</summary>
         [TestMethod()]
-        public void AlterCalendarInformationTest()
+        public void AddEventTest()
         {
-            CalendarController target = new CalendarController();
+            CalendarBLL target = new CalendarBLL();
             bool expected = true;
             bool actual;
-            actual = target.AlterCalendarInformation();
+            actual = target.AddEvent();
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        ///A test for AddUsers
+        ///</summary>
         [TestMethod()]
-        public void AddNewUsersToCalendarTest()
+        public void AddUsersTest()
         {
-            CalendarController target = new CalendarController();
+            CalendarBLL target = new CalendarBLL();
             bool expected = true;
             bool actual;
-            actual = target.AddNewUsersToCalendar();
+            actual = target.AddUsers();
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        ///A test for AlterCalendarInfo
+        ///</summary>
         [TestMethod()]
-        public void AddEventToCalendarTest()
+        public void AlterCalendarInfoTest()
         {
-            CalendarController target = new CalendarController();
+            CalendarBLL target = new CalendarBLL();
             bool expected = true;
             bool actual;
-            actual = target.AddEventToCalendar();
+            actual = target.AlterCalendarInfo();
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        ///A test for DeleteEvent
+        ///</summary>
+        [TestMethod()]
+        public void DeleteEventTest()
+        {
+            CalendarBLL target = new CalendarBLL();
+            bool expected = true;
+            bool actual;
+            actual = target.DeleteEvent();
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for CalendarBLL Constructor
+        ///</summary>
+        [TestMethod()]
+        public void CalendarBLLConstructorTest()
+        {
+            CalendarBLL target = new CalendarBLL();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for DeleteExistingCalendar
+        ///</summary>
+        [TestMethod()]
+        public void DeleteExistingCalendarTest()
+        {
+            CalendarBLL target = new CalendarBLL();
+            bool expected = true;
+            bool actual;
+            actual = target.DeleteExistingCalendar();
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for ViewEvent
+        ///</summary>
         [TestMethod()]
         public void ViewEventTest()
         {
-            CalendarController target = new CalendarController();
+            CalendarBLL target = new CalendarBLL();
             bool expected = true;
             bool actual;
             actual = target.ViewEvent();

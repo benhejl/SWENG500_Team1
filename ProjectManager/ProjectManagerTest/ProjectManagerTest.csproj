@@ -63,6 +63,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalendarBLLTest.cs" />
     <Compile Include="CalendarControllerTest.cs" />
     <Compile Include="IssueControllerTest.cs" />
     <Compile Include="DateRangeTest.cs" />
@@ -78,6 +79,10 @@
     <ProjectReference Include="..\ProjectManagerBLL\ProjectManagerBLL.csproj">
       <Project>{13988D49-5FA6-48FC-96F9-59ADDDC100C6}</Project>
       <Name>ProjectManagerBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectManagerDAL\ProjectManagerDAL.csproj">
+      <Project>{090F69C4-9D20-4C4B-BA31-2115208AECDF}</Project>
+      <Name>ProjectManagerDAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\ProjectManagerLibrary\ProjectManagerLibrary.csproj">
       <Project>{F815AFCE-457A-47F7-BC11-7501A3C950F1}</Project>
