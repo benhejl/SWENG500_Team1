@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="CalendarBLLTest.cs" />
     <Compile Include="CalendarControllerTest.cs" />
+    <Compile Include="CalendarTest.cs" />
     <Compile Include="IssueControllerTest.cs" />
     <Compile Include="DateRangeTest.cs" />
     <Compile Include="IssueTest.cs" />
@@ -97,6 +98,9 @@
   </ItemGroup>
   <ItemGroup>
     <Shadow Include="Test References\ProjectManagerLibrary.accessor" />
+  </ItemGroup>
+  <ItemGroup>
+    <Shadow Include="Test References\ProjectManagerWeb.accessor" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
