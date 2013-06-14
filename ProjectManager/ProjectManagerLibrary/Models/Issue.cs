@@ -30,6 +30,8 @@ namespace ProjectManagerLibrary.Models
         public int ProjectID { get; set; }
         public int Milestone { get; set; }  // TODO: This probably wants to be an object
         public User Assignee;
+        public string IssueCategoryName { get; set; }
+        public DateTime EntryDate { get; set; }
 
         public Issue()
         {

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ProjectManagerEntityModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="ProjectManagerEntityModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="ProjectManagerEntityModelStoreContainer">
           <EntitySet Name="IssueAssignments" EntityType="ProjectManagerEntityModel.Store.IssueAssignments" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="IssueAttachments" EntityType="ProjectManagerEntityModel.Store.IssueAttachments" store:Type="Tables" Schema="dbo" />
@@ -13,23 +13,20 @@
       [IssueCategories].[IssueCategoryName] AS [IssueCategoryName]
       FROM [dbo].[IssueCategories] AS [IssueCategories]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="Issues" EntityType="ProjectManagerEntityModel.Store.Issues" store:Type="Tables" store:Schema="dbo" store:Name="Issues">
-            <DefiningQuery>SELECT 
-      [Issues].[IssueID] AS [IssueID], 
-      [Issues].[Subject] AS [Subject], 
-      [Issues].[Priority] AS [Priority], 
-      [Issues].[Status] AS [Status], 
-      [Issues].[Description] AS [Description], 
-      [Issues].[EntryDate] AS [EntryDate], 
-      [Issues].[ProjectID] AS [ProjectID], 
-      [Issues].[IssueCategoryName] AS [IssueCategoryName]
-      FROM [dbo].[Issues] AS [Issues]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="Issues" EntityType="ProjectManagerEntityModel.Store.Issues" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ProjectCategories" EntityType="ProjectManagerEntityModel.Store.ProjectCategories" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Projects" EntityType="ProjectManagerEntityModel.Store.Projects" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ScrumQuestions" EntityType="ProjectManagerEntityModel.Store.ScrumQuestions" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Team" EntityType="ProjectManagerEntityModel.Store.Team" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Users" EntityType="ProjectManagerEntityModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_IssueAssignments_Issues" Association="ProjectManagerEntityModel.Store.FK_IssueAssignments_Issues">
+            <End Role="Issues" EntitySet="Issues" />
+            <End Role="IssueAssignments" EntitySet="IssueAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IssueAssignments_Users" Association="ProjectManagerEntityModel.Store.FK_IssueAssignments_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="IssueAssignments" EntitySet="IssueAssignments" />
+          </AssociationSet>
           <AssociationSet Name="FK_ProjectCategoryProject" Association="ProjectManagerEntityModel.Store.FK_ProjectCategoryProject">
             <End Role="ProjectCategories" EntitySet="ProjectCategories" />
             <End Role="Projects" EntitySet="Projects" />
@@ -76,15 +73,9 @@
           </Key>
           <Property Name="IssueCategoryName" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'C:\PROJECTMANAGER\PROJECTMANAGERWEB\APP_DATA\PROJECTMANAGER.MDF.dbo.Issues' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
         <EntityType Name="Issues">
           <Key>
             <PropertyRef Name="IssueID" />
-            <PropertyRef Name="Subject" />
-            <PropertyRef Name="Description" />
-            <PropertyRef Name="ProjectID" />
           </Key>
           <Property Name="IssueID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Subject" Type="nvarchar(max)" Nullable="false" />
@@ -145,6 +136,30 @@
           <Property Name="Position" Type="nvarchar(max)" />
           <Property Name="TeamName" Type="nvarchar(max)" />
         </EntityType>
+        <Association Name="FK_IssueAssignments_Issues">
+          <End Role="Issues" Type="ProjectManagerEntityModel.Store.Issues" Multiplicity="1" />
+          <End Role="IssueAssignments" Type="ProjectManagerEntityModel.Store.IssueAssignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Issues">
+              <PropertyRef Name="IssueID" />
+            </Principal>
+            <Dependent Role="IssueAssignments">
+              <PropertyRef Name="IssueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IssueAssignments_Users">
+          <End Role="Users" Type="ProjectManagerEntityModel.Store.Users" Multiplicity="1" />
+          <End Role="IssueAssignments" Type="ProjectManagerEntityModel.Store.IssueAssignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="IssueAssignments">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ProjectCategoryProject">
           <End Role="ProjectCategories" Type="ProjectManagerEntityModel.Store.ProjectCategories" Multiplicity="0..1" />
           <End Role="Projects" Type="ProjectManagerEntityModel.Store.Projects" Multiplicity="*" />
@@ -193,8 +208,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProjectManagerDAL" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -202,7 +216,6 @@
           <EntitySet Name="IssueAssignmentDALs" EntityType="ProjectManagerDAL.IssueAssignmentDAL" />
           <EntitySet Name="IssueAttachmentDALs" EntityType="ProjectManagerDAL.IssueAttachmentDAL" />
           <EntitySet Name="IssueCategoryDALs" EntityType="ProjectManagerDAL.IssueCategoryDAL" />
-          <EntitySet Name="IssueDALs" EntityType="ProjectManagerDAL.IssueDAL" />
           <EntitySet Name="ProjectCategoryDALs" EntityType="ProjectManagerDAL.ProjectCategoryDAL" />
           <EntitySet Name="ProjectDALs" EntityType="ProjectManagerDAL.ProjectDAL" />
           <EntitySet Name="ScrumQuestions" EntityType="ProjectManagerDAL.ScrumQuestion" />
@@ -216,13 +229,18 @@
             <End Role="Users" EntitySet="UserDALs" />
             <End Role="IssueAttachments" EntitySet="IssueAttachmentDALs" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProjectIssue" Association="ProjectManagerDAL.FK_ProjectIssue">
-            <End Role="Projects" EntitySet="ProjectDALs" />
-            <End Role="Issues" EntitySet="IssueDALs" />
-          </AssociationSet>
           <AssociationSet Name="FK_ProjectCategoryProject" Association="ProjectManagerDAL.FK_ProjectCategoryProject">
             <End Role="ProjectCategories" EntitySet="ProjectCategoryDALs" />
             <End Role="Projects" EntitySet="ProjectDALs" />
+          </AssociationSet>
+          <EntitySet Name="IssueDALs" EntityType="ProjectManagerDAL.IssueDAL" />
+          <AssociationSet Name="FK_IssueAssignments_Issues" Association="ProjectManagerDAL.FK_IssueAssignments_Issues">
+            <End Role="Issue" EntitySet="IssueDALs" />
+            <End Role="IssueAssignmentDAL" EntitySet="IssueAssignmentDALs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectIssue" Association="ProjectManagerDAL.FK_ProjectIssue">
+            <End Role="ProjectDAL" EntitySet="ProjectDALs" />
+            <End Role="Issue" EntitySet="IssueDALs" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="IssueAssignmentDAL">
@@ -233,6 +251,7 @@
           <Property Name="IssueID" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="User" Relationship="ProjectManagerDAL.FK_UserIssueAssignment" FromRole="IssueAssignments" ToRole="Users" />
+          <NavigationProperty Name="Issue" Relationship="ProjectManagerDAL.FK_IssueAssignments_Issues" FromRole="IssueAssignmentDAL" ToRole="Issue" />
         </EntityType>
         <EntityType Name="IssueAttachmentDAL">
           <Key>
@@ -252,23 +271,6 @@
             <PropertyRef Name="IssueCategoryName" />
           </Key>
           <Property Name="IssueCategoryName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="IssueDAL">
-          <Key>
-            <PropertyRef Name="IssueID" />
-            <PropertyRef Name="Subject" />
-            <PropertyRef Name="Description" />
-            <PropertyRef Name="ProjectID" />
-          </Key>
-          <Property Name="IssueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Subject" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="Priority" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="Status" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="EntryDate" Type="DateTime" />
-          <Property Name="ProjectID" Type="Int32" Nullable="false" />
-          <Property Name="IssueCategoryName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Project" Relationship="ProjectManagerDAL.FK_ProjectIssue" FromRole="Issues" ToRole="Projects" />
         </EntityType>
         <EntityType Name="ProjectCategoryDAL">
           <Key>
@@ -290,8 +292,8 @@
           <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="ProjectCategoryID" Type="Int32" />
           <Property Name="DueDate" Type="DateTime" />
-          <NavigationProperty Name="Issues" Relationship="ProjectManagerDAL.FK_ProjectIssue" FromRole="Projects" ToRole="Issues" />
           <NavigationProperty Name="ProjectCategory" Relationship="ProjectManagerDAL.FK_ProjectCategoryProject" FromRole="Projects" ToRole="ProjectCategories" />
+          <NavigationProperty Name="Issues" Relationship="ProjectManagerDAL.FK_ProjectIssue" FromRole="ProjectDAL" ToRole="Issue" />
         </EntityType>
         <EntityType Name="ScrumQuestion">
           <Key>
@@ -349,18 +351,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProjectIssue">
-          <End Role="Projects" Type="ProjectManagerDAL.ProjectDAL" Multiplicity="1" />
-          <End Role="Issues" Type="ProjectManagerDAL.IssueDAL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Projects">
-              <PropertyRef Name="ProjectID" />
-            </Principal>
-            <Dependent Role="Issues">
-              <PropertyRef Name="ProjectID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ProjectCategoryProject">
           <End Role="ProjectCategories" Type="ProjectManagerDAL.ProjectCategoryDAL" Multiplicity="0..1" />
           <End Role="Projects" Type="ProjectManagerDAL.ProjectDAL" Multiplicity="*" />
@@ -370,6 +360,45 @@
             </Principal>
             <Dependent Role="Projects">
               <PropertyRef Name="ProjectCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="IssueDAL">
+          <Key>
+            <PropertyRef Name="IssueID" />
+          </Key>
+          <Property Type="Int32" Name="IssueID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Subject" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Priority" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Status" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="EntryDate" />
+          <Property Type="Int32" Name="ProjectID" Nullable="false" />
+          <Property Type="String" Name="IssueCategoryName" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="IssueAssignments" Relationship="ProjectManagerDAL.FK_IssueAssignments_Issues" FromRole="Issue" ToRole="IssueAssignmentDAL" />
+          <NavigationProperty Name="Project" Relationship="ProjectManagerDAL.FK_ProjectIssue" FromRole="Issue" ToRole="ProjectDAL" />
+        </EntityType>
+        <Association Name="FK_IssueAssignments_Issues">
+          <End Type="ProjectManagerDAL.IssueDAL" Role="Issue" Multiplicity="1" />
+          <End Type="ProjectManagerDAL.IssueAssignmentDAL" Role="IssueAssignmentDAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Issue">
+              <PropertyRef Name="IssueID" />
+            </Principal>
+            <Dependent Role="IssueAssignmentDAL">
+              <PropertyRef Name="IssueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectIssue">
+          <End Type="ProjectManagerDAL.ProjectDAL" Role="ProjectDAL" Multiplicity="1" />
+          <End Type="ProjectManagerDAL.IssueDAL" Role="Issue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectDAL">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="Issue">
+              <PropertyRef Name="ProjectID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -394,16 +423,6 @@
             <ScalarProperty Name="MimeType" ColumnName="MimeType" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="IssueCategoryDALs"><EntityTypeMapping TypeName="ProjectManagerDAL.IssueCategoryDAL"><MappingFragment StoreEntitySet="IssueCategories">
-            <ScalarProperty Name="IssueCategoryName" ColumnName="IssueCategoryName" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="IssueDALs"><EntityTypeMapping TypeName="ProjectManagerDAL.IssueDAL"><MappingFragment StoreEntitySet="Issues">
-            <ScalarProperty Name="IssueID" ColumnName="IssueID" />
-            <ScalarProperty Name="Subject" ColumnName="Subject" />
-            <ScalarProperty Name="Priority" ColumnName="Priority" />
-            <ScalarProperty Name="Status" ColumnName="Status" />
-            <ScalarProperty Name="Description" ColumnName="Description" />
-            <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
-            <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
             <ScalarProperty Name="IssueCategoryName" ColumnName="IssueCategoryName" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="ProjectCategoryDALs"><EntityTypeMapping TypeName="ProjectManagerDAL.ProjectCategoryDAL"><MappingFragment StoreEntitySet="ProjectCategories">
@@ -441,6 +460,20 @@
             <ScalarProperty Name="Position" ColumnName="Position" />
             <ScalarProperty Name="TeamName" ColumnName="TeamName" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="IssueDALs">
+            <EntityTypeMapping TypeName="ProjectManagerDAL.IssueDAL">
+              <MappingFragment StoreEntitySet="Issues">
+                <ScalarProperty Name="IssueCategoryName" ColumnName="IssueCategoryName" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="IssueID" ColumnName="IssueID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -462,30 +495,37 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="ProjectManagerEntityModel">
-        <EntityTypeShape EntityType="ProjectManagerDAL.IssueAssignmentDAL" Width="1.5" PointX="3" PointY="1.125" Height="1.787985026041667" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectManagerDAL.IssueAssignmentDAL" Width="2.25" PointX="3" PointY="1.125" Height="1.787985026041667" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectManagerDAL.IssueAttachmentDAL" Width="1.5" PointX="3" PointY="3.625" Height="2.5571907552083322" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectManagerDAL.IssueCategoryDAL" Width="1.875" PointX="5.75" PointY="4.75" Height="1.2110807291666674" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectManagerDAL.IssueDAL" Width="1.5" PointX="10.25" PointY="1.125" Height="2.7494921874999996" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectManagerDAL.ProjectCategoryDAL" Width="1.75" PointX="5.375" PointY="1.625" Height="1.5956835937499996" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectManagerDAL.ProjectDAL" Width="1.5" PointX="8" PointY="1" Height="2.9417936197916665" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectManagerDAL.ScrumQuestion" Width="1.5" PointX="5.75" PointY="6.75" Height="1.4033821614583317" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectManagerDAL.Team" Width="1.5" PointX="0.75" PointY="7.75" Height="1.5956835937499996" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectManagerDAL.UserDAL" Width="1.5" PointX="0.75" PointY="2" Height="3.326396484375" IsExpanded="true" />
         <AssociationConnector Association="ProjectManagerDAL.FK_UserIssueAssignment" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="2.4564925130208337" />
-          <ConnectorPoint PointX="3" PointY="2.4564925130208337" />
+          <ConnectorPoint PointX="2.25" PointY="2.5526432291666667" />
+          <ConnectorPoint PointX="3" PointY="2.5526432291666667" />
         </AssociationConnector>
         <AssociationConnector Association="ProjectManagerDAL.FK_UserIssueAttachment" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="4.4756982421875" />
           <ConnectorPoint PointX="3" PointY="4.4756982421875" />
         </AssociationConnector>
-        <AssociationConnector Association="ProjectManagerDAL.FK_ProjectIssue" ManuallyRouted="false">
-          <ConnectorPoint PointX="9.5" PointY="2.49974609375" />
-          <ConnectorPoint PointX="10.25" PointY="2.49974609375" />
-        </AssociationConnector>
         <AssociationConnector Association="ProjectManagerDAL.FK_ProjectCategoryProject" ManuallyRouted="false">
           <ConnectorPoint PointX="7.125" PointY="2.422841796875" />
           <ConnectorPoint PointX="8" PointY="2.422841796875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="ProjectManagerDAL.IssueDAL" Width="1.5" PointX="10.25" PointY="1" Height="2.9417936197916674" />
+        <AssociationConnector Association="ProjectManagerDAL.FK_IssueAssignments_Issues" >
+          <ConnectorPoint PointX="10.25" PointY="1" />
+          <ConnectorPoint PointX="9.875" PointY="0.625" />
+          <ConnectorPoint PointX="5.625" PointY="0.625" />
+          <ConnectorPoint PointX="5.625" PointY="0.75" />
+          <ConnectorPoint PointX="5.25" PointY="1.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="ProjectManagerDAL.FK_ProjectIssue" >
+          <ConnectorPoint PointX="9.5" PointY="2.5021493098958336" />
+          <ConnectorPoint PointX="10.25" PointY="2.5021493098958336" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

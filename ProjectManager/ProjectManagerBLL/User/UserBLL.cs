@@ -37,6 +37,23 @@ namespace ProjectManagerBLL
             return isValid;
         }
 
+
+        /// <summary>
+        /// GetUserListForView
+        /// </summary>
+        /// <returns>List of User ID and Name KeyValuePair values</returns>
+        public static List<KeyValuePair<string, int>> GetUserListForView()
+        {
+            try
+            {
+                return UserDAL.GetUserListForView();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         /// <summary>
         /// GetUserInfo
         /// </summary>

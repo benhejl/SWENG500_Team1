@@ -1,17 +1,18 @@
-﻿using ProjectManagerLibrary.Models;
+﻿using ProjectManagerBLL;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using ProjectManagerLibrary.Models;
 
 namespace ProjectManagerTest
 {
     
     
     /// <summary>
-    ///This is a test class for CalendarTest and is intended
-    ///to contain all CalendarTest Unit Tests
+    ///This is a test class for IssueBLLTest and is intended
+    ///to contain all IssueBLLTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class CalendarTest
+    public class IssueBLLTest
     {
 
 
@@ -65,23 +66,32 @@ namespace ProjectManagerTest
 
 
         /// <summary>
-        ///A test for Calendar Constructor
+        ///A test for AddIssue
         ///</summary>
         [TestMethod()]
-        public void CalendarConstructorTest()
+        public void AddIssueTest()
         {
-            Calendar target = new Calendar();
-            Assert.IsInstanceOfType(target, typeof(Calendar));
+            Issue issue = null; // TODO: Initialize to an appropriate value
+            bool expected = false; // TODO: Initialize to an appropriate value
+            bool actual;
+            actual = IssueBLL.AddIssue(issue);
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
-        ///A test for Calendar Constructor
+        ///A test for GetIssue
         ///</summary>
         [TestMethod()]
-        public void CalendarConstructorTest1()
+        public void GetIssueTest()
         {
-            Calendar target = new Calendar();
-            Assert.IsInstanceOfType(target, typeof(Calendar));
+            int issueID = 4; // TODO: Initialize to an appropriate value
+            //Issue expected = null; // TODO: Initialize to an appropriate value
+            Issue actual;
+            actual = IssueBLL.GetIssue(issueID);
+            //Assert.AreEqual(expected, actual);
+            //Assert.Inconclusive("Verify the correctness of this test method.");
+            Assert.IsNotNull(actual);
         }
     }
 }

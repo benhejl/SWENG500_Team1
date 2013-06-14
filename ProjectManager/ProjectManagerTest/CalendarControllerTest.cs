@@ -133,15 +133,5 @@ namespace ProjectManagerTest
             actual = target.AddEventToCalendar();
             Assert.AreEqual(expected, actual);
         }
-
-        [TestMethod()]
-        public void ViewEventTest()
-        {
-            CalendarController target = new CalendarController();
-            bool expected = true;
-            bool actual;
-            actual = target.ViewEvent();
-            Assert.AreEqual(expected, actual);
-        }
     }
 }

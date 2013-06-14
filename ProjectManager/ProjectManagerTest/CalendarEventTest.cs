@@ -7,11 +7,11 @@ namespace ProjectManagerTest
     
     
     /// <summary>
-    ///This is a test class for CalendarTest and is intended
-    ///to contain all CalendarTest Unit Tests
+    ///This is a test class for CalendarEventTest and is intended
+    ///to contain all CalendarEventTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class CalendarTest
+    public class CalendarEventTest
     {
 
 
@@ -65,23 +65,23 @@ namespace ProjectManagerTest
 
 
         /// <summary>
-        ///A test for Calendar Constructor
+        ///A test for CalendarEvent Constructor
         ///</summary>
         [TestMethod()]
-        public void CalendarConstructorTest()
+        public void CalendarEventConstructorTest()
         {
-            Calendar target = new Calendar();
-            Assert.IsInstanceOfType(target, typeof(Calendar));
+            CalendarEvent target = new CalendarEvent();
+            Assert.IsInstanceOfType(target, typeof(CalendarEvent));
         }
 
         /// <summary>
-        ///A test for Calendar Constructor
+        ///A test for CalendarEvent Constructor
         ///</summary>
         [TestMethod()]
-        public void CalendarConstructorTest1()
+        public void CalendarEventConstructorTest1()
         {
-            Calendar target = new Calendar();
-            Assert.IsInstanceOfType(target, typeof(Calendar));
+            CalendarEvent target = new CalendarEvent();
+            Assert.IsInstanceOfType(target, typeof(CalendarEvent));
         }
     }
 }

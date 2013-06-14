@@ -26,5 +26,23 @@ namespace ProjectManagerBLL
                 throw;
             }
         }
+
+        /// <summary>
+        /// AddIssue
+        /// </summary>
+        /// <param name="issue"></param>
+        /// <returns></returns>
+        public static bool AddIssue(Issue issue)
+        {
+            try
+            {
+                return IssueDAL.AddIssue(issue);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            
+        }
     }
 }

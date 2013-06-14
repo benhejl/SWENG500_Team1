@@ -99,5 +99,41 @@ namespace ProjectManagerDAL
             return projects;
         }
 
+
+
+        /// <summary>
+        /// GetProjectListForView
+        /// </summary>
+        /// <returns>List of Project ID and Name KeyValuePair values</returns>
+        public static List<KeyValuePair<string, int>> GetProjectListForView()
+        {
+            try
+            {
+                // key value pair list.
+                var projectsList = new List<KeyValuePair<string, int>>();
+
+                using (var db = new ProjectManagerEntities())
+                {
+                    var query = from p in db.ProjectDALs
+                                select p;
+
+                    if (query != null)
+                    {
+                        foreach (var q in query)
+                        {
+                            // add project id and name to the list.
+                            projectsList.Add(new KeyValuePair<string, int>(q.Name, q.ProjectID));
+                        }
+                    }
+
+                    return projectsList;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

@@ -338,6 +338,7 @@ div.accountInfo
 /* Styles for tables
 -----------------------------------------------------------*/
 table {
+	width: 100%;
 	border: 1px solid #cef;
 	text-align: left; }
 th {

@@ -37,6 +37,10 @@
         <td>Assignee</td>
         <td><asp:Label ID="lblAssignee" runat="server"></asp:Label></td>
     </tr>
+    <tr>
+        <td>Entry Date</td>
+        <td><asp:Label ID="lblEntryDate" runat="server"></asp:Label></td>
+    </tr>
 </table>
 
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using ProjectManagerLibrary;
 using ProjectManagerLibrary.Models;
-
+using System.Transactions;
 
 namespace ProjectManagerDAL
 {
@@ -47,7 +47,10 @@ namespace ProjectManagerDAL
                                      Email = uJoin.Email,
                                      PhoneNumber = uJoin.PhoneNumber,
                                      Position = uJoin.Position,
-                                     TeamName = uJoin.TeamName
+                                     TeamName = uJoin.TeamName,
+                                     IssueCategoryName = i.IssueCategoryName,
+                                     EntryDate = i.EntryDate,
+                                     Description = i.Description
 
                                  }).FirstOrDefault();
 
@@ -60,7 +63,11 @@ namespace ProjectManagerDAL
                             Subject = query.Subject,
                             CurrentStatus = (Issue.IssueStatus)Enum.Parse(typeof(Issue.IssueStatus), query.Status),
                             CurrentPriority = (Issue.IssuePriority)Enum.Parse(typeof(Issue.IssuePriority), query.Priority),
-                            ProjectID = query.ProjectID
+                            ProjectID = query.ProjectID,
+                            IssueCategoryName = query.IssueCategoryName,
+                            EntryDate = query.EntryDate ?? DateTime.MinValue,
+                            Description = query.Description
+
                         };
 
                         // Get the Issue Assignee
@@ -116,7 +123,10 @@ namespace ProjectManagerDAL
                                      Email = uJoin.Email,
                                      PhoneNumber = uJoin.PhoneNumber,
                                      Position = uJoin.Position,
-                                     TeamName = uJoin.TeamName
+                                     TeamName = uJoin.TeamName,
+                                     IssueCategoryName = i.IssueCategoryName,
+                                     EntryDate = i.EntryDate,
+                                     Description = i.Description
 
                                  });
 
@@ -130,7 +140,10 @@ namespace ProjectManagerDAL
                             Subject = item.Subject,
                             CurrentStatus = (Issue.IssueStatus)Enum.Parse(typeof(Issue.IssueStatus), item.Status),
                             CurrentPriority = (Issue.IssuePriority)Enum.Parse(typeof(Issue.IssuePriority), item.Priority),
-                            ProjectID = item.ProjectID
+                            ProjectID = item.ProjectID,
+                            IssueCategoryName = item.IssueCategoryName,
+                            EntryDate = item.EntryDate ?? DateTime.MinValue,
+                            Description = item.Description
                         };
 
                         // Get the Issue Assignee
@@ -151,6 +164,73 @@ namespace ProjectManagerDAL
             }
 
             return issues;
+        }
+
+        /// <summary>
+        /// AddIssue - Add New Issue
+        /// </summary>
+        /// <param name="issue"></param>
+        /// <returns>bool</returns>
+        public static bool AddIssue(Issue issue)
+        {
+            try
+            {
+                var returnValue = false;
+                var id = 0;
+
+                // wrap in a TransactionScope since we are updating two tables - Issues and IssueAssignments
+                using (TransactionScope transaction = new TransactionScope())
+                {
+
+                    using (var db = new ProjectManagerEntities())
+                    {
+
+                            db.Connection.Open();
+                            var i = new IssueDAL();
+                            //i.IssueID = -1;
+                            i.Subject = issue.Subject;
+                            i.ProjectID = issue.ProjectID;
+                            i.Priority = issue.CurrentPriority.ToString();
+                            i.Status = issue.CurrentStatus.ToString();
+                            i.Description = issue.Description;
+                            i.IssueCategoryName = issue.IssueCategoryName;
+                            i.EntryDate = issue.EntryDate;
+
+                            // save issue.
+                            db.IssueDALs.AddObject(i);
+                            db.SaveChanges();
+
+                            // get the newly inserted issueid.
+                            id = i.IssueID;
+
+                            // save issue assignment.
+                            var issueAssignment = new IssueAssignmentDAL();
+                            issueAssignment.IssueID = id;
+                            issueAssignment.UserID = issue.Assignee.UserId;
+                            db.IssueAssignmentDALs.AddObject(issueAssignment);
+                            db.SaveChanges();
+
+                        }
+
+                        transaction.Complete();
+
+                        // successfully inserted.
+                        returnValue = true;
+                }
+
+                return returnValue;
+
+            }
+            catch (TransactionAbortedException ex)
+            {
+                //("TransactionAbortedException Message: {0}", ex.Message);
+                throw;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
     }

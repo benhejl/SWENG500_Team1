@@ -36,9 +36,5 @@ namespace ProjectManagerWeb.Controllers
         {
             return true;
         }
-        public bool ViewEvent()
-        {
-            return true;
-        }
     }
 }

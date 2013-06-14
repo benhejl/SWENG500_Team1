@@ -31,7 +31,7 @@ namespace ProjectManagerBLL
         /// <summary>
         /// GetProjectList
         /// </summary>
-        /// <returns>List<ProjectManagerLibrary.Models.Project></returns>
+        /// <returns>List of ProjectManagerLibrary.Models.Project</returns>
         public static List<ProjectManagerLibrary.Models.Project> GetProjectList()
         {
             try
@@ -45,6 +45,22 @@ namespace ProjectManagerBLL
             }
 
 
+        }
+
+        /// <summary>
+        /// GetProjectListForView
+        /// </summary>
+        /// <returns>List of Project ID and Name KeyValuePair values</returns>
+        public static List<KeyValuePair<string, int>> GetProjectListForView()
+        {
+            try
+            {
+                return ProjectDAL.GetProjectListForView();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
     }

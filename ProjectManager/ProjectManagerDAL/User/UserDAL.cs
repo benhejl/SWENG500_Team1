@@ -38,6 +38,40 @@ namespace ProjectManagerDAL
 
 
         /// <summary>
+        /// GetUserListForView
+        /// </summary>
+        /// <returns>List of User ID and Name KeyValuePair values</returns>
+        public static List<KeyValuePair<string, int>> GetUserListForView()
+        {
+            try
+            {
+                // key value pair list.
+                var userList = new List<KeyValuePair<string, int>>();
+
+                using (var db = new ProjectManagerEntities())
+                {
+                    var query = from u in db.UserDALs
+                                select u;
+
+                    if (query != null)
+                    {
+                        foreach (var q in query)
+                        {
+                            // add user full name and id to the list.
+                            userList.Add(new KeyValuePair<string, int>(q.FirstName + " " + q.LastName, q.UserID));
+                        }
+                    }
+
+                    return userList;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
         /// GetUserInfo
         /// </summary>
         /// <param name="userName"></param>

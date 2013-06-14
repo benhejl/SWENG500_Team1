@@ -44,6 +44,7 @@ namespace ProjectManagerWeb
                     lblIssueStatus.Text = issue.CurrentStatus.ToString();
                     lblDescription.Text = issue.Description;
                     lblAssignee.Text = issue.Assignee.FirstName + " " + issue.Assignee.LastName;
+                    lblEntryDate.Text = issue.EntryDate.ToShortDateString();
 
                 }
 

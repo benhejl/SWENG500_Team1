@@ -3,6 +3,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+<asp:HyperLink ID="lnkAddNewIssue" NavigateUrl="~/AddIssue.aspx" Text="Add New Issue" runat="server" />
+<br /><br />
 <table id="Table1" runat="server">
     <tr>
         <th>Issue ID</th>

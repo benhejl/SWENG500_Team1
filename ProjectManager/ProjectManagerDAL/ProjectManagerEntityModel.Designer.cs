@@ -20,8 +20,9 @@ using System.Runtime.Serialization;
 
 [assembly: EdmRelationshipAttribute("ProjectManagerDAL", "FK_UserIssueAssignment", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ProjectManagerDAL.UserDAL), "IssueAssignments", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ProjectManagerDAL.IssueAssignmentDAL), true)]
 [assembly: EdmRelationshipAttribute("ProjectManagerDAL", "FK_UserIssueAttachment", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ProjectManagerDAL.UserDAL), "IssueAttachments", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ProjectManagerDAL.IssueAttachmentDAL), true)]
-[assembly: EdmRelationshipAttribute("ProjectManagerDAL", "FK_ProjectIssue", "Projects", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ProjectManagerDAL.ProjectDAL), "Issues", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ProjectManagerDAL.IssueDAL), true)]
 [assembly: EdmRelationshipAttribute("ProjectManagerDAL", "FK_ProjectCategoryProject", "ProjectCategories", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ProjectManagerDAL.ProjectCategoryDAL), "Projects", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ProjectManagerDAL.ProjectDAL), true)]
+[assembly: EdmRelationshipAttribute("ProjectManagerDAL", "FK_IssueAssignments_Issues", "Issue", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ProjectManagerDAL.IssueDAL), "IssueAssignmentDAL", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ProjectManagerDAL.IssueAssignmentDAL), true)]
+[assembly: EdmRelationshipAttribute("ProjectManagerDAL", "FK_ProjectIssue", "ProjectDAL", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ProjectManagerDAL.ProjectDAL), "Issue", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ProjectManagerDAL.IssueDAL), true)]
 
 #endregion
 
@@ -124,22 +125,6 @@ namespace ProjectManagerDAL
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<IssueDAL> IssueDALs
-        {
-            get
-            {
-                if ((_IssueDALs == null))
-                {
-                    _IssueDALs = base.CreateObjectSet<IssueDAL>("IssueDALs");
-                }
-                return _IssueDALs;
-            }
-        }
-        private ObjectSet<IssueDAL> _IssueDALs;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<ProjectCategoryDAL> ProjectCategoryDALs
         {
             get
@@ -216,6 +201,22 @@ namespace ProjectManagerDAL
             }
         }
         private ObjectSet<UserDAL> _UserDALs;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<IssueDAL> IssueDALs
+        {
+            get
+            {
+                if ((_IssueDALs == null))
+                {
+                    _IssueDALs = base.CreateObjectSet<IssueDAL>("IssueDALs");
+                }
+                return _IssueDALs;
+            }
+        }
+        private ObjectSet<IssueDAL> _IssueDALs;
 
         #endregion
         #region AddTo Methods
@@ -242,14 +243,6 @@ namespace ProjectManagerDAL
         public void AddToIssueCategoryDALs(IssueCategoryDAL issueCategoryDAL)
         {
             base.AddObject("IssueCategoryDALs", issueCategoryDAL);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the IssueDALs EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToIssueDALs(IssueDAL issueDAL)
-        {
-            base.AddObject("IssueDALs", issueDAL);
         }
     
         /// <summary>
@@ -290,6 +283,14 @@ namespace ProjectManagerDAL
         public void AddToUserDALs(UserDAL userDAL)
         {
             base.AddObject("UserDALs", userDAL);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the IssueDALs EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToIssueDALs(IssueDAL issueDAL)
+        {
+            base.AddObject("IssueDALs", issueDAL);
         }
 
         #endregion
@@ -441,6 +442,44 @@ namespace ProjectManagerDAL
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<UserDAL>("ProjectManagerDAL.FK_UserIssueAssignment", "Users", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ProjectManagerDAL", "FK_IssueAssignments_Issues", "Issue")]
+        public IssueDAL Issue
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<IssueDAL>("ProjectManagerDAL.FK_IssueAssignments_Issues", "Issue").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<IssueDAL>("ProjectManagerDAL.FK_IssueAssignments_Issues", "Issue").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<IssueDAL> IssueReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<IssueDAL>("ProjectManagerDAL.FK_IssueAssignments_Issues", "Issue");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<IssueDAL>("ProjectManagerDAL.FK_IssueAssignments_Issues", "Issue", value);
                 }
             }
         }
@@ -813,7 +852,7 @@ namespace ProjectManagerDAL
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String Subject
         {
@@ -823,14 +862,11 @@ namespace ProjectManagerDAL
             }
             set
             {
-                if (_Subject != value)
-                {
-                    OnSubjectChanging(value);
-                    ReportPropertyChanging("Subject");
-                    _Subject = StructuralObject.SetValidValue(value, false);
-                    ReportPropertyChanged("Subject");
-                    OnSubjectChanged();
-                }
+                OnSubjectChanging(value);
+                ReportPropertyChanging("Subject");
+                _Subject = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Subject");
+                OnSubjectChanged();
             }
         }
         private global::System.String _Subject;
@@ -888,7 +924,7 @@ namespace ProjectManagerDAL
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String Description
         {
@@ -898,14 +934,11 @@ namespace ProjectManagerDAL
             }
             set
             {
-                if (_Description != value)
-                {
-                    OnDescriptionChanging(value);
-                    ReportPropertyChanging("Description");
-                    _Description = StructuralObject.SetValidValue(value, false);
-                    ReportPropertyChanged("Description");
-                    OnDescriptionChanged();
-                }
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
             }
         }
         private global::System.String _Description;
@@ -939,7 +972,7 @@ namespace ProjectManagerDAL
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 ProjectID
         {
@@ -949,14 +982,11 @@ namespace ProjectManagerDAL
             }
             set
             {
-                if (_ProjectID != value)
-                {
-                    OnProjectIDChanging(value);
-                    ReportPropertyChanging("ProjectID");
-                    _ProjectID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ProjectID");
-                    OnProjectIDChanged();
-                }
+                OnProjectIDChanging(value);
+                ReportPropertyChanging("ProjectID");
+                _ProjectID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ProjectID");
+                OnProjectIDChanged();
             }
         }
         private global::System.Int32 _ProjectID;
@@ -997,16 +1027,38 @@ namespace ProjectManagerDAL
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("ProjectManagerDAL", "FK_ProjectIssue", "Projects")]
+        [EdmRelationshipNavigationPropertyAttribute("ProjectManagerDAL", "FK_IssueAssignments_Issues", "IssueAssignmentDAL")]
+        public EntityCollection<IssueAssignmentDAL> IssueAssignments
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<IssueAssignmentDAL>("ProjectManagerDAL.FK_IssueAssignments_Issues", "IssueAssignmentDAL");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<IssueAssignmentDAL>("ProjectManagerDAL.FK_IssueAssignments_Issues", "IssueAssignmentDAL", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ProjectManagerDAL", "FK_ProjectIssue", "ProjectDAL")]
         public ProjectDAL Project
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProjectDAL>("ProjectManagerDAL.FK_ProjectIssue", "Projects").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProjectDAL>("ProjectManagerDAL.FK_ProjectIssue", "ProjectDAL").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProjectDAL>("ProjectManagerDAL.FK_ProjectIssue", "Projects").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProjectDAL>("ProjectManagerDAL.FK_ProjectIssue", "ProjectDAL").Value = value;
             }
         }
         /// <summary>
@@ -1018,13 +1070,13 @@ namespace ProjectManagerDAL
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProjectDAL>("ProjectManagerDAL.FK_ProjectIssue", "Projects");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProjectDAL>("ProjectManagerDAL.FK_ProjectIssue", "ProjectDAL");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ProjectDAL>("ProjectManagerDAL.FK_ProjectIssue", "Projects", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ProjectDAL>("ProjectManagerDAL.FK_ProjectIssue", "ProjectDAL", value);
                 }
             }
         }
@@ -1369,28 +1421,6 @@ namespace ProjectManagerDAL
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("ProjectManagerDAL", "FK_ProjectIssue", "Issues")]
-        public EntityCollection<IssueDAL> Issues
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<IssueDAL>("ProjectManagerDAL.FK_ProjectIssue", "Issues");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<IssueDAL>("ProjectManagerDAL.FK_ProjectIssue", "Issues", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("ProjectManagerDAL", "FK_ProjectCategoryProject", "ProjectCategories")]
         public ProjectCategoryDAL ProjectCategory
         {
@@ -1419,6 +1449,28 @@ namespace ProjectManagerDAL
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ProjectCategoryDAL>("ProjectManagerDAL.FK_ProjectCategoryProject", "ProjectCategories", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ProjectManagerDAL", "FK_ProjectIssue", "Issue")]
+        public EntityCollection<IssueDAL> Issues
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<IssueDAL>("ProjectManagerDAL.FK_ProjectIssue", "Issue");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<IssueDAL>("ProjectManagerDAL.FK_ProjectIssue", "Issue", value);
                 }
             }
         }
