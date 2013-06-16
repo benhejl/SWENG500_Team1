@@ -9,5 +9,6 @@ namespace ProjectManagerLibrary.Models.Graphs
     public interface ProjectData
     {
         List<Series> EvaluateProject(Project project, DateRange range);
+        string DataTitle {get;}
     }
 }

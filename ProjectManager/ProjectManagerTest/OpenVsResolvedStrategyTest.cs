@@ -113,5 +113,16 @@ namespace ProjectManagerTest
             OpenVsResolvedStrategy target = new OpenVsResolvedStrategy();
             target.EvaluateProject(BuildDefaultProject(), null);
         }
+
+        /// <summary>
+        /// Validate the correctness of the expected chart title.
+        ///</summary>
+        [TestMethod()]
+        public void DataTitleTest()
+        {
+            OpenVsResolvedStrategy target = new OpenVsResolvedStrategy(); // TODO: Initialize to an appropriate value
+            string actual = target.DataTitle;
+            Assert.AreEqual(actual, "Open vs. Resolved Defects");
+        }
     }
 }

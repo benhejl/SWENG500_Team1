@@ -31,5 +31,7 @@ namespace ProjectManagerLibrary.Models.Graphs
 
             return data;
         }
+
+        public string DataTitle { get { return "Open vs. Resolved Defects"; } }
     }
 }
