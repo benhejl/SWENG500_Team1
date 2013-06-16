@@ -29,6 +29,7 @@ namespace ProjectManagerWeb
             {
                 ProjectNames.Visible = false;
                 ProjectNameLabel.Visible = false;
+                ProjectChart.Visible = false;
             }
         }
 
