@@ -65,6 +65,7 @@
     </Content>
     <Content Include="Home.aspx" />
     <Content Include="IssueDetails.aspx" />
+    <Content Include="IssueDetailsEdit.aspx" />
     <Content Include="Issues.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Scrum\EnterScrumData.aspx" />
@@ -114,6 +115,13 @@
     </Compile>
     <Compile Include="IssueDetails.aspx.designer.cs">
       <DependentUpon>IssueDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IssueDetailsEdit.aspx.cs">
+      <DependentUpon>IssueDetailsEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IssueDetailsEdit.aspx.designer.cs">
+      <DependentUpon>IssueDetailsEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Issues.aspx.cs">
       <DependentUpon>Issues.aspx</DependentUpon>

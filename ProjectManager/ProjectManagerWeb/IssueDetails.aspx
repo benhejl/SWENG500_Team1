@@ -34,12 +34,25 @@
         <td><asp:Label ID="lblDescription" runat="server"></asp:Label></td>
     </tr>
     <tr>
+        <td>Category</td>
+        <td> <asp:Label ID="lblCategory" runat="server"></asp:Label></td>
+    </tr>
+    <tr>
+        <td>Milestone</td>
+        <td><asp:Label ID="lblMilestone" runat="server"></asp:Label></td>
+    </tr>
+    <tr>
         <td>Assignee</td>
         <td><asp:Label ID="lblAssignee" runat="server"></asp:Label></td>
     </tr>
     <tr>
         <td>Entry Date</td>
         <td><asp:Label ID="lblEntryDate" runat="server"></asp:Label></td>
+    </tr>
+    <tr>
+        <td>
+            <asp:HyperLink ID="lnkEditDetails" Text="Edit Details" runat="server" />
+        </td>
     </tr>
 </table>
 

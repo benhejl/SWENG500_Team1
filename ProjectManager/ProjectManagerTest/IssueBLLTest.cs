@@ -69,6 +69,7 @@ namespace ProjectManagerTest
         ///A test for AddIssue
         ///</summary>
         [TestMethod()]
+        [ExpectedException(typeof(NullReferenceException))]
         public void AddIssueTest()
         {
             Issue issue = null; // TODO: Initialize to an appropriate value
@@ -93,5 +94,22 @@ namespace ProjectManagerTest
             //Assert.Inconclusive("Verify the correctness of this test method.");
             Assert.IsNotNull(actual);
         }
+
+        /// <summary>
+        ///A test for EditIssue
+        ///</summary>
+        [TestMethod()]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void EditIssueTest()
+        {
+            Issue issue = null; // TODO: Initialize to an appropriate value
+            bool expected = false; // TODO: Initialize to an appropriate value
+            bool actual;
+            actual = IssueBLL.EditIssue(issue);
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+
+
     }
 }

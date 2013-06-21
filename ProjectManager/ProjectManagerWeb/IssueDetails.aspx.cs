@@ -43,9 +43,13 @@ namespace ProjectManagerWeb
                     lblIssuePriority.Text = issue.CurrentPriority.ToString();
                     lblIssueStatus.Text = issue.CurrentStatus.ToString();
                     lblDescription.Text = issue.Description;
+                    lblCategory.Text = issue.IssueCategoryName;
+                    lblMilestone.Text = issue.Milestone.ToString();
                     lblAssignee.Text = issue.Assignee.FirstName + " " + issue.Assignee.LastName;
                     lblEntryDate.Text = issue.EntryDate.ToShortDateString();
 
+                    // add Edit Issue Details link.
+                    lnkEditDetails.NavigateUrl = "~/IssueDetailsEdit.aspx?IssueID=" + issueID.ToString();
                 }
 
             }

@@ -169,7 +169,7 @@ namespace ProjectManagerDAL
         /// <summary>
         /// AddIssue - Add New Issue
         /// </summary>
-        /// <param name="issue"></param>
+        /// <param name="issue">Issue</param>
         /// <returns>bool</returns>
         public static bool AddIssue(Issue issue)
         {
@@ -221,9 +221,8 @@ namespace ProjectManagerDAL
                 return returnValue;
 
             }
-            catch (TransactionAbortedException ex)
+            catch (TransactionAbortedException)
             {
-                //("TransactionAbortedException Message: {0}", ex.Message);
                 throw;
             }
             catch (Exception)
@@ -233,5 +232,80 @@ namespace ProjectManagerDAL
             }
         }
 
+
+        /// <summary>
+        /// EditIssue
+        /// </summary>
+        /// <param name="issue">Issue</param>
+        /// <returns>bool</returns>
+        public static bool EditIssue(Issue issue)
+        {
+            try
+            {
+                var returnValue = false;
+
+                // wrap in a TransactionScope since we are updating two tables - Issues and IssueAssignments
+                using (TransactionScope transaction = new TransactionScope())
+                {
+
+                    using (var db = new ProjectManagerEntities())
+                    {
+                        db.Connection.Open();
+
+                        var query = (from i in db.IssueDALs
+                                    where i.IssueID == issue.IssueID
+                                    select i).First();
+
+                        if (query != null)
+                        {
+                            query.IssueID = issue.IssueID;
+                            query.Subject = issue.Subject;
+                            query.ProjectID = issue.ProjectID;
+                            query.Priority = issue.CurrentPriority.ToString();
+                            query.Status = issue.CurrentStatus.ToString();
+                            query.Description = issue.Description;
+                            query.IssueCategoryName = issue.IssueCategoryName;
+                            query.EntryDate = issue.EntryDate;
+                        }
+
+
+                        // update issue.
+                        db.SaveChanges();
+                        
+                        // get Issue Assignment for this issue.
+                        var query2 = (from ia in db.IssueAssignmentDALs
+                                     where ia.IssueID == issue.IssueID
+                                     select ia).First();
+
+                        if (query2 != null)
+                        {
+                            query2.IssueID = issue.IssueID;
+                            query2.UserID = issue.Assignee.UserId;
+                        }
+
+                        // update issue assignment.
+                        db.SaveChanges();
+
+                    }
+
+                    transaction.Complete();
+
+                    // successfully inserted.
+                    returnValue = true;
+                }
+
+                return returnValue;
+
+            }
+            catch (TransactionAbortedException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

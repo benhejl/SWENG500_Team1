@@ -30,8 +30,8 @@ namespace ProjectManagerBLL
         /// <summary>
         /// AddIssue
         /// </summary>
-        /// <param name="issue"></param>
-        /// <returns></returns>
+        /// <param name="issue">Issue</param>
+        /// <returns>bool</returns>
         public static bool AddIssue(Issue issue)
         {
             try
@@ -43,6 +43,24 @@ namespace ProjectManagerBLL
                 throw;
             }
             
+        }
+
+        /// <summary>
+        /// EditIssue
+        /// </summary>
+        /// <param name="issue">Issue</param>
+        /// <returns>bool</returns>
+        public static bool EditIssue(Issue issue)
+        {
+            try
+            {
+                return IssueDAL.EditIssue(issue);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
         }
     }
 }
