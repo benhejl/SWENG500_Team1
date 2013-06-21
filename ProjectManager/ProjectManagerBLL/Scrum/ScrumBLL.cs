@@ -12,5 +12,14 @@ namespace ProjectManagerBLL.Scrum
         {
             return new ScrumDAL().GetScrumQuestions();
         }
+
+        public bool InputNewScrum(ScrumModel scrum)
+        {
+            return new ScrumDAL().InputNewScrum(scrum);
+        }
+        public ScrumModel ViewScrumData()
+        {
+            return new ScrumDAL().ViewScrumData();
+        }
     }
 }
