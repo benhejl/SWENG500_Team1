@@ -105,9 +105,7 @@ namespace ProjectManagerTest
         public void TestViewScrumDetails()
         {
             ScrumController scrumController = new ScrumController();
-            ScrumModel scrum = new ScrumModel();
-            scrum.UserId = 1;
-            Assert.IsTrue(scrumController.ViewScrumDetails(scrum));
+            Assert.IsTrue(scrumController.ViewScrumData().AnswerList.Count > 1);
         }
         [TestMethod]
         public void TestGetScrumQuestions()
