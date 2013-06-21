@@ -64,10 +64,28 @@ namespace ProjectManagerTest
         [TestMethod]
         public void TestInputNewScrum()
         {
-            ScrumController scrumController = new ScrumController();
-            ScrumModel scrum = new ScrumModel();
-            scrum.UserId = 1;
-            Assert.IsTrue(scrumController.InputNewScrum(scrum));
+            ScrumModel scrumModel = new ScrumModel();
+            scrumModel.AnswerList = new System.Collections.ArrayList();
+
+            Answers answers = new Answers();
+            answers.Answer = "Worked on Unit Test Cases";
+            answers.QuestionId = 1;
+            answers.UserId = 1;
+            scrumModel.AnswerList.Add(answers);
+
+            answers = new Answers();
+            answers.Answer = "Worked on Scrum Room";
+            answers.QuestionId = 2;
+            answers.UserId = 1;
+            scrumModel.AnswerList.Add(answers);
+
+            answers = new Answers();
+            answers.Answer = "None";
+            answers.QuestionId = 3;
+            answers.UserId = 1;
+            scrumModel.AnswerList.Add(answers);
+
+            Assert.IsTrue(new ScrumController().InputNewScrum(scrumModel));
         }
         [TestMethod]
         public void TestEditScrum()
@@ -81,24 +99,20 @@ namespace ProjectManagerTest
         public void TestViewScrum()
         {
             ScrumController scrumController = new ScrumController();
-            ScrumModel scrum = new ScrumModel();
-            scrum.UserId = 1;
-            Assert.IsTrue(scrumController.ViewScrum(scrum));
+            Assert.IsTrue(scrumController.ViewScrumData().ScrumList.Count > 0);
         }
         [TestMethod]
         public void TestViewScrumDetails()
         {
             ScrumController scrumController = new ScrumController();
-            ScrumModel scrum = new ScrumModel();
-            scrum.UserId = 1;
-            Assert.IsTrue(scrumController.ViewScrumDetails(scrum));
+            Assert.IsTrue(scrumController.ViewScrumData().AnswerList.Count > 1);
         }
         [TestMethod]
         public void TestGetScrumQuestions()
         {
             ScrumController scrumController = new ScrumController();
             ScrumModel scrum = scrumController.GetScrumQuestions();
-            Assert.IsTrue(scrum.QuestionsTable.Count > 0);
+            Assert.IsTrue(scrum.QuestionList.Count == 3);
         }
     }
 }

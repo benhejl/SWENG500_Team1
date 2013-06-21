@@ -10,15 +10,15 @@ namespace ProjectManagerWeb.Controllers
     {
         public bool InputNewScrum(ScrumModel scrum)
         {
-            return true;
+            return new ScrumBLL().InputNewScrum(scrum);
         }
         public bool EditScrum(ScrumModel scrum)
         {
             return true;
         }
-        public bool ViewScrum(ScrumModel scrum)
+        public ScrumModel ViewScrumData()
         {
-            return true;
+            return new ScrumBLL().ViewScrumData();
         }
         public bool ViewScrumDetails(ScrumModel scrum)
         {

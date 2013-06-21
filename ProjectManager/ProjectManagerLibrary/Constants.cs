@@ -9,7 +9,7 @@ namespace ProjectManagerLibrary
     {
         public class DATABASE
         {
-            public const string CONNECTION_STRING = @"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\Jen\Personal\500\AgilePMT\SWENG500_Team1\ProjectManager\ProjectManagerWeb\App_Data\ProjectManager.mdf;Integrated Security=True;User Instance=True";
+            public const string CONNECTION_STRING = @"Data Source=JSHREFFLEWIN7FL\;Initial Catalog=C:\PROJECTMANAGER\PROJECTMANAGERWEB\APP_DATA\PROJECTMANAGER.MDF;Integrated Security=True";
         }
     }
 }
