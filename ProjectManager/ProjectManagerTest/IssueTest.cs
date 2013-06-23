@@ -116,5 +116,69 @@ namespace ProjectManagerTest
 
         }
 
+
+        /// <summary>
+        ///A test for UpdateStatus
+        ///</summary>
+        [TestMethod()]
+        public void UpdateStatusTest()
+        {
+            Issue target = new Issue();
+            target.UpdateStatus(Issue.IssueStatus.Unresolved, DateTime.Now);
+            Assert.AreEqual(target.CurrentStatus, Issue.IssueStatus.Unresolved);
+
+            target.UpdateStatus(Issue.IssueStatus.Resolved, DateTime.Now.AddMinutes(1));
+            Assert.AreEqual(target.CurrentStatus, Issue.IssueStatus.Resolved);
+
+            target.UpdateStatus(Issue.IssueStatus.Unresolved, DateTime.Now.Subtract(TimeSpan.FromDays(1)));
+            Assert.AreEqual(target.CurrentStatus, Issue.IssueStatus.Resolved);
+
+            target.UpdateStatus(Issue.IssueStatus.Unresolved, DateTime.Now.Add(TimeSpan.FromDays(1)));
+            Assert.AreEqual(target.CurrentStatus, Issue.IssueStatus.Unresolved);
+        }
+
+        /// <summary>
+        /// Test that modifying an issue status to the date before it was created throws an exception.
+        /// </summary>
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentException))]
+        public void UpdateStatusBeforeCreatedTest()
+        {
+            Issue issue = new Issue();
+            issue.EntryDate = DateTime.Now;
+            issue.UpdateStatus(Issue.IssueStatus.Unresolved, DateTime.Now.Subtract(TimeSpan.FromDays(1)));
+        }
+
+        /// <summary>
+        ///A test for StatusOn
+        ///</summary>
+        [TestMethod()]
+        public void StatusOnTest()
+        {
+            Issue issue = new Issue();
+            issue.EntryDate = DateTime.Now;
+            DateTime statusTime = DateTime.Now;
+            issue.UpdateStatus(Issue.IssueStatus.Unresolved, statusTime);
+
+            Issue.IssueStatus status = issue.StatusOn(statusTime.AddDays(1));
+            Assert.AreEqual(status, Issue.IssueStatus.Unresolved);
+
+            issue.UpdateStatus(Issue.IssueStatus.Resolved, statusTime.AddDays(2));
+            status = issue.StatusOn(statusTime.AddDays(3));
+            Assert.AreEqual(status, Issue.IssueStatus.Resolved);
+
+            issue = new Issue();
+            issue.EntryDate = DateTime.Now;
+            DateTime testBoundary = DateTime.Now.AddDays(10);
+            issue.UpdateStatus(Issue.IssueStatus.Resolved, DateTime.Now);
+            issue.UpdateStatus(Issue.IssueStatus.Unresolved, testBoundary);
+            Assert.AreEqual(issue.StatusOn(DateTime.Now), Issue.IssueStatus.Resolved);
+            Assert.AreEqual(issue.StatusOn(DateTime.Now.AddDays(5)), Issue.IssueStatus.Resolved);
+            Assert.AreEqual(issue.StatusOn(testBoundary.Subtract(TimeSpan.FromMilliseconds(100))), Issue.IssueStatus.Resolved);
+            Assert.AreEqual(issue.StatusOn(testBoundary), Issue.IssueStatus.Unresolved);
+            Assert.AreEqual(issue.StatusOn(testBoundary.AddMilliseconds(100)), Issue.IssueStatus.Unresolved);
+            Assert.AreEqual(issue.StatusOn(testBoundary.AddDays(1)), Issue.IssueStatus.Unresolved);
+        }
     }
 }
+

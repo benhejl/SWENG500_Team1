@@ -36,6 +36,8 @@ namespace ProjectManagerWeb
                 ProjectChart.Visible = false;
             }
 
+            ProjectChart.Visible = false;
+
             chartArea = new ChartArea();
             ProjectChart.ChartAreas.Clear();
             ProjectChart.ChartAreas.Add(chartArea);
@@ -76,7 +78,7 @@ namespace ProjectManagerWeb
 
                         ProjectData data = new OpenVsResolvedStrategy();
                         title.Text = data.DataTitle;
-                        DisplayChartData(data.EvaluateProject(project, new DateRange(DateTime.Now, DateTime.Now)));
+                        //DisplayChartData(data.EvaluateProject(project, new DateRange(DateTime.Now, DateTime.Now)));
                         return;
                     }
                 }

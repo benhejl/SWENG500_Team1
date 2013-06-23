@@ -69,6 +69,7 @@
     <Compile Include="IssueControllerTest.cs" />
     <Compile Include="DateRangeTest.cs" />
     <Compile Include="IssueTest.cs" />
+    <Compile Include="IssueTransitionTest.cs" />
     <Compile Include="OpenVsResolvedStrategyTest.cs" />
     <Compile Include="ProjectTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
