@@ -59,7 +59,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalendarDAL\CurrentCalendar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CurrentCalendar.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Issue\IssueDAL.cs" />
+    <Compile Include="ProgramManagerDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProgramManagerDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ProjectManagerEntityModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -67,6 +77,11 @@
     </Compile>
     <Compile Include="Project\ProjectDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Scrum\ScrumDAL.cs" />
     <Compile Include="User\UserDAL.cs" />
   </ItemGroup>
@@ -116,6 +131,32 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ProjectManagerEntityModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="CalendarDAL\CurrentCalendar.xsc">
+      <DependentUpon>CurrentCalendar.xsd</DependentUpon>
+    </None>
+    <None Include="CalendarDAL\CurrentCalendar.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CurrentCalendar.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="CalendarDAL\CurrentCalendar.xss">
+      <DependentUpon>CurrentCalendar.xsd</DependentUpon>
+    </None>
+    <None Include="ProgramManagerDataSet.xsc">
+      <DependentUpon>ProgramManagerDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ProgramManagerDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProgramManagerDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ProgramManagerDataSet.xss">
+      <DependentUpon>ProgramManagerDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -63,6 +63,7 @@
     <Content Include="App_Data\ProjectManager_log.ldf">
       <DependentUpon>ProjectManager.mdf</DependentUpon>
     </Content>
+    <Content Include="Calendar.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="IssueDetails.aspx" />
     <Content Include="IssueDetailsEdit.aspx" />
@@ -95,6 +96,13 @@
     </Compile>
     <Compile Include="AddIssue.aspx.designer.cs">
       <DependentUpon>AddIssue.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Calendar.aspx.cs">
+      <DependentUpon>Calendar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Calendar.aspx.designer.cs">
+      <DependentUpon>Calendar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\UserController.cs" />

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ProjectManagerBLL.CalendarBLL;
 
 namespace ProjectManagerWeb
 {
@@ -18,6 +19,9 @@ namespace ProjectManagerWeb
         protected void CreateNewCalendarClick(object sender, EventArgs e)
         {
             System.Diagnostics.Trace.WriteLine("Pressed create new calendar button");
+
+            CalendarBLL temp = new CalendarBLL();
+            temp.createCalendar(CalendarName.Text);
 
             InitPanel.Visible = false;
             CreatePanel.Visible = true;
