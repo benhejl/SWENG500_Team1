@@ -75,22 +75,22 @@ namespace ProjectManagerTest
         }
 
         [TestMethod()]
-        public void DeleteIssueTest()
+        public void ViewIssueAttachmentsTest()
         {
             IssueController target = new IssueController();
             bool expected = true;
             bool actual;
-            actual = target.DeleteIssue();
+            actual = target.ViewIssueAttachments();
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod()]
-        public void AddAssigneeToIssueTest()
+        public void AddAttachmentToIssueTest()
         {
             IssueController target = new IssueController();
             bool expected = true;
             bool actual;
-            actual = target.AddAssigneeToIssue();
+            actual = target.AddAttachmentToIssue();
             Assert.AreEqual(expected, actual);
         }
 
