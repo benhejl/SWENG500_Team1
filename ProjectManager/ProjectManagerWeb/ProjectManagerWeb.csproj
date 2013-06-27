@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddIssue.aspx" />
+    <Content Include="AddIssueAttachment.aspx" />
     <Content Include="App_Data\ProjectManager.mdf" />
     <Content Include="App_Data\ProjectManager_log.ldf">
       <DependentUpon>ProjectManager.mdf</DependentUpon>
@@ -96,6 +97,13 @@
     </Compile>
     <Compile Include="AddIssue.aspx.designer.cs">
       <DependentUpon>AddIssue.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddIssueAttachment.aspx.cs">
+      <DependentUpon>AddIssueAttachment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddIssueAttachment.aspx.designer.cs">
+      <DependentUpon>AddIssueAttachment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Calendar.aspx.cs">
       <DependentUpon>Calendar.aspx</DependentUpon>
