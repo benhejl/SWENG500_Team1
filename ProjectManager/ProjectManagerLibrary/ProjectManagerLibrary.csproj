@@ -48,6 +48,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Models\DateRange.cs" />
     <Compile Include="Models\IssueAttachment.cs" />
+    <Compile Include="Models\ForumModel.cs" />
     <Compile Include="Models\Graphs\ProjectData.cs" />
     <Compile Include="Models\Issue.cs" />
     <Compile Include="Models\Graphs\OpenVsResolvedStrategy.cs" />

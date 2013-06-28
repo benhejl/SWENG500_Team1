@@ -64,6 +64,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CurrentCalendar.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Forum\ForumDAL.cs" />
     <Compile Include="Issue\IssueDAL.cs" />
     <Compile Include="ProgramManagerDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -158,6 +159,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

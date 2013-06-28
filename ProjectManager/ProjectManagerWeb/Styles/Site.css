@@ -121,6 +121,9 @@ first child of the left and right table columns */
     padding: 0px 12px;
     margin: 12px 8px 8px 8px;
     min-height: 420px;
+    text-align:left;
+    vertical-align: top;
+    
 }
 
 .leftCol
@@ -336,6 +339,7 @@ div.accountInfo
     padding-right: 10px;
 }
 
+<<<<<<< HEAD
 /* Styles for tables
 -----------------------------------------------------------*/
 table {
@@ -410,3 +414,5 @@ td,th {
 #tabs div p {
 	line-height: 150%;
 	}
+=======
+>>>>>>> Added Forum Room
