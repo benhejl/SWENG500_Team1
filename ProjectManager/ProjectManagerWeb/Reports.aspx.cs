@@ -76,7 +76,8 @@ namespace ProjectManagerWeb
         {
             ProjectData data = reportTypes[e.Item.Text];
             ContentPanel.Controls.Clear();
-            ContentPanel.Controls.Add(data.Display(ProjectManagerBLL.ProjectBLL.GetProjectList()[0], null));
+            ContentPanel.Controls.Add(data.Display(selectedProject, new DateRange(DateTime.Now, DateTime.Now)));
+            DateRange.Visible = data.RequiresDateRange;
         }
     }
 }

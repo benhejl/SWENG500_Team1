@@ -67,12 +67,12 @@ namespace ProjectManagerWeb {
         protected global::System.Web.UI.WebControls.Panel ContentPanel;
         
         /// <summary>
-        /// Table2 control.
+        /// DateRange control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Table2;
+        protected global::System.Web.UI.WebControls.Table DateRange;
     }
 }

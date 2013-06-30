@@ -20,7 +20,7 @@
     <asp:Panel ID="ContentPanel" runat="server" Height="300" Width="600">
     </asp:Panel>
     <p>
-        <asp:Table ID="Table2" runat="server" Width="600px">
+        <asp:Table ID="DateRange" runat="server" Width="600px">
             <asp:TableRow runat="server">
                 <asp:TableCell runat="server">Start Date</asp:TableCell>
                 <asp:TableCell runat="server">End Date</asp:TableCell>
