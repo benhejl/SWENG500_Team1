@@ -109,9 +109,10 @@ namespace ProjectManagerTest
         public void CurrentDateRangeTest()
         {
             ProjectSummary target = new ProjectSummary(); // TODO: Initialize to an appropriate value
-            DateRange actual;
-            actual = target.CurrentDateRange;
+            DateRange actual = target.CurrentDateRange;
             Assert.IsNotNull(target.CurrentDateRange);
+            Assert.IsTrue(actual.StartTime.AddSeconds(2).CompareTo(DateTime.Now) > 0);
+            Assert.IsTrue(actual.FinishTime.AddSeconds(2).CompareTo(DateTime.Now) > 0);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace ProjectManagerLibrary.Models.Graphs
 
         public string DataTitle { get { return "Summary"; } }
         public bool RequiresDateRange { get { return false; } }
-        public DateRange CurrentDateRange { get { return null; } }
+        public DateRange CurrentDateRange { get { return new DateRange(DateTime.Now, DateTime.Now); } }
 
         private TableRow CreateRow(string description, string value, bool isHeader = false)
         {
