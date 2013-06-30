@@ -166,6 +166,96 @@ namespace ProjectManagerDAL
             return issues;
         }
 
+
+        /// <summary>
+        /// GetIssueAttachmentsList
+        /// </summary>
+        /// <param name="issueID"></param>
+        /// <returns></returns>
+        public static List<IssueAttachment> GetIssueAttachmentsList(int issueID)
+        {
+            List<IssueAttachment> issueAttachments = new List<IssueAttachment>();
+
+            try
+            {
+                using (var db = new ProjectManagerEntities())
+                {
+                    // get the list of file attachments for a specific Issue.
+                    var query = from i in db.IssueAttachmentDALs
+                                where i.IssueID == issueID
+                                select i;
+
+                    foreach (var item in query)
+                    {
+                        // build the issue  attachment object.
+                        var fileAttachment = new IssueAttachment()
+                        {
+                            IssueAttachmentID = item.IssueAttachmentID,
+                            FileName = item.Filename,
+                            EntryDate = item.EntryDate,
+                            Description = item.Description,
+                            UserID = item.UserID,
+                            IssueID = item.IssueID,
+                            MimeType = item.MimeType
+                        };
+
+                        issueAttachments.Add(fileAttachment);
+                    }
+
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return issueAttachments;
+
+        }
+
+
+        /// <summary>
+        /// GetIssueAttachment
+        /// </summary>
+        /// <param name="issueAttachmentID">int</param>
+        /// <returns></returns>
+        public static IssueAttachment GetIssueAttachment(int issueAttachmentID)
+        {
+            var issueAttachments = new IssueAttachment();
+
+            try
+            {
+                using (var db = new ProjectManagerEntities())
+                {
+                    // get the file attachment.
+                    var query = (from i in db.IssueAttachmentDALs
+                                 where i.IssueAttachmentID == issueAttachmentID
+                                select i).First();
+
+                    if (query != null)
+                    {
+                        query.IssueAttachmentID = issueAttachments.IssueID;
+                        query.Filename = issueAttachments.FileName;
+                        query.EntryDate = issueAttachments.EntryDate;
+                        query.Description = issueAttachments.Description;
+                        query.IssueID = issueAttachments.IssueID;
+                        query.UserID = issueAttachments.UserID;
+                        query.MimeType = issueAttachments.MimeType;
+                        query.FileData = issueAttachments.FileData;
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return issueAttachments;
+
+        }
+
         /// <summary>
         /// AddIssue - Add New Issue
         /// </summary>

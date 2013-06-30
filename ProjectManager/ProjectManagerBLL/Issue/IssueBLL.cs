@@ -62,5 +62,45 @@ namespace ProjectManagerBLL
             }
 
         }
+
+        /// <summary>
+        /// GetIssueAttachmentsList
+        /// </summary>
+        /// <param name="issueID"></param>
+        /// <returns></returns>
+        public static List<IssueAttachment> GetIssueAttachmentsList(int issueID)
+        {
+            try
+            {
+                return IssueDAL.GetIssueAttachmentsList(issueID);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+
+        }
+
+
+        /// <summary>
+        /// GetIssueAttachment
+        /// </summary>
+        /// <param name="issueAttachmentID"></param>
+        /// <returns></returns>
+        public static IssueAttachment GetIssueAttachment(int issueAttachmentID)
+        {
+            try
+            {
+                return IssueDAL.GetIssueAttachment(issueAttachmentID);
+
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+        }
+
     }
 }

@@ -7,19 +7,19 @@ namespace ProjectManagerWeb.Controllers
 {
     public class TeamRoomController
     {
-        public bool CreateTeamRoom(TeamRoom teamRoom)
+        public bool CreateTeamRoom(ProjectManagerLibrary.Models.TeamRoom teamRoom)
         {
             return true;
         }
-        public bool EnterTeamRoom(TeamRoom teamRoom)
+        public bool EnterTeamRoom(ProjectManagerLibrary.Models.TeamRoom teamRoom)
         {
             return true;
         }
-        public bool LeaveTeamRoom(TeamRoom teamRoom)
+        public bool LeaveTeamRoom(ProjectManagerLibrary.Models.TeamRoom teamRoom)
         {
             return true;
         }
-        public bool ViewTeamRoomConversations(TeamRoom teamRoom)
+        public bool ViewTeamRoomConversations(ProjectManagerLibrary.Models.TeamRoom teamRoom)
         {
             return true;
         }

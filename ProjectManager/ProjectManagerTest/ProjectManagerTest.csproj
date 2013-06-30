@@ -70,6 +70,7 @@
     <Compile Include="CalendarTest.cs" />
     <Compile Include="EditScrumDataTest.cs" />
     <Compile Include="EnterScrumDataTest.cs" />
+    <Compile Include="ForumTest.cs" />
     <Compile Include="IssueBLLTest.cs" />
     <Compile Include="IssueControllerTest.cs" />
     <Compile Include="DateRangeTest.cs" />
