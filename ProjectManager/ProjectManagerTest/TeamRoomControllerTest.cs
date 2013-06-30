@@ -1,18 +1,19 @@
-using ProjectManagerWeb.Controllers;
+﻿using ProjectManagerWeb.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting.Web;
+using ProjectManagerLibrary.Models;
 
 namespace ProjectManagerTest
 {
     
     
     /// <summary>
-    ///This is a test class for IssueControllerTest and is intended
-    ///to contain all IssueControllerTest Unit Tests
+    ///This is a test class for TeamRoomControllerTest and is intended
+    ///to contain all TeamRoomControllerTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class IssueControllerTest
+    public class TeamRoomControllerTest
     {
 
 
@@ -64,68 +65,9 @@ namespace ProjectManagerTest
         //
         #endregion
 
-        [TestMethod()]
-        public void AddNewIssueTest()
-        {
-            IssueController target = new IssueController();
-            bool expected = true;
-            bool actual;
-            actual = target.AddNewIssue();
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
-        public void DeleteIssueTest()
-        {
-            IssueController target = new IssueController();
-            bool expected = true;
-            bool actual;
-            actual = target.DeleteIssue();
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
-        public void AddAssigneeToIssueTest()
-        {
-            IssueController target = new IssueController();
-            bool expected = true;
-            bool actual;
-            actual = target.AddAssigneeToIssue();
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
-        public void DeleteAssigneeFromIssueTest()
-        {
-            IssueController target = new IssueController();
-            bool expected = true;
-            bool actual;
-            actual = target.DeleteAssigneeFromIssue();
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
-        public void EditIssueDetailsTest()
-        {
-            IssueController target = new IssueController();
-            bool expected = true;
-            bool actual;
-            actual = target.EditIssueDetails();
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
-        public void ViewIssueListTest()
-        {
-            IssueController target = new IssueController();
-            bool expected = true;
-            bool actual;
-            actual = target.ViewIssueList();
-            Assert.AreEqual(expected, actual);
-        }
 
         /// <summary>
-        ///A test for IssueController Constructor
+        ///A test for TeamRoomController Constructor
         ///</summary>
         // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
         // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
@@ -134,14 +76,14 @@ namespace ProjectManagerTest
         [HostType("ASP.NET")]
         [AspNetDevelopmentServerHost("C:\\Users\\Lauren\\Documents\\GitHub\\SWENG500_Team1\\ProjectManager\\ProjectManagerWeb", "/")]
         [UrlToTest("http://localhost:19961/")]
-        public void IssueControllerConstructorTest()
+        public void TeamRoomControllerConstructorTest()
         {
-            IssueController target = new IssueController();
+            TeamRoomController target = new TeamRoomController();
             Assert.Inconclusive("TODO: Implement code to verify target");
         }
 
         /// <summary>
-        ///A test for AddAssigneeToIssue
+        ///A test for CreateTeamRoom
         ///</summary>
         // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
         // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
@@ -150,18 +92,19 @@ namespace ProjectManagerTest
         [HostType("ASP.NET")]
         [AspNetDevelopmentServerHost("C:\\Users\\Lauren\\Documents\\GitHub\\SWENG500_Team1\\ProjectManager\\ProjectManagerWeb", "/")]
         [UrlToTest("http://localhost:19961/")]
-        public void AddAssigneeToIssueTest1()
+        public void CreateTeamRoomTest()
         {
-            IssueController target = new IssueController(); // TODO: Initialize to an appropriate value
+            TeamRoomController target = new TeamRoomController(); // TODO: Initialize to an appropriate value
+            TeamRoom teamRoom = null; // TODO: Initialize to an appropriate value
             bool expected = false; // TODO: Initialize to an appropriate value
             bool actual;
-            actual = target.AddAssigneeToIssue();
+            actual = target.CreateTeamRoom(teamRoom);
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
-        ///A test for AddNewIssue
+        ///A test for EnterTeamRoom
         ///</summary>
         // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
         // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
@@ -170,18 +113,19 @@ namespace ProjectManagerTest
         [HostType("ASP.NET")]
         [AspNetDevelopmentServerHost("C:\\Users\\Lauren\\Documents\\GitHub\\SWENG500_Team1\\ProjectManager\\ProjectManagerWeb", "/")]
         [UrlToTest("http://localhost:19961/")]
-        public void AddNewIssueTest1()
+        public void EnterTeamRoomTest()
         {
-            IssueController target = new IssueController(); // TODO: Initialize to an appropriate value
+            TeamRoomController target = new TeamRoomController(); // TODO: Initialize to an appropriate value
+            TeamRoom teamRoom = null; // TODO: Initialize to an appropriate value
             bool expected = false; // TODO: Initialize to an appropriate value
             bool actual;
-            actual = target.AddNewIssue();
+            actual = target.EnterTeamRoom(teamRoom);
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
-        ///A test for DeleteAssigneeFromIssue
+        ///A test for LeaveTeamRoom
         ///</summary>
         // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
         // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
@@ -190,18 +134,19 @@ namespace ProjectManagerTest
         [HostType("ASP.NET")]
         [AspNetDevelopmentServerHost("C:\\Users\\Lauren\\Documents\\GitHub\\SWENG500_Team1\\ProjectManager\\ProjectManagerWeb", "/")]
         [UrlToTest("http://localhost:19961/")]
-        public void DeleteAssigneeFromIssueTest1()
+        public void LeaveTeamRoomTest()
         {
-            IssueController target = new IssueController(); // TODO: Initialize to an appropriate value
+            TeamRoomController target = new TeamRoomController(); // TODO: Initialize to an appropriate value
+            TeamRoom teamRoom = null; // TODO: Initialize to an appropriate value
             bool expected = false; // TODO: Initialize to an appropriate value
             bool actual;
-            actual = target.DeleteAssigneeFromIssue();
+            actual = target.LeaveTeamRoom(teamRoom);
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
-        ///A test for DeleteIssue
+        ///A test for ViewTeamRoomConversations
         ///</summary>
         // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
         // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
@@ -210,52 +155,13 @@ namespace ProjectManagerTest
         [HostType("ASP.NET")]
         [AspNetDevelopmentServerHost("C:\\Users\\Lauren\\Documents\\GitHub\\SWENG500_Team1\\ProjectManager\\ProjectManagerWeb", "/")]
         [UrlToTest("http://localhost:19961/")]
-        public void DeleteIssueTest1()
+        public void ViewTeamRoomConversationsTest()
         {
-            IssueController target = new IssueController(); // TODO: Initialize to an appropriate value
+            TeamRoomController target = new TeamRoomController(); // TODO: Initialize to an appropriate value
+            TeamRoom teamRoom = null; // TODO: Initialize to an appropriate value
             bool expected = false; // TODO: Initialize to an appropriate value
             bool actual;
-            actual = target.DeleteIssue();
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for EditIssueDetails
-        ///</summary>
-        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
-        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
-        // whether you are testing a page, web service, or a WCF service.
-        [TestMethod()]
-        [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\Users\\Lauren\\Documents\\GitHub\\SWENG500_Team1\\ProjectManager\\ProjectManagerWeb", "/")]
-        [UrlToTest("http://localhost:19961/")]
-        public void EditIssueDetailsTest1()
-        {
-            IssueController target = new IssueController(); // TODO: Initialize to an appropriate value
-            bool expected = false; // TODO: Initialize to an appropriate value
-            bool actual;
-            actual = target.EditIssueDetails();
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for ViewIssueList
-        ///</summary>
-        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
-        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
-        // whether you are testing a page, web service, or a WCF service.
-        [TestMethod()]
-        [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\Users\\Lauren\\Documents\\GitHub\\SWENG500_Team1\\ProjectManager\\ProjectManagerWeb", "/")]
-        [UrlToTest("http://localhost:19961/")]
-        public void ViewIssueListTest1()
-        {
-            IssueController target = new IssueController(); // TODO: Initialize to an appropriate value
-            bool expected = false; // TODO: Initialize to an appropriate value
-            bool actual;
-            actual = target.ViewIssueList();
+            actual = target.ViewTeamRoomConversations(teamRoom);
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }

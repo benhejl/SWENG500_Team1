@@ -55,6 +55,7 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
@@ -66,6 +67,9 @@
   <ItemGroup>
     <Compile Include="CalendarBLLTest.cs" />
     <Compile Include="CalendarControllerTest.cs" />
+    <Compile Include="CalendarTest.cs" />
+    <Compile Include="EditScrumDataTest.cs" />
+    <Compile Include="EnterScrumDataTest.cs" />
     <Compile Include="IssueBLLTest.cs" />
     <Compile Include="IssueControllerTest.cs" />
     <Compile Include="DateRangeTest.cs" />
@@ -73,10 +77,14 @@
     <Compile Include="OpenVsResolvedStrategyTest.cs" />
     <Compile Include="ProjectTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScrumControllerTest.cs" />
     <Compile Include="ScrumTestUnit.cs" />
     <Compile Include="TaskTest.cs" />
+    <Compile Include="TeamRoomControllerTest.cs" />
     <Compile Include="TeamRoomTestUnit.cs" />
+    <Compile Include="UserControllerTest.cs" />
     <Compile Include="UserTestUnit.cs" />
+    <Compile Include="ViewScrumDataTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProjectManagerBLL\ProjectManagerBLL.csproj">

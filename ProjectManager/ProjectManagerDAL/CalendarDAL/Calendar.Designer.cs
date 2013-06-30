@@ -20,17 +20,17 @@ namespace ProjectManagerDAL.CalendarDAL {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("CurrentCalendar")]
+    [global::System.Xml.Serialization.XmlRootAttribute("Calendar")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class CurrentCalendar : global::System.Data.DataSet {
+    public partial class Calendar : global::System.Data.DataSet {
         
-        private CurrentCalendarDataTable tableCurrentCalendar;
+        private CalendarDataTable tableCalendar;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public CurrentCalendar() {
+        public Calendar() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace ProjectManagerDAL.CalendarDAL {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected CurrentCalendar(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected Calendar(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace ProjectManagerDAL.CalendarDAL {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["CurrentCalendar"] != null)) {
-                    base.Tables.Add(new CurrentCalendarDataTable(ds.Tables["CurrentCalendar"]));
+                if ((ds.Tables["Calendar"] != null)) {
+                    base.Tables.Add(new CalendarDataTable(ds.Tables["Calendar"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace ProjectManagerDAL.CalendarDAL {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public CurrentCalendarDataTable _CurrentCalendar {
+        public CalendarDataTable _Calendar {
             get {
-                return this.tableCurrentCalendar;
+                return this.tableCalendar;
             }
         }
         
@@ -127,7 +127,7 @@ namespace ProjectManagerDAL.CalendarDAL {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            CurrentCalendar cln = ((CurrentCalendar)(base.Clone()));
+            Calendar cln = ((Calendar)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace ProjectManagerDAL.CalendarDAL {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["CurrentCalendar"] != null)) {
-                    base.Tables.Add(new CurrentCalendarDataTable(ds.Tables["CurrentCalendar"]));
+                if ((ds.Tables["Calendar"] != null)) {
+                    base.Tables.Add(new CalendarDataTable(ds.Tables["Calendar"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace ProjectManagerDAL.CalendarDAL {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableCurrentCalendar = ((CurrentCalendarDataTable)(base.Tables["CurrentCalendar"]));
+            this.tableCalendar = ((CalendarDataTable)(base.Tables["Calendar"]));
             if ((initTable == true)) {
-                if ((this.tableCurrentCalendar != null)) {
-                    this.tableCurrentCalendar.InitVars();
+                if ((this.tableCalendar != null)) {
+                    this.tableCalendar.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace ProjectManagerDAL.CalendarDAL {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "CurrentCalendar";
+            this.DataSetName = "Calendar";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/CurrentCalendar.xsd";
+            this.Namespace = "http://tempuri.org/Calendar.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableCurrentCalendar = new CurrentCalendarDataTable();
-            base.Tables.Add(this.tableCurrentCalendar);
+            this.tableCalendar = new CalendarDataTable();
+            base.Tables.Add(this.tableCalendar);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerialize_CurrentCalendar() {
+        private bool ShouldSerialize_Calendar() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace ProjectManagerDAL.CalendarDAL {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            CurrentCalendar ds = new CurrentCalendar();
+            Calendar ds = new Calendar();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,21 +270,21 @@ namespace ProjectManagerDAL.CalendarDAL {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void CurrentCalendarRowChangeEventHandler(object sender, CurrentCalendarRowChangeEvent e);
+        public delegate void CalendarRowChangeEventHandler(object sender, CalendarRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class CurrentCalendarDataTable : global::System.Data.TypedTableBase<CurrentCalendarRow> {
+        public partial class CalendarDataTable : global::System.Data.TypedTableBase<CalendarRow> {
             
             private global::System.Data.DataColumn columnName;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CurrentCalendarDataTable() {
-                this.TableName = "CurrentCalendar";
+            public CalendarDataTable() {
+                this.TableName = "Calendar";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -292,7 +292,7 @@ namespace ProjectManagerDAL.CalendarDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal CurrentCalendarDataTable(global::System.Data.DataTable table) {
+            internal CalendarDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -309,7 +309,7 @@ namespace ProjectManagerDAL.CalendarDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected CurrentCalendarDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected CalendarDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -333,45 +333,45 @@ namespace ProjectManagerDAL.CalendarDAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CurrentCalendarRow this[int index] {
+            public CalendarRow this[int index] {
                 get {
-                    return ((CurrentCalendarRow)(this.Rows[index]));
+                    return ((CalendarRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event CurrentCalendarRowChangeEventHandler CurrentCalendarRowChanging;
+            public event CalendarRowChangeEventHandler CalendarRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event CurrentCalendarRowChangeEventHandler CurrentCalendarRowChanged;
+            public event CalendarRowChangeEventHandler CalendarRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event CurrentCalendarRowChangeEventHandler CurrentCalendarRowDeleting;
+            public event CalendarRowChangeEventHandler CalendarRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event CurrentCalendarRowChangeEventHandler CurrentCalendarRowDeleted;
+            public event CalendarRowChangeEventHandler CalendarRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddCurrentCalendarRow(CurrentCalendarRow row) {
+            public void AddCalendarRow(CalendarRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CurrentCalendarRow AddCurrentCalendarRow(string Name) {
-                CurrentCalendarRow rowCurrentCalendarRow = ((CurrentCalendarRow)(this.NewRow()));
+            public CalendarRow AddCalendarRow(string Name) {
+                CalendarRow rowCalendarRow = ((CalendarRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Name};
-                rowCurrentCalendarRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowCurrentCalendarRow);
-                return rowCurrentCalendarRow;
+                rowCalendarRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowCalendarRow);
+                return rowCalendarRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                CurrentCalendarDataTable cln = ((CurrentCalendarDataTable)(base.Clone()));
+                CalendarDataTable cln = ((CalendarDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -379,7 +379,7 @@ namespace ProjectManagerDAL.CalendarDAL {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new CurrentCalendarDataTable();
+                return new CalendarDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -394,35 +394,35 @@ namespace ProjectManagerDAL.CalendarDAL {
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
                 this.columnName.AllowDBNull = false;
-                this.columnName.MaxLength = 50;
-                this.ExtendedProperties.Add("Generator_TablePropName", "_CurrentCalendar");
-                this.ExtendedProperties.Add("Generator_UserTableName", "CurrentCalendar");
+                this.columnName.MaxLength = 2147483647;
+                this.ExtendedProperties.Add("Generator_TablePropName", "_Calendar");
+                this.ExtendedProperties.Add("Generator_UserTableName", "Calendar");
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CurrentCalendarRow NewCurrentCalendarRow() {
-                return ((CurrentCalendarRow)(this.NewRow()));
+            public CalendarRow NewCalendarRow() {
+                return ((CalendarRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new CurrentCalendarRow(builder);
+                return new CalendarRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(CurrentCalendarRow);
+                return typeof(CalendarRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.CurrentCalendarRowChanged != null)) {
-                    this.CurrentCalendarRowChanged(this, new CurrentCalendarRowChangeEvent(((CurrentCalendarRow)(e.Row)), e.Action));
+                if ((this.CalendarRowChanged != null)) {
+                    this.CalendarRowChanged(this, new CalendarRowChangeEvent(((CalendarRow)(e.Row)), e.Action));
                 }
             }
             
@@ -430,8 +430,8 @@ namespace ProjectManagerDAL.CalendarDAL {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.CurrentCalendarRowChanging != null)) {
-                    this.CurrentCalendarRowChanging(this, new CurrentCalendarRowChangeEvent(((CurrentCalendarRow)(e.Row)), e.Action));
+                if ((this.CalendarRowChanging != null)) {
+                    this.CalendarRowChanging(this, new CalendarRowChangeEvent(((CalendarRow)(e.Row)), e.Action));
                 }
             }
             
@@ -439,8 +439,8 @@ namespace ProjectManagerDAL.CalendarDAL {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.CurrentCalendarRowDeleted != null)) {
-                    this.CurrentCalendarRowDeleted(this, new CurrentCalendarRowChangeEvent(((CurrentCalendarRow)(e.Row)), e.Action));
+                if ((this.CalendarRowDeleted != null)) {
+                    this.CalendarRowDeleted(this, new CalendarRowChangeEvent(((CalendarRow)(e.Row)), e.Action));
                 }
             }
             
@@ -448,14 +448,14 @@ namespace ProjectManagerDAL.CalendarDAL {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.CurrentCalendarRowDeleting != null)) {
-                    this.CurrentCalendarRowDeleting(this, new CurrentCalendarRowChangeEvent(((CurrentCalendarRow)(e.Row)), e.Action));
+                if ((this.CalendarRowDeleting != null)) {
+                    this.CalendarRowDeleting(this, new CalendarRowChangeEvent(((CalendarRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveCurrentCalendarRow(CurrentCalendarRow row) {
+            public void RemoveCalendarRow(CalendarRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -464,7 +464,7 @@ namespace ProjectManagerDAL.CalendarDAL {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CurrentCalendar ds = new CurrentCalendar();
+                Calendar ds = new Calendar();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -482,7 +482,7 @@ namespace ProjectManagerDAL.CalendarDAL {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "CurrentCalendarDataTable";
+                attribute2.FixedValue = "CalendarDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -526,25 +526,25 @@ namespace ProjectManagerDAL.CalendarDAL {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class CurrentCalendarRow : global::System.Data.DataRow {
+        public partial class CalendarRow : global::System.Data.DataRow {
             
-            private CurrentCalendarDataTable tableCurrentCalendar;
+            private CalendarDataTable tableCalendar;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal CurrentCalendarRow(global::System.Data.DataRowBuilder rb) : 
+            internal CalendarRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableCurrentCalendar = ((CurrentCalendarDataTable)(this.Table));
+                this.tableCalendar = ((CalendarDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Name {
                 get {
-                    return ((string)(this[this.tableCurrentCalendar.NameColumn]));
+                    return ((string)(this[this.tableCalendar.NameColumn]));
                 }
                 set {
-                    this[this.tableCurrentCalendar.NameColumn] = value;
+                    this[this.tableCalendar.NameColumn] = value;
                 }
             }
         }
@@ -553,22 +553,22 @@ namespace ProjectManagerDAL.CalendarDAL {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class CurrentCalendarRowChangeEvent : global::System.EventArgs {
+        public class CalendarRowChangeEvent : global::System.EventArgs {
             
-            private CurrentCalendarRow eventRow;
+            private CalendarRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CurrentCalendarRowChangeEvent(CurrentCalendarRow row, global::System.Data.DataRowAction action) {
+            public CalendarRowChangeEvent(CalendarRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CurrentCalendarRow Row {
+            public CalendarRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -584,7 +584,7 @@ namespace ProjectManagerDAL.CalendarDAL {
         }
     }
 }
-namespace ProjectManagerDAL.CalendarDAL.CurrentCalendarTableAdapters {
+namespace ProjectManagerDAL.CalendarDAL.CalendarTableAdapters {
     
     
     /// <summary>
@@ -596,7 +596,7 @@ namespace ProjectManagerDAL.CalendarDAL.CurrentCalendarTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class CurrentCalendarTableAdapter : global::System.ComponentModel.Component {
+    public partial class CalendarTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -610,7 +610,7 @@ namespace ProjectManagerDAL.CalendarDAL.CurrentCalendarTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public CurrentCalendarTableAdapter() {
+        public CalendarTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -707,12 +707,12 @@ namespace ProjectManagerDAL.CalendarDAL.CurrentCalendarTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "CurrentCalendar";
+            tableMapping.DataSetTable = "Calendar";
             tableMapping.ColumnMappings.Add("Name", "Name");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[CurrentCalendar] ([Name]) VALUES (@Name)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Calendar] ([Name]) VALUES (@Name)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -721,30 +721,50 @@ namespace ProjectManagerDAL.CalendarDAL.CurrentCalendarTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::ProjectManagerDAL.Properties.Settings.Default.ProgramManagerConnectionString;
+            this._connection.ConnectionString = global::ProjectManagerDAL.Properties.Settings.Default.ProjectManagerConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Name FROM dbo.CurrentCalendar";
+            this._commandCollection[0].CommandText = "SELECT Name FROM dbo.Calendar";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "INSERT INTO CurrentCalendar\r\n                         (Name)\r\nVALUES        (@Nam" +
-                "e)";
+            this._commandCollection[1].CommandText = "DELETE FROM Calendar WHERE Name=@Name;";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT Name FROM dbo.Calendar WHERE Name=@Name";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "SELECT Name FROM dbo.Calendar WHERE Name=@Name";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = "INSERT INTO Calendar\r\n                         (Name)\r\nVALUES        (@Value)";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Value", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = "UPDATE Calendar\r\nSET Name=@Name\r\nWHERE Name=@PrevName";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PrevName", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(CurrentCalendar.CurrentCalendarDataTable dataTable) {
+        public virtual int Fill(Calendar.CalendarDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -757,9 +777,9 @@ namespace ProjectManagerDAL.CalendarDAL.CurrentCalendarTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual CurrentCalendar.CurrentCalendarDataTable GetCalendarData() {
+        public virtual Calendar.CalendarDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            CurrentCalendar.CurrentCalendarDataTable dataTable = new CurrentCalendar.CurrentCalendarDataTable();
+            Calendar.CalendarDataTable dataTable = new Calendar.CalendarDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -767,15 +787,51 @@ namespace ProjectManagerDAL.CalendarDAL.CurrentCalendarTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CurrentCalendar.CurrentCalendarDataTable dataTable) {
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual Calendar.CalendarDataTable GetCalendarInfo(string Name) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((Name == null)) {
+                throw new global::System.ArgumentNullException("Name");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Name));
+            }
+            Calendar.CalendarDataTable dataTable = new Calendar.CalendarDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int getRow(Calendar.CalendarDataTable dataTable, string Name) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((Name == null)) {
+                throw new global::System.ArgumentNullException("Name");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Name));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(Calendar.CalendarDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CurrentCalendar dataSet) {
-            return this.Adapter.Update(dataSet, "CurrentCalendar");
+        public virtual int Update(Calendar dataSet) {
+            return this.Adapter.Update(dataSet, "Calendar");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -823,14 +879,77 @@ namespace ProjectManagerDAL.CalendarDAL.CurrentCalendarTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int insertNewCalendar(string Name) {
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int DeleteQuery(string Name) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
             else {
                 command.Parameters[0].Value = ((string)(Name));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int InsertQuery(string Value) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
+            if ((Value == null)) {
+                throw new global::System.ArgumentNullException("Value");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(Value));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateQuery(string Name, string PrevName) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
+            if ((Name == null)) {
+                throw new global::System.ArgumentNullException("Name");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(Name));
+            }
+            if ((PrevName == null)) {
+                throw new global::System.ArgumentNullException("PrevName");
+            }
+            else {
+                command.Parameters[1].Value = ((string)(PrevName));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -862,7 +981,7 @@ namespace ProjectManagerDAL.CalendarDAL.CurrentCalendarTableAdapters {
         
         private UpdateOrderOption _updateOrder;
         
-        private CurrentCalendarTableAdapter _currentCalendarTableAdapter;
+        private CalendarTableAdapter _calendarTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -884,12 +1003,12 @@ namespace ProjectManagerDAL.CalendarDAL.CurrentCalendarTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public CurrentCalendarTableAdapter CurrentCalendarTableAdapter {
+        public CalendarTableAdapter CalendarTableAdapter {
             get {
-                return this._currentCalendarTableAdapter;
+                return this._calendarTableAdapter;
             }
             set {
-                this._currentCalendarTableAdapter = value;
+                this._calendarTableAdapter = value;
             }
         }
         
@@ -912,9 +1031,9 @@ namespace ProjectManagerDAL.CalendarDAL.CurrentCalendarTableAdapters {
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._currentCalendarTableAdapter != null) 
-                            && (this._currentCalendarTableAdapter.Connection != null))) {
-                    return this._currentCalendarTableAdapter.Connection;
+                if (((this._calendarTableAdapter != null) 
+                            && (this._calendarTableAdapter.Connection != null))) {
+                    return this._calendarTableAdapter.Connection;
                 }
                 return null;
             }
@@ -929,7 +1048,7 @@ namespace ProjectManagerDAL.CalendarDAL.CurrentCalendarTableAdapters {
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._currentCalendarTableAdapter != null)) {
+                if ((this._calendarTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -941,14 +1060,14 @@ namespace ProjectManagerDAL.CalendarDAL.CurrentCalendarTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateUpdatedRows(CurrentCalendar dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(Calendar dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._currentCalendarTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet._CurrentCalendar.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._calendarTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet._Calendar.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._currentCalendarTableAdapter.Update(updatedRows));
+                    result = (result + this._calendarTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -960,13 +1079,13 @@ namespace ProjectManagerDAL.CalendarDAL.CurrentCalendarTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateInsertedRows(CurrentCalendar dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(Calendar dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._currentCalendarTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet._CurrentCalendar.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._calendarTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet._Calendar.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._currentCalendarTableAdapter.Update(addedRows));
+                    result = (result + this._calendarTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -978,13 +1097,13 @@ namespace ProjectManagerDAL.CalendarDAL.CurrentCalendarTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateDeletedRows(CurrentCalendar dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(Calendar dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._currentCalendarTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet._CurrentCalendar.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._calendarTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet._Calendar.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._currentCalendarTableAdapter.Update(deletedRows));
+                    result = (result + this._calendarTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -1020,15 +1139,15 @@ namespace ProjectManagerDAL.CalendarDAL.CurrentCalendarTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public virtual int UpdateAll(CurrentCalendar dataSet) {
+        public virtual int UpdateAll(Calendar dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._currentCalendarTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._currentCalendarTableAdapter.Connection) == false))) {
+            if (((this._calendarTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._calendarTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -1064,13 +1183,13 @@ namespace ProjectManagerDAL.CalendarDAL.CurrentCalendarTableAdapters {
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._currentCalendarTableAdapter != null)) {
-                    revertConnections.Add(this._currentCalendarTableAdapter, this._currentCalendarTableAdapter.Connection);
-                    this._currentCalendarTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._currentCalendarTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._currentCalendarTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._currentCalendarTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._currentCalendarTableAdapter.Adapter);
+                if ((this._calendarTableAdapter != null)) {
+                    revertConnections.Add(this._calendarTableAdapter, this._calendarTableAdapter.Connection);
+                    this._calendarTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._calendarTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._calendarTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._calendarTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._calendarTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -1131,9 +1250,9 @@ namespace ProjectManagerDAL.CalendarDAL.CurrentCalendarTableAdapters {
                 if (workConnOpened) {
                     workConnection.Close();
                 }
-                if ((this._currentCalendarTableAdapter != null)) {
-                    this._currentCalendarTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._currentCalendarTableAdapter]));
-                    this._currentCalendarTableAdapter.Transaction = null;
+                if ((this._calendarTableAdapter != null)) {
+                    this._calendarTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._calendarTableAdapter]));
+                    this._calendarTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

@@ -59,10 +59,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalendarDAL\CurrentCalendar.Designer.cs">
+    <Compile Include="CalendarDAL\Calendar.cs">
+      <DependentUpon>Calendar.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CalendarDAL\Calendar.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CurrentCalendar.xsd</DependentUpon>
+      <DependentUpon>Calendar.xsd</DependentUpon>
     </Compile>
     <Compile Include="Issue\IssueDAL.cs" />
     <Compile Include="ProgramManagerDataSet.Designer.cs">
@@ -131,16 +135,16 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ProjectManagerEntityModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="CalendarDAL\CurrentCalendar.xsc">
-      <DependentUpon>CurrentCalendar.xsd</DependentUpon>
+    <None Include="CalendarDAL\Calendar.xsc">
+      <DependentUpon>Calendar.xsd</DependentUpon>
     </None>
-    <None Include="CalendarDAL\CurrentCalendar.xsd">
+    <None Include="CalendarDAL\Calendar.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>CurrentCalendar.Designer.cs</LastGenOutput>
+      <LastGenOutput>Calendar.Designer.cs</LastGenOutput>
     </None>
-    <None Include="CalendarDAL\CurrentCalendar.xss">
-      <DependentUpon>CurrentCalendar.xsd</DependentUpon>
+    <None Include="CalendarDAL\Calendar.xss">
+      <DependentUpon>Calendar.xsd</DependentUpon>
     </None>
     <None Include="ProgramManagerDataSet.xsc">
       <DependentUpon>ProgramManagerDataSet.xsd</DependentUpon>

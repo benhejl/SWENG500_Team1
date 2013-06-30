@@ -1,18 +1,19 @@
-using ProjectManagerWeb.Controllers;
+﻿using ProjectManagerWeb.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting.Web;
+using ProjectManagerLibrary.Models;
 
 namespace ProjectManagerTest
 {
     
     
     /// <summary>
-    ///This is a test class for IssueControllerTest and is intended
-    ///to contain all IssueControllerTest Unit Tests
+    ///This is a test class for ScrumControllerTest and is intended
+    ///to contain all ScrumControllerTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class IssueControllerTest
+    public class ScrumControllerTest
     {
 
 
@@ -64,68 +65,9 @@ namespace ProjectManagerTest
         //
         #endregion
 
-        [TestMethod()]
-        public void AddNewIssueTest()
-        {
-            IssueController target = new IssueController();
-            bool expected = true;
-            bool actual;
-            actual = target.AddNewIssue();
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
-        public void DeleteIssueTest()
-        {
-            IssueController target = new IssueController();
-            bool expected = true;
-            bool actual;
-            actual = target.DeleteIssue();
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
-        public void AddAssigneeToIssueTest()
-        {
-            IssueController target = new IssueController();
-            bool expected = true;
-            bool actual;
-            actual = target.AddAssigneeToIssue();
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
-        public void DeleteAssigneeFromIssueTest()
-        {
-            IssueController target = new IssueController();
-            bool expected = true;
-            bool actual;
-            actual = target.DeleteAssigneeFromIssue();
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
-        public void EditIssueDetailsTest()
-        {
-            IssueController target = new IssueController();
-            bool expected = true;
-            bool actual;
-            actual = target.EditIssueDetails();
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
-        public void ViewIssueListTest()
-        {
-            IssueController target = new IssueController();
-            bool expected = true;
-            bool actual;
-            actual = target.ViewIssueList();
-            Assert.AreEqual(expected, actual);
-        }
 
         /// <summary>
-        ///A test for IssueController Constructor
+        ///A test for ScrumController Constructor
         ///</summary>
         // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
         // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
@@ -134,14 +76,14 @@ namespace ProjectManagerTest
         [HostType("ASP.NET")]
         [AspNetDevelopmentServerHost("C:\\Users\\Lauren\\Documents\\GitHub\\SWENG500_Team1\\ProjectManager\\ProjectManagerWeb", "/")]
         [UrlToTest("http://localhost:19961/")]
-        public void IssueControllerConstructorTest()
+        public void ScrumControllerConstructorTest()
         {
-            IssueController target = new IssueController();
+            ScrumController target = new ScrumController();
             Assert.Inconclusive("TODO: Implement code to verify target");
         }
 
         /// <summary>
-        ///A test for AddAssigneeToIssue
+        ///A test for EditScrum
         ///</summary>
         // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
         // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
@@ -150,18 +92,19 @@ namespace ProjectManagerTest
         [HostType("ASP.NET")]
         [AspNetDevelopmentServerHost("C:\\Users\\Lauren\\Documents\\GitHub\\SWENG500_Team1\\ProjectManager\\ProjectManagerWeb", "/")]
         [UrlToTest("http://localhost:19961/")]
-        public void AddAssigneeToIssueTest1()
+        public void EditScrumTest()
         {
-            IssueController target = new IssueController(); // TODO: Initialize to an appropriate value
+            ScrumController target = new ScrumController(); // TODO: Initialize to an appropriate value
+            ScrumModel scrum = null; // TODO: Initialize to an appropriate value
             bool expected = false; // TODO: Initialize to an appropriate value
             bool actual;
-            actual = target.AddAssigneeToIssue();
+            actual = target.EditScrum(scrum);
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
-        ///A test for AddNewIssue
+        ///A test for GetScrumQuestions
         ///</summary>
         // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
         // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
@@ -170,18 +113,18 @@ namespace ProjectManagerTest
         [HostType("ASP.NET")]
         [AspNetDevelopmentServerHost("C:\\Users\\Lauren\\Documents\\GitHub\\SWENG500_Team1\\ProjectManager\\ProjectManagerWeb", "/")]
         [UrlToTest("http://localhost:19961/")]
-        public void AddNewIssueTest1()
+        public void GetScrumQuestionsTest()
         {
-            IssueController target = new IssueController(); // TODO: Initialize to an appropriate value
-            bool expected = false; // TODO: Initialize to an appropriate value
-            bool actual;
-            actual = target.AddNewIssue();
+            ScrumController target = new ScrumController(); // TODO: Initialize to an appropriate value
+            ScrumModel expected = null; // TODO: Initialize to an appropriate value
+            ScrumModel actual;
+            actual = target.GetScrumQuestions();
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
-        ///A test for DeleteAssigneeFromIssue
+        ///A test for InputNewScrum
         ///</summary>
         // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
         // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
@@ -190,18 +133,19 @@ namespace ProjectManagerTest
         [HostType("ASP.NET")]
         [AspNetDevelopmentServerHost("C:\\Users\\Lauren\\Documents\\GitHub\\SWENG500_Team1\\ProjectManager\\ProjectManagerWeb", "/")]
         [UrlToTest("http://localhost:19961/")]
-        public void DeleteAssigneeFromIssueTest1()
+        public void InputNewScrumTest()
         {
-            IssueController target = new IssueController(); // TODO: Initialize to an appropriate value
+            ScrumController target = new ScrumController(); // TODO: Initialize to an appropriate value
+            ScrumModel scrum = null; // TODO: Initialize to an appropriate value
             bool expected = false; // TODO: Initialize to an appropriate value
             bool actual;
-            actual = target.DeleteAssigneeFromIssue();
+            actual = target.InputNewScrum(scrum);
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
-        ///A test for DeleteIssue
+        ///A test for ViewScrumData
         ///</summary>
         // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
         // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
@@ -210,18 +154,18 @@ namespace ProjectManagerTest
         [HostType("ASP.NET")]
         [AspNetDevelopmentServerHost("C:\\Users\\Lauren\\Documents\\GitHub\\SWENG500_Team1\\ProjectManager\\ProjectManagerWeb", "/")]
         [UrlToTest("http://localhost:19961/")]
-        public void DeleteIssueTest1()
+        public void ViewScrumDataTest()
         {
-            IssueController target = new IssueController(); // TODO: Initialize to an appropriate value
-            bool expected = false; // TODO: Initialize to an appropriate value
-            bool actual;
-            actual = target.DeleteIssue();
+            ScrumController target = new ScrumController(); // TODO: Initialize to an appropriate value
+            ScrumModel expected = null; // TODO: Initialize to an appropriate value
+            ScrumModel actual;
+            actual = target.ViewScrumData();
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
-        ///A test for EditIssueDetails
+        ///A test for ViewScrumDetails
         ///</summary>
         // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
         // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
@@ -230,32 +174,13 @@ namespace ProjectManagerTest
         [HostType("ASP.NET")]
         [AspNetDevelopmentServerHost("C:\\Users\\Lauren\\Documents\\GitHub\\SWENG500_Team1\\ProjectManager\\ProjectManagerWeb", "/")]
         [UrlToTest("http://localhost:19961/")]
-        public void EditIssueDetailsTest1()
+        public void ViewScrumDetailsTest()
         {
-            IssueController target = new IssueController(); // TODO: Initialize to an appropriate value
+            ScrumController target = new ScrumController(); // TODO: Initialize to an appropriate value
+            ScrumModel scrum = null; // TODO: Initialize to an appropriate value
             bool expected = false; // TODO: Initialize to an appropriate value
             bool actual;
-            actual = target.EditIssueDetails();
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for ViewIssueList
-        ///</summary>
-        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
-        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
-        // whether you are testing a page, web service, or a WCF service.
-        [TestMethod()]
-        [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\Users\\Lauren\\Documents\\GitHub\\SWENG500_Team1\\ProjectManager\\ProjectManagerWeb", "/")]
-        [UrlToTest("http://localhost:19961/")]
-        public void ViewIssueListTest1()
-        {
-            IssueController target = new IssueController(); // TODO: Initialize to an appropriate value
-            bool expected = false; // TODO: Initialize to an appropriate value
-            bool actual;
-            actual = target.ViewIssueList();
+            actual = target.ViewScrumDetails(scrum);
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }

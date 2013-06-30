@@ -48,7 +48,7 @@
                         <asp:MenuItem NavigateUrl="" Text="Home"/>
                         <asp:MenuItem NavigateUrl="~/Issues.aspx" Text="Tracking"/>
                         <asp:MenuItem NavigateUrl="" Text="Collaboration"/>
-                        <asp:MenuItem NavigateUrl="" Text="Calendar"/>
+                        <asp:MenuItem NavigateUrl="~/Calendar.aspx" Text="Calendar"/>
                         <asp:MenuItem NavigateUrl="~/Reports.aspx" Text="Reports"/>
                     </Items>
                 </asp:Menu>

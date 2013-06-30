@@ -33,5 +33,17 @@ namespace ProjectManagerDAL.Properties {
                 return ((string)(this["ProgramManagerConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=C:\\Users\\Lauren\\Documents\\GitHub\\SWENG5" +
+            "00_Team1\\ProjectManager\\ProjectManagerWeb\\App_Data\\ProjectManager.mdf;Integrated" +
+            " Security=True;User Instance=True")]
+        public string ProjectManagerConnectionString {
+            get {
+                return ((string)(this["ProjectManagerConnectionString"]));
+            }
+        }
     }
 }
