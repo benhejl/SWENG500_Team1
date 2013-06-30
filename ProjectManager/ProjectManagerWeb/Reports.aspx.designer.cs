@@ -40,49 +40,31 @@ namespace ProjectManagerWeb {
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
-        /// Table1 control.
+        /// ReportMenuPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Table1;
+        protected global::System.Web.UI.WebControls.Panel ReportMenuPanel;
         
         /// <summary>
-        /// IssuesTable control.
+        /// ReportMenu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table IssuesTable;
+        protected global::System.Web.UI.WebControls.Menu ReportMenu;
         
         /// <summary>
-        /// OpenIssues control.
+        /// ContentPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableCell OpenIssues;
-        
-        /// <summary>
-        /// ResolvedIssues control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableCell ResolvedIssues;
-        
-        /// <summary>
-        /// ProjectChart control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.DataVisualization.Charting.Chart ProjectChart;
+        protected global::System.Web.UI.WebControls.Panel ContentPanel;
         
         /// <summary>
         /// Table2 control.

@@ -8,7 +8,9 @@ namespace ProjectManagerLibrary.Models.Graphs
 {
     public interface ProjectData
     {
-        List<Series> EvaluateProject(Project project, DateRange range);
+        System.Web.UI.Control Display(Project project, DateRange range);
         string DataTitle {get;}
+        bool RequiresDateRange { get; }
+        DateRange CurrentDateRange { get; }
     }
 }

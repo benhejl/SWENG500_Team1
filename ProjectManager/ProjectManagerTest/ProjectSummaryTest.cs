@@ -2,8 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using ProjectManagerLibrary.Models;
-using System.Web.UI.DataVisualization.Charting;
-using System.Collections.Generic;
 using System.Web.UI;
 
 namespace ProjectManagerTest
@@ -11,11 +9,11 @@ namespace ProjectManagerTest
     
     
     /// <summary>
-    ///This is a test class for OpenVsResolvedStrategyTest and is intended
-    ///to contain all OpenVsResolvedStrategyTest Unit Tests
+    ///This is a test class for ProjectSummaryTest and is intended
+    ///to contain all ProjectSummaryTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class OpenVsResolvedStrategyTest
+    public class ProjectSummaryTest
     {
 
 
@@ -68,71 +66,13 @@ namespace ProjectManagerTest
         #endregion
 
 
-        private Project BuildDefaultProject()
-        {
-            return new Project(1, "Test", DateTime.Now, DateTime.Now, "Status", "Description", "Category", DateTime.Now);
-        }
-
-
-        /// <summary>
-        ///A test for EvaluateProject
-        ///</summary>
-        [TestMethod()]
-        public void EvaluateProjectTest()
-        {
-            OpenVsResolvedStrategy target = new OpenVsResolvedStrategy();
-            Project project = BuildDefaultProject();
-
-            List<Series> results = target.EvaluateProject(project, new DateRange(DateTime.Now, DateTime.Now));
-
-            Assert.IsNotNull(results);
-            Assert.AreEqual(results.Count, 2);
-
-            // TODO: Insert issues
-
-            Assert.AreEqual(results[0].Points.Count, 5);
-            Assert.AreEqual(results[1].Points.Count, 5);
-        }
-
-
-        /// <summary>
-        /// Guarantee the evaluation throws if a project is invalid.
-        /// </summary>
-        [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void EvaluateProjectNullProjectTest()
-        {
-            OpenVsResolvedStrategy target = new OpenVsResolvedStrategy();
-            target.EvaluateProject(null, null);
-        }
-
-
-        [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void EvaluateProjectNullRangeTest()
-        {
-            OpenVsResolvedStrategy target = new OpenVsResolvedStrategy();
-            target.EvaluateProject(BuildDefaultProject(), null);
-        }
-
-        /// <summary>
-        /// Validate the correctness of the expected chart title.
-        ///</summary>
-        [TestMethod()]
-        public void DataTitleTest()
-        {
-            OpenVsResolvedStrategy target = new OpenVsResolvedStrategy(); // TODO: Initialize to an appropriate value
-            string actual = target.DataTitle;
-            Assert.AreEqual(actual, "Open vs. Resolved Defects");
-        }
-
         /// <summary>
         ///A test for Display
         ///</summary>
         [TestMethod()]
         public void DisplayTest()
         {
-            OpenVsResolvedStrategy target = new OpenVsResolvedStrategy(); // TODO: Initialize to an appropriate value
+            ProjectSummary target = new ProjectSummary(); // TODO: Initialize to an appropriate value
             Project project = null; // TODO: Initialize to an appropriate value
             DateRange range = null; // TODO: Initialize to an appropriate value
             Control expected = null; // TODO: Initialize to an appropriate value
@@ -143,13 +83,23 @@ namespace ProjectManagerTest
         }
 
         /// <summary>
+        ///A test for DataTitle
+        ///</summary>
+        [TestMethod()]
+        public void DataTitleTest()
+        {
+            ProjectSummary target = new ProjectSummary();
+            Assert.AreEqual(target.DataTitle, "Summary");
+        }
+
+        /// <summary>
         ///A test for RequiresDateRange
         ///</summary>
         [TestMethod()]
         public void RequiresDateRangeTest()
         {
-            OpenVsResolvedStrategy target = new OpenVsResolvedStrategy(); // TODO: Initialize to an appropriate value
-            Assert.AreEqual(true, target.RequiresDateRange);
+            ProjectSummary target = new ProjectSummary();
+            Assert.AreEqual(target.RequiresDateRange, false);
         }
 
         /// <summary>
@@ -158,7 +108,7 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void CurrentDateRangeTest()
         {
-            OpenVsResolvedStrategy target = new OpenVsResolvedStrategy(); // TODO: Initialize to an appropriate value
+            ProjectSummary target = new ProjectSummary(); // TODO: Initialize to an appropriate value
             DateRange actual;
             actual = target.CurrentDateRange;
             Assert.IsNotNull(target.CurrentDateRange);

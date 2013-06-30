@@ -71,8 +71,10 @@
     <Compile Include="IssueTest.cs" />
     <Compile Include="IssueTransitionTest.cs" />
     <Compile Include="OpenVsResolvedStrategyTest.cs" />
+    <Compile Include="ProjectSummaryTest.cs" />
     <Compile Include="ProjectTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportBLLTest.cs" />
     <Compile Include="ScrumTestUnit.cs" />
     <Compile Include="TaskTest.cs" />
     <Compile Include="TeamRoomTestUnit.cs" />
