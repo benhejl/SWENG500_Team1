@@ -55,6 +55,23 @@ namespace ProjectManagerBLL
         }
 
         /// <summary>
+        /// GetUserGivenLogonName
+        /// </summary>
+        /// <param name="logonName"></param>
+        /// <returns></returns>
+        public static User GetUserGivenLogonName(string logonName)
+        {
+            try
+            {
+                return UserDAL.GetUserGivenLogonName(logonName);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+        }
+        /// <summary>
         /// GetUserInfo
         /// </summary>
         /// <param name="userName"></param>

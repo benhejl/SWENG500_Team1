@@ -121,9 +121,6 @@ first child of the left and right table columns */
     padding: 0px 12px;
     margin: 12px 8px 8px 8px;
     min-height: 420px;
-    text-align:left;
-    vertical-align: top;
-    
 }
 
 .leftCol
@@ -339,18 +336,17 @@ div.accountInfo
     padding-right: 10px;
 }
 
-<<<<<<< HEAD
 /* Styles for tables
 -----------------------------------------------------------*/
-table {
+.customtable {
 	width: 100%;
 	border: 1px solid #cef;
 	text-align: left; }
-th {
+.customtable th {
 	font-weight: bold;
 	background-color: #acf;
 	border-bottom: 1px solid #cef; }
-td,th {
+.customtable td,th {
 	padding: 4px 5px; }
 
 
@@ -414,5 +410,3 @@ td,th {
 #tabs div p {
 	line-height: 150%;
 	}
-=======
->>>>>>> Added Forum Room

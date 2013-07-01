@@ -5,7 +5,7 @@
 
 <asp:HyperLink ID="lnkAddNewIssue" NavigateUrl="~/AddIssue.aspx" Text="Add New Issue" runat="server" />
 <br /><br />
-<table id="Table1" runat="server">
+<table id="Table1" class="customtable" runat="server">
     <tr>
         <th>Issue ID</th>
         <th>Project Name</th>

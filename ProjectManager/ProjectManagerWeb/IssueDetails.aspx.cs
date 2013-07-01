@@ -7,6 +7,9 @@ using System.Web.UI.WebControls;
 using ProjectManagerBLL;
 using ProjectManagerLibrary.Models;
 using System.Web.UI.HtmlControls;
+using System.Text;
+using System.IO;
+using System.Web.Security;
 
 namespace ProjectManagerWeb
 {
@@ -14,11 +17,34 @@ namespace ProjectManagerWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // get issue info and display.
-            GetIssueDetails();
+            // select the correct Issue Details or Attachments Jquery tabs based on Page Postback.
+            if (!Page.IsPostBack)
+                ClientScript.RegisterStartupScript(this.GetType(), "selecttab", "javascript:$('#tabs div').hide();$('#tabs div:first').show();$('#tabs ul li:first').addClass('active');", true);
+            else
+                ClientScript.RegisterStartupScript(this.GetType(), "selecttab", "javascript:$('#tab-1').hide();$('#tabs ul li:has(a[href=\"#tab-2\"])').click();", true);
+
+            // if querystring IssueAttachmentID is not null, download file.
+            if (!string.IsNullOrEmpty(Request.QueryString["IssueAttachmentID"]))
+            {
+                // download file.
+                GetFileAttachment(Request.QueryString["IssueAttachmentID"]);
+
+            }
 
         }
 
+        /// <summary>
+        /// Page_PreRender
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            // get issue info and display.
+            GetIssueDetails();
+        }
+
+        
         /// <summary>
         /// GetIssueDetails
         /// </summary>
@@ -52,6 +78,9 @@ namespace ProjectManagerWeb
                     // add Edit Issue Details link.
                     lnkEditDetails.NavigateUrl = "~/IssueDetailsEdit.aspx?IssueID=" + issueID.ToString();
                 }
+
+                // Get the list of issue attachments for the issue.
+                GetIssueAttachments();
 
             }
             catch (Exception)
@@ -108,8 +137,9 @@ namespace ProjectManagerWeb
                         var tcell5 = new HtmlTableCell();
                         var link = new HtmlAnchor();
                         link.InnerText = "Download";
-                        link.HRef = "~/IssueAttachmentDownload.aspx?IssueID=" + issueAttachments[j].IssueID.ToString();
+                        link.HRef = "~/IssueDetails.aspx?IssueAttachmentID=" + issueAttachments[j].IssueAttachmentID.ToString();
                         tcell5.Controls.Add(link);
+                        trow.Cells.Add(tcell5);
 
                     }
                 }
@@ -134,6 +164,7 @@ namespace ProjectManagerWeb
                 var id = Int32.Parse(issueAttachmentID);
                 if (id > 0)
                 {
+                    // get file info from database.
                     file = IssueBLL.GetIssueAttachment(id); 
 
                     Response.Expires = 0;
@@ -165,6 +196,96 @@ namespace ProjectManagerWeb
             }
 
         }
+
+
+        /// <summary>
+        /// btnUpload_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnUpload_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(FileUpload1.FileName) && !String.IsNullOrEmpty(Request.QueryString["IssueID"]))
+                {
+                    // Check if file is allowed
+                    if (isValidFile(FileUpload1.FileName))
+                    {
+                        // instantiate an IssueAttachment object.
+                        var issueAttachment = new IssueAttachment();
+                        issueAttachment.FileName = FileUpload1.FileName;
+                        issueAttachment.Description = txtDescription.Text;
+                        issueAttachment.EntryDate = DateTime.Now;
+                        issueAttachment.IssueID = Int32.Parse(Request.QueryString["IssueID"]);
+                        issueAttachment.MimeType = FileUpload1.PostedFile.ContentType;
+
+                        // Read the file and convert it to Byte Array
+                        Stream fs = FileUpload1.PostedFile.InputStream;
+                        BinaryReader br = new BinaryReader(fs);
+                        Byte[] bytes = br.ReadBytes((Int32)fs.Length);
+
+                        issueAttachment.FileData = bytes;
+
+                        // Get the userID for the logged in user.
+                        var name = HttpContext.Current.User.Identity.Name;
+                        var user = UserBLL.GetUserGivenLogonName(name);
+                        issueAttachment.UserID = user.UserId;
+
+                        // upload file
+                        IssueBLL.AddIssueAttachment(issueAttachment);
+
+                    }
+                    else
+                    {
+                        // not valid file type. display error message.
+                        lblErrorMessage.Text = "ERROR: Not a valid file type.";
+                    }
+                 }
+            }
+            catch (Exception ex)
+            {
+                lblErrorMessage.Text = "ERROR: " + ex.Message.ToString();
+            }
+
+        }
+
+        /// <summary>
+        /// isValidFile
+        /// </summary>
+        /// <param name="fileName">string</param>
+        /// <returns>bool</returns>
+        private bool isValidFile(string fileName)
+        {
+            bool isvalid = false;
+
+            try
+            {
+                // Get the FileExtenstion
+                var fileExt = System.IO.Path.GetExtension(fileName).ToLower().Replace(".", "");
+
+                // Get the list of valid extensions
+                var validExtensions = System.Configuration.ConfigurationManager.AppSettings["ValidFileExtensions"];
+
+                if (!string.IsNullOrEmpty(validExtensions))
+                {
+                    var sb = new StringBuilder();
+                    string[] exts = validExtensions.Split(',');
+
+                    if (exts.Contains(fileExt))
+                        isvalid =  true;
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return isvalid;
+        }
+
+
 
     }
 }

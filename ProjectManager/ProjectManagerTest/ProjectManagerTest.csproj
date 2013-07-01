@@ -66,7 +66,6 @@
   <ItemGroup>
     <Compile Include="CalendarBLLTest.cs" />
     <Compile Include="CalendarControllerTest.cs" />
-    <Compile Include="ForumTest.cs" />
     <Compile Include="IssueBLLTest.cs" />
     <Compile Include="IssueControllerTest.cs" />
     <Compile Include="DateRangeTest.cs" />

@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalendarBLL\CalendarBLL.cs" />
-    <Compile Include="Forum\ForumBLL.cs" />
     <Compile Include="Issue\IssueBLL.cs" />
     <Compile Include="Project\ProjectBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

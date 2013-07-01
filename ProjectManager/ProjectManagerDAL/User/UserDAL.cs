@@ -72,6 +72,46 @@ namespace ProjectManagerDAL
         }
 
         /// <summary>
+        /// GetUserGivenLogonName
+        /// </summary>
+        /// <param name="logonName"></param>
+        /// <returns></returns>
+        public static User GetUserGivenLogonName(string logonName)
+        {
+            var user = new User();
+
+            try
+            {
+
+                using (var db = new ProjectManagerEntities())
+                {
+                    var query = (from u in db.UserDALs
+                                where u.UserName == logonName
+                                select u).First();
+
+                    if (query != null)
+                    {
+                        user.UserId = query.UserID;
+                        user.UserName = query.UserName;
+                        user.Password = query.Password;
+                        user.UserRole = query.UserRole;
+                        user.FirstName = query.FirstName;
+                        user.LastName = query.LastName;
+                        user.Email = query.Email;
+                        user.PhoneNumber = query.PhoneNumber;
+                        user.Position = query.Position;
+                        user.TeamName = query.Position;
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return user;
+        }
+        /// <summary>
         /// GetUserInfo
         /// </summary>
         /// <param name="userName"></param>
