@@ -65,6 +65,10 @@
       <DependentUpon>ProjectManager.mdf</DependentUpon>
     </Content>
     <Content Include="Calendar.aspx" />
+    <Content Include="Forum\CreateNewForumPost.aspx" />
+    <Content Include="Forum\EditForumPost.aspx" />
+    <Content Include="Forum\Forum.aspx" />
+    <Content Include="Forum\ForumPostDetails.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="IssueDetails.aspx" />
     <Content Include="IssueDetailsEdit.aspx" />
@@ -113,10 +117,39 @@
       <DependentUpon>Calendar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\CalendarController.cs" />
+    <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\IssueController.cs" />
     <Compile Include="Controllers\ScrumController.cs" />
     <Compile Include="Controllers\TeamRoomController.cs" />
+    <Compile Include="Forum\CreateNewForumPost.aspx.cs">
+      <DependentUpon>CreateNewForumPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forum\CreateNewForumPost.aspx.designer.cs">
+      <DependentUpon>CreateNewForumPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forum\EditForumPost.aspx.cs">
+      <DependentUpon>EditForumPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forum\EditForumPost.aspx.designer.cs">
+      <DependentUpon>EditForumPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forum\Forum.aspx.cs">
+      <DependentUpon>Forum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forum\Forum.aspx.designer.cs">
+      <DependentUpon>Forum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forum\ForumPostDetails.aspx.cs">
+      <DependentUpon>ForumPostDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forum\ForumPostDetails.aspx.designer.cs">
+      <DependentUpon>ForumPostDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

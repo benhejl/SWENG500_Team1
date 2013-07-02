@@ -26,5 +26,13 @@ namespace ProjectManagerWeb.Controllers
         {
             return new ForumBLL().ReplyForumPost(replyModel);
         }
+        public bool EditForumPost(ForumModel forumModel)
+        {
+            return new ForumBLL().EditForumPost(forumModel);
+        }
+        public bool DeleteForumPost(ForumModel forumModel)
+        {
+            return new ForumBLL().DeleteForumPost(forumModel);
+        }
     }
 }

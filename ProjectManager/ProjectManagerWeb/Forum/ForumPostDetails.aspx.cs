@@ -37,5 +37,19 @@ namespace ProjectManagerWeb.Forum
                 txtBoxReply.Text = "";
             }
         }
+
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Forum/EditForumPost.aspx?ForumId=" + Request["ForumId"]);
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            Controllers.ForumController forumController = new Controllers.ForumController();
+            forumController.DeleteForumPost(ForumModel);
+            Response.Redirect("~/Forum/Forum.aspx");
+        }
+
+        
     }
 }

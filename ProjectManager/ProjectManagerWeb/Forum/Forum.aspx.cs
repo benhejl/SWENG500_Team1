@@ -16,5 +16,10 @@ namespace ProjectManagerWeb.Forum
             Controllers.ForumController forumController = new Controllers.ForumController();
             ForumList = forumController.DisplayForumPosts();
         }
+
+        protected void btnNewPost_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Forum/CreateNewForumPost.aspx");
+        }
     }
 }

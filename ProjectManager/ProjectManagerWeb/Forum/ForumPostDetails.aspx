@@ -29,10 +29,25 @@
             <td class="tdcss">Date: <%=ForumModel.DateModified %></td>
         </tr>
         <tr>
-            <td class="tdcss" colspan="3" style="height:100px; word-wrap: break-word; vertical-align:top; padding:10px;">
+            <td colspan="3" style="text-align:left">
                 <asp:Panel ID="pnlPost" runat="server"><%=ForumModel.ForumPost%></asp:Panel>
             </td>
         </tr>
+        <%--<%
+            if(Session["UserId"] != null && Session["UserId"].ToString().Equals(ForumModel.UserId))
+            {
+        %>--%>
+        <tr>
+            <td class="tdcss" colspan="3" style="height:100px; adding:10px; text-align:center;">
+                <asp:Button ID="btnEdit" Text="Edit Post" runat="server" Width="79px" 
+                    onclick="btnEdit_Click"/> &nbsp; &nbsp; &nbsp; &nbsp;
+                <asp:Button ID="btnDelete" Text="Delete Post" runat="server" Width="79px" onclick="btnDelete_Click" 
+                   />
+            </td>
+        </tr>
+        <%--<%
+            } 
+        %>--%>
         <tr>
             <td class="tdcss" colspan="3" style="word-wrap: break-word; vertical-align:top; padding:10px;">
                <b>Replies</b>
@@ -57,6 +72,11 @@
     <br />
     <br />
     <table style="width:100%;">
+        <tr>
+            <td style="text-align:left;">
+                Reply to this thread:
+            </td>
+        </tr>
         <tr>
             <td style="text-align:center;">
                 <asp:TextBox ID="txtBoxReply" runat="server" TextMode="MultiLine" Width="800px" Height="75px"></asp:TextBox>

@@ -11,18 +11,26 @@
 
     .tdcss{
     border:1px solid #ccc;
+    padding:5px;
     }
+        .style1
+        {
+            border: 1px solid #ccc;
+            padding: 5px;
+            width: 780px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
+        <asp:Panel ID="pnlMain" ScrollBars="Vertical" runat="server">
         <table class="tablecss">
             <tr>
                 <td class="tdcss">Date</td>
-                <td class="tdcss">User</td>
-                <td class="tdcss"><%=((ProjectManagerLibrary.Models.ScrumData)ScrumList[0]).Question%></td>
-                <td class="tdcss"><%=((ProjectManagerLibrary.Models.ScrumData)ScrumList[1]).Question%></td>
-                <td class="tdcss"><%=((ProjectManagerLibrary.Models.ScrumData)ScrumList[2]).Question%></td>
+                <%--<td class="tdcss">User</td>--%>
+                <td class="style1"><%=((ProjectManagerLibrary.Models.ScrumData)ScrumList[0]).Question%></td>
+                <td class="style1"><%=((ProjectManagerLibrary.Models.ScrumData)ScrumList[1]).Question%></td>
+                <td class="style1"><%=((ProjectManagerLibrary.Models.ScrumData)ScrumList[2]).Question%></td>
             </tr>
             <% 
                 string previousDate = DateTime.Now.ToShortDateString();
@@ -35,12 +43,12 @@
                   
             %>
             <tr>
-            <% if (!previousDate.Equals(scrumData.DateEntered.ToShortDateString()))
-                   {%>
+            <%--<% if (!previousDate.Equals(scrumData.DateEntered.ToShortDateString()))
+                   {%>--%>
                 <td class="tdcss">
-                    <%=scrumData.DateEntered.ToShortDateString()%>
+                    <a href="<%= this.ResolveUrl("~/Scrum/EditScrumData.aspx?Sequence=" + scrumData.AnswerKey) %>"><%=scrumData.DateEntered.ToShortDateString()%></a>
                 </td>
-                <% }
+               <%-- <% }
                    else
                    {%>
                 <td class="tdcss">
@@ -56,17 +64,18 @@
                    {%>
                 <td class="tdcss">
                 </td>
-                <%} %>
-                <td class="tdcss"><%=((ProjectManagerLibrary.Models.ScrumData)ScrumList[x]).Answer%></td>
-                <td class="tdcss"><%=((ProjectManagerLibrary.Models.ScrumData)ScrumList[x + 1]).Answer%></td>
-                <td class="tdcss"><%=((ProjectManagerLibrary.Models.ScrumData)ScrumList[x + 1]).Answer%></td>
+                <%} %>--%>
+                <td class="style1"><%=((ProjectManagerLibrary.Models.ScrumData)ScrumList[x]).Answer%></td>
+                <td class="style1"><%=((ProjectManagerLibrary.Models.ScrumData)ScrumList[x + 1]).Answer%></td>
+                <td class="style1"><%=((ProjectManagerLibrary.Models.ScrumData)ScrumList[x + 2]).Answer%></td>
+
             <%
-                   previousDate = scrumData.DateEntered.ToShortDateString();
-                   previousUserId = scrumData.UserId;
+                   //previousDate = scrumData.DateEntered.ToShortDateString();
+                   //previousUserId = scrumData.UserId;
                 } 
             %>
             </tr>
         </table>
-        
+        </asp:Panel>
     </div>
 </asp:Content>
