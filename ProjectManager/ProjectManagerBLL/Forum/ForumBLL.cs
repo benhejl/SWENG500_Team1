@@ -26,5 +26,13 @@ namespace ProjectManagerBLL.Forum
         {
             return new ForumDAL().ReplyForumPost(replyModel);
         }
+        public bool EditForumPost(ForumModel forumModel)
+        {
+            return new ForumDAL().EditForumPost(forumModel);
+        }
+        public bool DeleteForumPost(ForumModel forumModel)
+        {
+            return new ForumDAL().DeleteForumPost(forumModel);
+        }
     }
 }

@@ -13,12 +13,12 @@ namespace ProjectManagerWeb.Controllers
             return true;
         }
 
-        public bool ViewIssueAttachments()
+        public bool DeleteIssue()
         {
             return true;
         }
 
-        public bool AddAttachmentToIssue()
+        public bool AddAssigneeToIssue()
         {
             return true;
         }

@@ -8,22 +8,39 @@
 <script type="text/javascript" language="javascript">
 
 
-$(document).ready(function(){
- $('#tabs div').hide(); // Hide all divs
- $('#tabs div:first').show(); // Show the first div
- $('#tabs ul li:first').addClass('active'); // Set the class for active state
- $('#tabs ul li a').click(function(){ // When link is clicked
- $('#tabs ul li').removeClass('active'); // Remove active class from links
- $(this).parent().addClass('active'); //Set parent of clicked link class to active
- var currentTab = $(this).attr('href'); // Set currentTab to value of href attribute
- $('#tabs div').hide(); // Hide all divs
- $(currentTab).show(); // Show div with id equal to variable currentTab
- return false;
- });
- });
+    $(document).ready(function () {
+        //$('#tabs div').hide(); // Hide all divs
+        //$('#tabs div:first').show(); // Show the first div
+        //$('#tabs ul li:first').addClass('active'); // Set the class for active state
+        $('#tabs ul li a').click(function () { // When link is clicked
+            $('#tabs ul li').removeClass('active'); // Remove active class from links
+            $(this).parent().addClass('active'); //Set parent of clicked link class to active
+            var currentTab = $(this).attr('href'); // Set currentTab to value of href attribute
+            $('#tabs div').hide(); // Hide all divs
+            $(currentTab).show(); // Show div with id equal to variable currentTab
+            return false;
+        });
 
+        $("#divAddAttachment").hide();
+
+        $("#btnUpload").click(function () {
+            $("#divAddAttachment").hide();
+            $('#tab-1').hide();
+            $('#tab-2').show();
+        });
+
+        $("#btnAddNewAttachment").click(function () {
+            $("#divAddAttachment").show();
+        });
+
+        $("#btnCancel").click(function () {
+            $("#divAddAttachment").hide();
+        });
+
+    });
+
+    
 </script>
-
 
 <div id="tabs">
 
@@ -33,10 +50,9 @@ $(document).ready(function(){
 </ul>
 
 <div id="tab-1">
-
 <h3>Issue Details</h3>
 
-<table id="Table1" runat="server">
+<table id="Table1" class="customtable" runat="server">
     <tr>
         <th>Issue Information</th>
         <th>Value</th>
@@ -92,14 +108,38 @@ $(document).ready(function(){
 
 </div>
 
+
 <div id="tab-2">
 
+
 <h3>Attachments</h3>
-<asp:HyperLink ID="lnkAddNewAttachment" NavigateUrl="~/AddIssueAttachment.aspx" Text="Add Attachment" runat="server" />
+<button id="btnAddNewAttachment">Add Attachment</button>
 <br />
 <br />
 
-<table id="tblAttachments" runat="server">
+<div id="divAddAttachment">
+    <table id="tblAddAttachment" class="customtable" runat="server">
+    <tr>
+    <td>Issue Attachment:</td>
+    <td><asp:FileUpload ID="FileUpload1" runat="server" /></td>
+    </tr>
+    <tr>
+    <td>Description:</td>
+    <td><asp:TextBox ID="txtDescription" runat="server" Width="450"></asp:TextBox></td>
+    </tr>
+    <tr>
+    <td>&nbsp;</td>
+    <td><asp:Button ID="btnUpload" runat="server" Text="Submit" 
+            onclick="btnUpload_Click" /><asp:Button ID="btnCancel" runat="server" Text="Cancel" /></td>
+    </tr>
+    <tr>
+        <td><asp:Label ID="lblErrorMessage" ForeColor="Red" runat="server" /></td>
+    </tr>
+    </table>
+</div>
+
+
+<table id="tblAttachments" runat="server" class="customtable">
     <tr>
         <th>File Name</th>
         <th>Entry Date</th>
@@ -116,14 +156,8 @@ $(document).ready(function(){
 
 </table>
 
-
 </div>
 
 </div>
-
-
-
-
-
 
 </asp:Content>

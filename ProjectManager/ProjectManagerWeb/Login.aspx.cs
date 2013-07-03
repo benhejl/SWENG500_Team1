@@ -25,37 +25,37 @@ namespace ProjectManagerWeb
         /// <param name="e"></param>
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    var isValidUser = false;
-           //     var rememberme = false;
-            //    if (!string.IsNullOrEmpty(txtusername.Text) && !string.IsNullOrEmpty(txtpassword.Text))
-            //    {
-            //        var user = new UserBLL();
-            //        //user.UserName = txtusername.Text;
-            //        //user.Password = txtpassword.Text;
-            //        rememberme = (bool)chbxRememberMe.Checked;
+            try
+            {
+                var isValidUser = false;
+                var rememberme = false;
+                if (!string.IsNullOrEmpty(txtusername.Text) && !string.IsNullOrEmpty(txtpassword.Text))
+                {
+                    var user = new UserBLL();
+                    //user.UserName = txtusername.Text;
+                    //user.Password = txtpassword.Text;
+                    rememberme = (bool)chbxRememberMe.Checked;
 
-            //        isValidUser = user.Login(txtusername.Text, txtpassword.Text);
+                    isValidUser = user.Login(txtusername.Text, txtpassword.Text);
 
-            //        if (isValidUser)
-            //        {
-            FormsAuthentication.SetAuthCookie(txtusername.Text, true);
-            Response.Redirect("~/home.aspx");
-            //        }
-            //        else
-            //        {
-            //            errLable.Text = "The username and password provided is incorrect.";
-            //        }
+                    if (isValidUser)
+                    {
+                        FormsAuthentication.SetAuthCookie(txtusername.Text, rememberme);
+                        Response.Redirect("~/home.aspx");
+                    }
+                    else
+                    {
+                        errLable.Text = "The username and password provided is incorrect.";
+                    }
 
-            //    }
+                }
 
-            //}
-            //catch (Exception)
-            //{
+            }
+            catch (Exception)
+            {
                 
-            //    throw;
-            //}
+                throw;
+            }
 
         }
     }

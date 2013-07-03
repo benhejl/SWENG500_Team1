@@ -44,10 +44,15 @@ namespace ProjectManagerTest
         [TestMethod]
         public void EditForumPostTest()
         {
+            forumModel.ForumId = 1;
+            forumModel.ForumPost = "Update My Forum Post";
+            Assert.IsTrue(forumController.EditForumPost(forumModel));
         }
         [TestMethod]
         public void DeleteForumPostTest()
         {
+            forumModel.ForumId = 1;
+            Assert.IsTrue(forumController.DeleteForumPost(forumModel));
         }
     }
 }

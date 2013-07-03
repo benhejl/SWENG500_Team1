@@ -25,7 +25,7 @@
                 <td class="tdcss">Date</td>
             </tr>
             <%
-                if(ForumList.Count != null)
+                if(ForumList != null && ForumList.Count > 0)
                 {
                     foreach (ProjectManagerLibrary.Models.ForumModel forumModel in ForumList)
                     {  
@@ -39,6 +39,10 @@
                     }
                 } 
             %>
+            <tr>
+                <td colspan="3" style="text-align:center;"><asp:Button ID="btnNewPost" 
+                        runat="server" onclick="btnNewPost_Click" Text="New Post"/> </td>
+            </tr>
         </table>
     </asp:Panel>
 </asp:Content>
