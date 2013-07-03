@@ -48,14 +48,9 @@
                     <Items>
                         <asp:MenuItem NavigateUrl="" Text="Home"/>
                         <asp:MenuItem NavigateUrl="~/Issues.aspx" Text="Tracking"/>
-<<<<<<< HEAD
-                        <asp:MenuItem NavigateUrl="" Text="Collaboration"/>
-                        <asp:MenuItem NavigateUrl="~/Calendar.aspx" Text="Calendar"/>
-=======
                         <asp:MenuItem NavigateUrl="~/Scrum/EnterScrumData.aspx" Text="Scrum"/>
                         <asp:MenuItem NavigateUrl="~/Forum/Forum.aspx" Text="Forum"/>
                         <asp:MenuItem NavigateUrl="" Text="Calendar"/>
->>>>>>> c26684829c0cf5f5f96d962a56ace47cddfd1aac
                         <asp:MenuItem NavigateUrl="~/Reports.aspx" Text="Reports"/>
                     </Items>
                 </asp:Menu>
