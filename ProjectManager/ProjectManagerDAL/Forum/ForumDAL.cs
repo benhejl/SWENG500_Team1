@@ -174,5 +174,50 @@ namespace ProjectManagerDAL.Forum
                 return null;
             }
         }
+        public bool EditForumPost(ForumModel forumModel)
+        {
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(Constants.DATABASE.CONNECTION_STRING))
+                {
+                    sqlConnection.Open();
+                    using (SqlCommand sqlCommand = new SqlCommand("Update ForumPost SET  ForumPost = @ForumPost, DateModified = @DateModified WHERE ForumId = @ForumId", sqlConnection))
+                    {
+                        sqlCommand.Parameters.Add(new SqlParameter("ForumPost", forumModel.ForumPost));
+                        sqlCommand.Parameters.Add(new SqlParameter("ForumId", forumModel.ForumId));
+                        sqlCommand.Parameters.Add(new SqlParameter("DateModified", DateTime.Now));
+                        sqlCommand.ExecuteNonQuery();
+                    }
+                    sqlConnection.Close();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool DeleteForumPost(ForumModel forumModel)
+        {
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(Constants.DATABASE.CONNECTION_STRING))
+                {
+                    sqlConnection.Open();
+                    using (SqlCommand sqlCommand = new SqlCommand("Update ForumPost SET  Active = 0, DateModified = @DateModified WHERE ForumId = @ForumId", sqlConnection))
+                    {
+                        sqlCommand.Parameters.Add(new SqlParameter("ForumId", forumModel.ForumId));
+                        sqlCommand.Parameters.Add(new SqlParameter("DateModified", DateTime.Now));
+                        sqlCommand.ExecuteNonQuery();
+                    }
+                    sqlConnection.Close();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

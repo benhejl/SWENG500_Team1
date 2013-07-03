@@ -24,7 +24,10 @@
                 <td><asp:TextBox ID="answer3" runat="server" Width="500px" Height="100px" TextMode="MultiLine"></asp:TextBox></td>
             </tr>
             <tr>
-                <td style="text-align:center"><asp:Button ID="submit" runat="server" onclick="submit_Click" Text="Submit"/></td>
+                <td style="text-align:center">
+                    <asp:Button ID="submit" runat="server" onclick="submit_Click" Text="Submit"/> &nbsp; &nbsp; &nbsp; &nbsp;
+                    <asp:Button ID="cancel" runat="server" Text="Cancel" onclick="cancel_Click"/>
+                </td>
             </tr>
         </table>
     </div>

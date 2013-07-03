@@ -10,60 +10,42 @@
 namespace ProjectManagerWeb.Forum {
     
     
-    public partial class ForumPostDetails {
+    public partial class EditForumPost {
         
         /// <summary>
-        /// pnlForum control.
+        /// txtBoxSubject control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlForum;
+        protected global::System.Web.UI.WebControls.TextBox txtBoxSubject;
         
         /// <summary>
-        /// pnlPost control.
+        /// txtBoxPost control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlPost;
+        protected global::System.Web.UI.WebControls.TextBox txtBoxPost;
         
         /// <summary>
-        /// btnEdit control.
+        /// btnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEdit;
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
         
         /// <summary>
-        /// btnDelete control.
+        /// btnCancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDelete;
-        
-        /// <summary>
-        /// txtBoxReply control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBoxReply;
-        
-        /// <summary>
-        /// btnReply control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnReply;
+        protected global::System.Web.UI.WebControls.Button btnCancel;
     }
 }

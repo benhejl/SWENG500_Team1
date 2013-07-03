@@ -14,6 +14,7 @@ GO
 CREATE TABLE [dbo].[ScrumAnswers](
 	[AnswerId] [int] IDENTITY(1,1) NOT NULL,
 	[Answer] [varchar](max) NULL,
+	[AnswerKey] [int] NOT NULL,
 	[QuestionId] [int] NOT NULL,
 	[UserId] [int] NOT NULL,
 	[DateEntered] [datetime] NOT NULL,

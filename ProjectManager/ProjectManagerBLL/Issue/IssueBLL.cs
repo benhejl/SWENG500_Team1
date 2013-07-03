@@ -46,6 +46,24 @@ namespace ProjectManagerBLL
         }
 
         /// <summary>
+        /// AddIssueAttachment
+        /// </summary>
+        /// <param name="issueAttachment">IssueAttachment</param>
+        /// <returns>bool</returns>
+        public static bool AddIssueAttachment(IssueAttachment issueAttachment)
+        {
+            try
+            {
+                return IssueDAL.AddIssueAttachment(issueAttachment);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+        }
+
+        /// <summary>
         /// EditIssue
         /// </summary>
         /// <param name="issue">Issue</param>

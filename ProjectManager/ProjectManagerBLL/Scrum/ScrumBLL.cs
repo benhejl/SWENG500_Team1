@@ -21,5 +21,13 @@ namespace ProjectManagerBLL.Scrum
         {
             return new ScrumDAL().ViewScrumData();
         }
+        public ScrumModel GetScrumDetails(int answerKey)
+        {
+            return new ScrumDAL().GetScrumDetails(answerKey);
+        }
+        public bool EditScrum(ScrumModel scrum)
+        {
+            return new ScrumDAL().EditScrum(scrum);
+        }
     }
 }

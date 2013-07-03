@@ -55,12 +55,17 @@ namespace ProjectManagerWeb.Scrum
             if (dataInserted)
             {
                 Session.Add("Message", "The scrum data was successfully entered.");
-                Response.Redirect("~/home.aspx");
+                Response.Redirect("~/Scrum/ViewScrumData.aspx");
             }
             else
             {
                 Message.Text = "There was an error inserting the scrum data.";
             }
+        }
+
+        protected void cancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Scrum/ViewScrumData.aspx");
         }
     }
 }
