@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,67 +13,35 @@ namespace ProjectManagerBLL.CalendarBLL
 {
     public class CalendarBLL
     {
-        public bool createCalendar(String name)
+        public bool createCalendar(String name, String projectName, String usernames)
         {
-            CalendarTableAdapter newCalendar = new CalendarTableAdapter();
-            System.Diagnostics.Trace.WriteLine("HERE: " + newCalendar.InsertQuery(name) + " " + name);
-            return true;
+            return CalendarDAL.insertNewCalendar(name, projectName, usernames);
         }
 
-        public DataRowCollection getCalendars()
+        public ArrayList getCalendars()
         {
-            CalendarTableAdapter currentCalendars = new CalendarTableAdapter();
-            Calendar.CalendarDataTable data = currentCalendars.GetData();
-
-            return data.Rows;
+            return CalendarDAL.getCalendarNames();
         }
 
-        public DataRowCollection getCalendarData(String calendarName)
+        public ArrayList getProjectNames()
         {
-            CalendarTableAdapter calendarData = new CalendarTableAdapter();
-            Calendar.CalendarDataTable data = calendarData.GetCalendarInfo(calendarName);
-
-            return data.Rows;
+            return ProjectDAL.getProjectNames();
         }
 
-        public bool updateCalendarInfo(String currentName, String newName)
+        public bool updateCalendarInfo(String currentName, String newName, String newProject, String newUsers)
         {
-            CalendarTableAdapter calendarToUpdate = new CalendarTableAdapter();
-            int ret = calendarToUpdate.UpdateQuery(newName, currentName);
-            if (ret > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return CalendarDAL.updateCalendar(currentName, newName, newProject, newUsers);
         }
 
         public bool deleteCalendar(String calendarToDelete)
         {
-            CalendarTableAdapter adapter = new CalendarTableAdapter();
-            int ret = adapter.DeleteQuery(calendarToDelete);
-            if (ret > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return CalendarDAL.deleteCalendar(calendarToDelete);
         }
 
-        /**public List<KeyValuePair<string, int>> getUsers()
+        public ArrayList getUsers()
         {
-            List<KeyValuePair<string, int>> users = UserDAL.GetUserListForView();
-            return users;
+            ArrayList usernames = UserDAL.GetUserNamesForCalendar();
+            return usernames;
         }
-
-        public List<KeyValuePair<string, int>> getProjects()
-        {
-            List<KeyValuePair<string, int>> projects = ProjectDAL.GetProjectListForView();
-            return projects;
-        }**/
     }
 }

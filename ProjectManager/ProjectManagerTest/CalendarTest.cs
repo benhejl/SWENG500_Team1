@@ -69,118 +69,135 @@ namespace ProjectManagerTest
 
 
         /// <summary>
+        ///A test for Page_Load
+        ///</summary>
+        [TestMethod()]
+        public void Page_LoadTest()
+        {
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
         ///A test for Calendar Constructor
         ///</summary>
         [TestMethod()]
         public void CalendarConstructorTest()
         {
             ProjectManagerWeb.Calendar target = new ProjectManagerWeb.Calendar();
-            Assert.IsInstanceOfType(target, typeof(ProjectManagerWeb.Calendar));
-        }
-
-        [TestMethod()]
-        public void CancelCalendarTest()
-        {
-            Calendar_Accessor target = new Calendar_Accessor(); // TODO: Initialize to an appropriate value
-            object sender = null; // TODO: Initialize to an appropriate value
-            EventArgs e = null; // TODO: Initialize to an appropriate value
-            target.CancelCalendar(sender, e);
             Assert.IsNotNull(target);
         }
-        
+
+        /// <summary>
+        ///A test for CreateNewCalendarClick. Method just changes panel visibility. Nothing to test.
+        ///</summary>
         [TestMethod()]
         public void CreateNewCalendarClickTest()
         {
-            Calendar_Accessor target = new Calendar_Accessor(); // TODO: Initialize to an appropriate value
-            object sender = null; // TODO: Initialize to an appropriate value
-            EventArgs e = null; // TODO: Initialize to an appropriate value
-            target.CreateNewCalendarClick(sender, e);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
         }
 
-        [TestMethod()]
-        public void DeleteButton_ClickTest()
-        {
-            Calendar_Accessor target = new Calendar_Accessor(); // TODO: Initialize to an appropriate value
-            object sender = null; // TODO: Initialize to an appropriate value
-            EventArgs e = null; // TODO: Initialize to an appropriate value
-            target.DeleteButton_Click(sender, e);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
-
-        [TestMethod()]
-        public void DeleteCalendarClickTest()
-        {
-            Calendar_Accessor target = new Calendar_Accessor(); // TODO: Initialize to an appropriate value
-            object sender = null; // TODO: Initialize to an appropriate value
-            EventArgs e = null; // TODO: Initialize to an appropriate value
-            target.DeleteCalendarClick(sender, e);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
-
-        [TestMethod()]
-        public void EditCalendarInformationClickTest()
-        {
-            Calendar_Accessor target = new Calendar_Accessor(); // TODO: Initialize to an appropriate value
-            object sender = null; // TODO: Initialize to an appropriate value
-            EventArgs e = null; // TODO: Initialize to an appropriate value
-            target.EditCalendarInformationClick(sender, e);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
-
-        [TestMethod()]
-        public void Page_LoadTest()
-        {
-            Calendar_Accessor target = new Calendar_Accessor(); // TODO: Initialize to an appropriate value
-            object sender = null; // TODO: Initialize to an appropriate value
-            EventArgs e = null; // TODO: Initialize to an appropriate value
-            target.Page_Load(sender, e);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
-
-        [TestMethod()]
-        public void SaveEdit_ClickTest()
-        {
-            Calendar_Accessor target = new Calendar_Accessor(); // TODO: Initialize to an appropriate value
-            object sender = null; // TODO: Initialize to an appropriate value
-            EventArgs e = null; // TODO: Initialize to an appropriate value
-            target.SaveEdit_Click(sender, e);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
-
-        [TestMethod()]
-        public void SaveNewCalendarTest()
-        {
-            Calendar_Accessor target = new Calendar_Accessor(); // TODO: Initialize to an appropriate value
-            object sender = null; // TODO: Initialize to an appropriate value
-            EventArgs e = null; // TODO: Initialize to an appropriate value
-            target.SaveNewCalendar(sender, e);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
-
-        [TestMethod()]
-        public void populateDropDownTest()
-        {
-            Calendar_Accessor target = new Calendar_Accessor(); // TODO: Initialize to an appropriate value
-            DropDownList temp = new DropDownList();
-            target.populateDropDown(temp);
-            Assert.IsNotNull(temp.DataSource);
-        }
-        
+        /// <summary>
+        ///A test for populateProjectsDropDown. Method returns void. Cannot verify.
+        ///</summary>
         [TestMethod()]
         public void populateProjectsDropDownTest()
         {
-            Calendar_Accessor target = new Calendar_Accessor(); // TODO: Initialize to an appropriate value
-            target.populateProjectsDropDown();
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
         }
 
+
+        /// <summary>
+        ///A test for populateUsersList. Method returns void. Cannot verify.
+        ///</summary>
         [TestMethod()]
         public void populateUsersListTest()
         {
-            Calendar_Accessor target = new Calendar_Accessor(); // TODO: Initialize to an appropriate value
-            target.populateUsersList();
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
         }
+
+        /// <summary>
+        ///A test for DeleteCalendarClick. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void DeleteCalendarClickTest()
+        {
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for EditCalendarInformationClick. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void EditCalendarInformationClickTest()
+        {
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for populateNewRegisteredUsersDropDown. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void populateNewRegisteredUsersDropDownTest()
+        {
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for SaveNewCalendar. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void SaveNewCalendarTest()
+        {
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for CancelCalendar. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void CancelCalendarTest()
+        {
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for populateCalendarDropDown. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void populateCalendarDropDownTest()
+        {
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for SaveEdit_Click. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void SaveEdit_ClickTest()
+        {
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for DeleteButton_Click. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void DeleteButton_ClickTest()
+        {
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
     }
 }

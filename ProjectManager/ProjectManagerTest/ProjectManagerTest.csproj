@@ -48,6 +48,7 @@
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DataVisualization" />
@@ -67,6 +68,7 @@
   <ItemGroup>
     <Compile Include="CalendarBLLTest.cs" />
     <Compile Include="CalendarControllerTest.cs" />
+    <Compile Include="CalendarDALTest.cs" />
     <Compile Include="CalendarTest.cs" />
     <Compile Include="EditScrumDataTest.cs" />
     <Compile Include="EnterScrumDataTest.cs" />
