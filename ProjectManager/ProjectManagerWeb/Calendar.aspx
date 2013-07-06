@@ -16,6 +16,10 @@
             <br />
             <asp:Button ID="EditButton" runat="server" 
                 onclick="EditCalendarInformationClick" Text="Edit Calendar Information" />
+            <br />
+            <br />
+            <asp:Button ID="ViewButton" runat="server" 
+                onclick="ViewCalendarClick" Text="View Calendar                " />
         </asp:Panel>
          <asp:Panel ID="CreatePanel" runat="server" Height="442px" Width="555px">
                         <br />
@@ -25,13 +29,17 @@
             Calendar Name: <asp:TextBox ID="calendarName" runat="server" ></asp:TextBox>
 
             
-            <br />
-                        Registered Users:<asp:ListBox ID="RegisteredUsers" runat="server"></asp:ListBox>
                         <br />
-                        Project:<asp:DropDownList ID="ProjectsDropDown" runat="server">
+
+            
+            <br />
+                        Registered Users:<br /> <asp:CheckBoxList ID="RegisteredUsersList" runat="server"></asp:CheckBoxList>
+                        &nbsp;<br /> Project:<asp:DropDownList ID="ProjectsDropDown" runat="server">
                         </asp:DropDownList>
                         <br />
-            <asp:Button ID="SaveCalendar" runat="server" Text="Save" onclick="SaveNewCalendar"/>
+                        <br />
+                        <asp:Button ID="SaveCalendar" runat="server" 
+                            onclick="SaveNewCalendar" Text="Save" />
                         &nbsp;&nbsp;
                         <asp:Button ID="CancelNewCalendar" runat="server" ForeColor="Red" 
                             onclick="CancelCalendar" Text="Cancel" />
@@ -46,9 +54,22 @@
                         <asp:DropDownList ID="CalendarDropDown" runat="server">
                         </asp:DropDownList>
                         <br />
+                        <br />
                         <asp:Label ID="Label1" runat="server" Text="New Calendar Name:"></asp:Label>
 
                          <asp:TextBox ID="EditNameTextBox" runat="server"></asp:TextBox>
+           
+                        <br />
+                        <br />
+                        New Registered Users:<br />
+                        <asp:CheckBoxList ID="NewRegisteredUsersDropDown" runat="server">
+                        </asp:CheckBoxList>
+                        <br />
+                        New Project:<br />
+                        <br />
+                        <asp:DropDownList ID="NewProjectDropDown" runat="server">
+                        </asp:DropDownList>
+                        <br />
            
                         <br />
                         <asp:Button ID="SaveEdit" runat="server" onclick="SaveEdit_Click" Text="Save"/>

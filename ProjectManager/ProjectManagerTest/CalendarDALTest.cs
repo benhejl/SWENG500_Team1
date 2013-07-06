@@ -1,7 +1,6 @@
-﻿using ProjectManagerBLL.CalendarBLL;
+﻿using ProjectManagerDAL.CalendarDAL;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Data;
 using System.Collections;
 
 namespace ProjectManagerTest
@@ -9,11 +8,11 @@ namespace ProjectManagerTest
     
     
     /// <summary>
-    ///This is a test class for CalendarBLLTest and is intended
-    ///to contain all CalendarBLLTest Unit Tests
+    ///This is a test class for CalendarDALTest and is intended
+    ///to contain all CalendarDALTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class CalendarBLLTest
+    public class CalendarDALTest
     {
 
 
@@ -65,31 +64,6 @@ namespace ProjectManagerTest
         //
         #endregion
 
-        /// <summary>
-        ///A test for CalendarBLL Constructor
-        ///</summary>
-        [TestMethod()]
-        public void CalendarBLLConstructorTest()
-        {
-            CalendarBLL target = new CalendarBLL();
-            Assert.IsNotNull(target);
-        }
-
-        /// <summary>
-        ///A test for createCalendar
-        ///</summary>
-        [TestMethod()]
-        public void createCalendarTest()
-        {
-            CalendarBLL target = new CalendarBLL();
-            string name = "UnitTestName";
-            string projectName = "UnitTestProject";
-            string usernames = "UnitTestUsers";
-            bool expected = true;
-            bool actual;
-            actual = target.createCalendar(name, projectName, usernames);
-            Assert.AreEqual(expected, actual);
-        }
 
         /// <summary>
         ///A test for deleteCalendar
@@ -97,64 +71,52 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void deleteCalendarTest()
         {
-            CalendarBLL target = new CalendarBLL();
-            string calendarToDelete = "UnitTestName";
-            bool expected = true;
+            string name = "UnitTestName";
+            bool expected = true; 
             bool actual;
-            actual = target.deleteCalendar(calendarToDelete);
+            actual = CalendarDAL.deleteCalendar(name);
             Assert.AreEqual(expected, actual);
         }
 
         /// <summary>
-        ///A test for getCalendars
+        ///A test for getCalendarNames
         ///</summary>
         [TestMethod()]
-        public void getCalendarsTest()
+        public void getCalendarNamesTest()
         {
-            CalendarBLL target = new CalendarBLL();
             ArrayList actual;
-            actual = target.getCalendars();
+            actual = CalendarDAL.getCalendarNames();
             Assert.IsNotNull(actual);
         }
 
         /// <summary>
-        ///A test for getProjectNames
+        ///A test for insertNewCalendar
         ///</summary>
         [TestMethod()]
-        public void getProjectNamesTest()
+        public void insertNewCalendarTest()
         {
-            CalendarBLL target = new CalendarBLL();
-            ArrayList actual;
-            actual = target.getProjectNames();
-            Assert.IsNotNull(actual);
-        }
-
-        /// <summary>
-        ///A test for getUsers
-        ///</summary>
-        [TestMethod()]
-        public void getUsersTest()
-        {
-            CalendarBLL target = new CalendarBLL();
-            ArrayList actual;
-            actual = target.getUsers(); 
-            Assert.IsNotNull(actual);
-        }
-
-        /// <summary>
-        ///A test for updateCalendarInfo
-        ///</summary>
-        [TestMethod()]
-        public void updateCalendarInfoTest()
-        {
-            CalendarBLL target = new CalendarBLL();
-            string currentName = "UnitTestName";
-            string newName = "UnitTestChangeName";
-            string newProject = "UnitTestProject";
-            string newUsers = "UnitTestUsers";
+            string calendarName = "UnitTestName"; 
+            string users = "UnitTestUsers"; 
+            string projectName = "UnitTestProject";
             bool expected = true;
             bool actual;
-            actual = target.updateCalendarInfo(currentName, newName, newProject, newUsers);
+            actual = CalendarDAL.insertNewCalendar(calendarName, users, projectName);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for updateCalendar
+        ///</summary>
+        [TestMethod()]
+        public void updateCalendarTest()
+        {
+            string currentName = "UnitTestName";
+            string newName = "UnitTestChangeName";
+            string projectName = "UnitTestProject";
+            string users = "UnitTestUsers";
+            bool expected = true;
+            bool actual;
+            actual = CalendarDAL.updateCalendar(currentName, newName, projectName, users);
             Assert.AreEqual(expected, actual);
         }
     }

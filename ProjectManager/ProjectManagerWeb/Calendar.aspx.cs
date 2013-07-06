@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,84 +25,87 @@ namespace ProjectManagerWeb
 
                 if (!Page.IsPostBack)
                 {
-                    populateDropDown(CalendarDropDown);
+                    populateCalendarDropDown(CalendarDropDown);
                 }
         }
 
         protected void CreateNewCalendarClick(object sender, EventArgs e)
         {
-            System.Diagnostics.Trace.WriteLine("Pressed create new calendar button");
-
             InitPanel.Visible = false;
+            CreatePanel.Visible = true;
             populateUsersList();
             populateProjectsDropDown();
-            CreatePanel.Visible = true;
         }
 
         private void populateProjectsDropDown()
         {
-            /**CalendarBLL calendarBLL = new CalendarBLL();
-            List<KeyValuePair<string, int>> projects = calendarBLL.getProjects();
-
-            String[] projectNames = new String[projects.Count];
-            int i = 0;
-            foreach (KeyValuePair<string, int> pair in projects)
-            {
-                projectNames[i] = pair.Key;
-                i++;
-            }**/
-
-            String[] projectNames = new String[3];
-            projectNames[0] = "test1";
-            projectNames[1] = "test2";
-            projectNames[2] = "test3";
-            ProjectsDropDown.DataSource = projectNames;
+            CalendarBLL calendarBLL = new CalendarBLL();
+            ArrayList projects = calendarBLL.getProjectNames();
+            ProjectsDropDown.DataSource = projects;
             ProjectsDropDown.DataBind();
         }
 
         private void populateUsersList()
         {
-            /**CalendarBLL calendarBLL = new CalendarBLL();
-            List<KeyValuePair<string, int>> users = calendarBLL.getUsers();
-
-            String[] usernames = new String[users.Count];
-            int i = 0;
-            foreach (KeyValuePair<string, int> pair in users)
-            {
-                usernames[i] = pair.Key;
-                i++;
-            }**/
-
-            String[] usernames = new String[3];
-            usernames[0] = "user1";
-            usernames[1] = "user2";
-            usernames[2] = "user3";
-            RegisteredUsers.DataSource = usernames;
-            RegisteredUsers.DataBind();
+            CalendarBLL calendarBLL = new CalendarBLL();
+            ArrayList users = calendarBLL.getUsers();
+            RegisteredUsersList.DataSource = users;
+            RegisteredUsersList.DataBind();
         }
 
         protected void DeleteCalendarClick(object sender, EventArgs e)
         {
-            System.Diagnostics.Trace.WriteLine("Pressed delete calendar button");
-
             InitPanel.Visible = false;
-            populateDropDown(DeleteDropDown);
             DeleteCalendarPanel.Visible = true;
+            populateCalendarDropDown(DeleteDropDown);
         }
 
         protected void EditCalendarInformationClick(object sender, EventArgs e)
         {
-            System.Diagnostics.Trace.WriteLine("Pressed edit calendar information calendar button");
-
             InitPanel.Visible = false;
-            populateDropDown(CalendarDropDown);
+            populateCalendarDropDown(CalendarDropDown);
             EditPanel.Visible = true;
+            populateNewRegisteredUsersDropDown();
+            populateNewProjectDropDown();
+        }
+
+        private void populateNewRegisteredUsersDropDown()
+        {
+            CalendarBLL temp = new CalendarBLL();
+            NewRegisteredUsersDropDown.DataSource=temp.getUsers();
+            NewRegisteredUsersDropDown.DataBind();
+        }
+
+        private void populateNewProjectDropDown()
+        {
+            CalendarBLL temp = new CalendarBLL();
+            NewProjectDropDown.DataSource = temp.getProjectNames();
+            NewProjectDropDown.DataBind();
         }
 
         protected void SaveNewCalendar(object sender, EventArgs e)
         {
             CalendarBLL temp = new CalendarBLL();
-            temp.createCalendar(calendarName.Text);
+
+            String name = calendarName.Text;
+
+            String usernames = "";
+            foreach (ListItem item in RegisteredUsersList.Items)
+            {
+                if (item.Selected)
+                {
+                    if (usernames.Length != 0)
+                    {
+                        usernames += ", ";
+                    }
+
+                    usernames += item.Text;
+                }
+            }
+
+            String projectName = ProjectsDropDown.SelectedValue;
+         
+            temp.createCalendar(name, projectName, usernames);
         }
 
         protected void CancelCalendar(object sender, EventArgs e)
@@ -110,29 +114,37 @@ namespace ProjectManagerWeb
             InitPanel.Visible = true;
         }
 
-        private void populateDropDown(DropDownList temp)
+        private void populateCalendarDropDown(DropDownList temp)
         {
             CalendarBLL calendarBLL = new CalendarBLL();
-            DataRowCollection rows = calendarBLL.getCalendars();
-
-            String[] calendarNames = new String[rows.Count];
-            int i = 0;
-            foreach (DataRow row in rows)
-            {
-                calendarNames[i] = (string)row["Name"];
-                i ++;
-            }
-
+            ArrayList calendarNames = calendarBLL.getCalendars();
             temp.DataSource = calendarNames;
             temp.DataBind();
         }
 
         protected void SaveEdit_Click(object sender, EventArgs e)
         {
+            CalendarBLL calendarBLL = new CalendarBLL();
+
             String calendarToEdit = CalendarDropDown.SelectedValue;
             String newName = EditNameTextBox.Text;
-            CalendarBLL calendarBLL = new CalendarBLL();
-            if (calendarBLL.updateCalendarInfo(calendarToEdit, newName))
+
+            String newProject = NewProjectDropDown.SelectedValue;
+
+            String newUsers = "";
+            foreach (ListItem item in NewRegisteredUsersDropDown.Items)
+            {
+                if (item.Selected)
+                {
+                    if (newUsers.Length != 0)
+                    {
+                        newUsers += ", ";
+                    }
+                    newUsers += item.Text;
+                }
+            }
+
+            if (calendarBLL.updateCalendarInfo(calendarToEdit, newName, newProject, newUsers))
             {
                 TopMostMessageBox.Show("Successfully updated " + newName, "Message", MessageBoxButtons.OKCancel);
             }
@@ -147,6 +159,12 @@ namespace ProjectManagerWeb
                 calendarBLL.deleteCalendar(calendarToDelete);
                 return;
             }
+        }
+
+        protected void ViewCalendarClick(object sender, EventArgs e)
+        {
+            System.Diagnostics.Trace.Write("Pressed View calendar");
+
         }
     }
 }

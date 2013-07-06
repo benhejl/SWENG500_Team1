@@ -68,6 +68,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Calendar.xsd</DependentUpon>
     </Compile>
+    <Compile Include="CalendarDAL\CalendarDAL.cs" />
     <Compile Include="Forum\ForumDAL.cs" />
     <Compile Include="Issue\IssueDAL.cs" />
     <Compile Include="ProgramManagerDataSet.Designer.cs">

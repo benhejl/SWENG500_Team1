@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.SqlClient;
@@ -148,5 +149,31 @@ namespace ProjectManagerDAL
             }
             return user;
         }
+
+        //Functions for the calendar
+        public static ArrayList GetUserNamesForCalendar() {
+            ArrayList list = new ArrayList();
+            using (SqlConnection sqlConnection = new SqlConnection(Constants.DATABASE.CONNECTION_STRING))
+            {
+                sqlConnection.Open();
+                using (SqlCommand sqlCommand = new SqlCommand("SELECT UserName FROM USERS", sqlConnection))
+                {
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                        if (sqlDataReader.HasRows)
+                        {
+                            while (sqlDataReader.Read())
+                            {
+                                list.Add(Convert.ToString(sqlDataReader["UserName"]));
+                            }
+                        }
+                        sqlDataReader.Close();
+                    }
+                }
+                sqlConnection.Close();
+            }
+            return list;
+        }
     }
+
 }
