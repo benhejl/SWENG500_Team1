@@ -48,6 +48,9 @@
                     <Items>
                         <asp:MenuItem NavigateUrl="" Text="Home"/>
                         <asp:MenuItem NavigateUrl="~/Issues.aspx" Text="Tracking"/>
+                        <asp:MenuItem NavigateUrl="~/Calendar.aspx" Text="Calendar"/>
+                        <asp:MenuItem NavigateUrl="" Text="Collaboration"/>
+                        <asp:MenuItem NavigateUrl="~/Calendar.aspx" Text="Calendar"/>
                         <asp:MenuItem NavigateUrl="~/Scrum/EnterScrumData.aspx" Text="Scrum"/>
                         <asp:MenuItem NavigateUrl="~/Forum/Forum.aspx" Text="Forum"/>
                         <asp:MenuItem NavigateUrl="" Text="Calendar"/>
