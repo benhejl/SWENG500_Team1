@@ -74,7 +74,7 @@ namespace ProjectManagerTest
             List<Type> actual = ReportBLL.ReportTypes();
             Assert.AreEqual(actual.Count, 2);
             Assert.IsTrue(actual.Contains(typeof(ProjectManagerLibrary.Models.Graphs.OpenVsResolvedStrategy)));
-            Assert.IsTrue(actual.Contains(typeof(ProjectManagerLibrary.Models.Graphs.ProjectSummary)));
+            Assert.IsTrue(actual.Contains(typeof(ProjectManagerLibrary.Models.Reports.ProjectSummary)));
         }
     }
 }
