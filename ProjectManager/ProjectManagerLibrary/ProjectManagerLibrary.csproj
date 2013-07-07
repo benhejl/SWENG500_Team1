@@ -51,7 +51,7 @@
     <Compile Include="Models\DateRange.cs" />
     <Compile Include="Models\ForumModel.cs" />
     <Compile Include="Models\IssueAttachment.cs" />
-    <Compile Include="Models\Graphs\ProjectData.cs" />
+    <Compile Include="Models\ProjectData.cs" />
     <Compile Include="Models\Reports\IssuesByUser.cs" />
     <Compile Include="Models\Reports\IssueStatus.cs" />
     <Compile Include="Models\Reports\ProjectSummary.cs" />
