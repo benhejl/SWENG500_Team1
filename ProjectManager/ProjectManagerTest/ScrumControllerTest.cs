@@ -181,15 +181,9 @@ namespace ProjectManagerTest
             ScrumModel scrum = null; // TODO: Initialize to an appropriate value
             bool expected = false; // TODO: Initialize to an appropriate value
             bool actual;
-<<<<<<< HEAD
-            //actual = target.ViewScrumDetails(scrum);
-            //Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-=======
             actual = target.ViewScrumDetails(scrum);
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");*/
->>>>>>> 567b43206841e93c2be674c60285cc3c2a5c39e5
         }
     }
 }
