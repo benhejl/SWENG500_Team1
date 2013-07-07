@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections;
+using ProjectManagerLibrary.Models;
 
 namespace ProjectManagerTest
 {
@@ -118,6 +119,68 @@ namespace ProjectManagerTest
             bool actual;
             actual = CalendarDAL.updateCalendar(currentName, newName, projectName, users);
             Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for deleteEventsByCalendarId
+        ///</summary>
+        [TestMethod()]
+        public void deleteEventsByCalendarIdTest()
+        {
+            int calendarId = 1;
+            bool expected = true;
+            bool actual;
+            actual = CalendarDAL.deleteEventsByCalendarId(calendarId);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for getCalendarIdByName
+        ///</summary>
+        [TestMethod()]
+        public void getCalendarIdByNameTest()
+        {
+            string calendarName = "UnitTestName";
+            int expected = 1;
+            int actual;
+            actual = CalendarDAL.getCalendarIdByName(calendarName);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for getEvents
+        ///</summary>
+        [TestMethod()]
+        public void getEventsTest()
+        {
+            ArrayList expected = new ArrayList();
+            ArrayList actual;
+            actual = CalendarDAL.getEvents();
+            Assert.AreEqual(expected.Count, actual.Count);
+        }
+
+        /// <summary>
+        ///A test for addNewEvent
+        ///</summary>
+        [TestMethod()]
+        public void addNewEventTest()
+        {
+            CalendarEvent e = new CalendarEvent(1, "EventTest", DateTime.Now, DateTime.Now, 1);
+            bool expected = true;
+            bool actual;
+            actual = CalendarDAL.addNewEvent(e);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for getCalendarByName
+        ///</summary>
+        [TestMethod()]
+        public void getCalendarByNameTest()
+        {
+            string calendarName = "UnitTestName";
+            ProjectManagerLibrary.Models.Calendar actual = CalendarDAL.getCalendarByName(calendarName);
+            Assert.IsNotNull(actual);
         }
     }
 }

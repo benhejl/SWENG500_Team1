@@ -5,33 +5,81 @@ using System.Text;
 
 namespace ProjectManagerLibrary.Models
 {
-    class CalendarEvent
+    
+    public class CalendarEvent
     {
-        public enum EventType
-        {
-            MileStone,
-            Demo,
-            Vacation,
-            Task,
-            Sprint,
-            Custom
-        }
-
-        public string Name {get; set;}
-        public DateRange StartEndDate {get; set;}
-        public EventType Type {get; set;}
+        private int id;
+        private String name;
+        private DateTime start;
+        private DateTime end;
+        private int calendarId;
 
         public CalendarEvent()
         {
-            Name = null;
-            StartEndDate = null;
+            id = -1;
+            name = null;
+            start = DateTime.MinValue;
+            end = DateTime.MinValue;
+            calendarId = -1;
         }
 
-        public CalendarEvent(string Name, DateRange StartEndDate, EventType Type)
+        public CalendarEvent(int _id, String _name, DateTime _start, DateTime _end, int _calendarId)
         {
-            this.Type = Type;
-            this.Name = Name;
-            this.StartEndDate = StartEndDate;
+            id = _id;
+            name = _name;
+            start = _start;
+            end = _end;
+            calendarId = _calendarId;
+        }
+
+        public void setId(int _id)
+        {
+            id = _id;
+        }
+
+        public void setName(String _name)
+        {
+            name = _name;
+        }
+
+        public void setStart(DateTime _start)
+        {
+            start = _start;
+        }
+
+        public void setEnd(DateTime _end)
+        {
+            end = _end;
+        }
+
+        public void setCalendarId(int _calendarId) 
+        {
+            calendarId = _calendarId;
+        }
+
+        public int getId()
+        {
+            return id;
+        }
+
+        public String getName()
+        {
+            return name;
+        }
+
+        public DateTime getStart()
+        {
+            return start;
+        }
+
+        public DateTime getEnd()
+        {
+            return end;
+        }
+
+        public int getCalendarId()
+        {
+            return calendarId;
         }
     }
 }

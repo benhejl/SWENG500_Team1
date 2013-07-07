@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using ProjectManagerLibrary;
 using System.Data.SqlClient;
+using ProjectManagerLibrary.Models;
 
 namespace ProjectManagerDAL.CalendarDAL
 {
@@ -85,6 +86,123 @@ namespace ProjectManagerDAL.CalendarDAL
                 sqlConnection.Close();
             }
             return true;
+        }
+
+        public static bool deleteEventsByCalendarId(int calendarId)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(Constants.DATABASE.CONNECTION_STRING))
+            {
+                sqlConnection.Open();
+                using (SqlCommand sqlCommand = new SqlCommand("DELETE FROM CalendarEvents WHERE ID=" + calendarId, sqlConnection))
+                {
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                        sqlDataReader.Close();
+                    }
+                }
+                sqlConnection.Close();
+            }
+            return true;
+        }
+
+        public static int getCalendarIdByName(String calendarName)
+        {
+            int id = -1;
+            using (SqlConnection sqlConnection = new SqlConnection(Constants.DATABASE.CONNECTION_STRING))
+            {
+                sqlConnection.Open();
+                using (SqlCommand sqlCommand = new SqlCommand("SELECT ID FROM Calendar WHERE Name='" + calendarName + "'", sqlConnection))
+                {
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                        if (sqlDataReader.HasRows)
+                        {
+                            while (sqlDataReader.Read())
+                            {
+                                id = Convert.ToInt32(sqlDataReader["ID"]);
+                            }
+                        }
+                        sqlDataReader.Close();
+                    }
+                }
+                sqlConnection.Close();
+            }
+            return id;
+        }
+
+        public static ArrayList getEvents()
+        {
+            ArrayList events = new ArrayList();
+            using (SqlConnection sqlConnection = new SqlConnection(Constants.DATABASE.CONNECTION_STRING))
+            {
+                sqlConnection.Open();
+                using (SqlCommand sqlCommand = new SqlCommand("SELECT * FROM CalendarEvents", sqlConnection))
+                {
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                        if (sqlDataReader.HasRows)
+                        {
+                            while (sqlDataReader.Read())
+                            {
+                                events.Add(new CalendarEvent(Convert.ToInt32(sqlDataReader["ID"]), Convert.ToString(sqlDataReader["Name"]),
+                                    Convert.ToDateTime(sqlDataReader["Start"]), Convert.ToDateTime(sqlDataReader["End"]), Convert.ToInt32(sqlDataReader["CalendarId"])));
+                            }
+                        }
+                        sqlDataReader.Close();
+                    }
+                }
+                sqlConnection.Close();
+            }
+
+            return events;
+        }
+
+        public static bool addNewEvent(CalendarEvent e)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(Constants.DATABASE.CONNECTION_STRING))
+            {
+                sqlConnection.Open();
+                using (SqlCommand sqlCommand = new SqlCommand("INSERT INTO CalendarEvent (Name, Start, [End], CalendarId) "+
+                    "VALUES ('" + e.getName() + "','" + e.getStart() + "','" + e.getEnd() + "','" + e.getCalendarId() + "')"))
+                {
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                        sqlDataReader.Close();
+                    }
+                }
+                sqlConnection.Close();
+            }
+            return true;
+            return true;
+        }
+
+        public static ProjectManagerLibrary.Models.Calendar getCalendarByName(String calendarName)
+        {
+            ProjectManagerLibrary.Models.Calendar calendar = new ProjectManagerLibrary.Models.Calendar();
+            using (SqlConnection sqlConnection = new SqlConnection(Constants.DATABASE.CONNECTION_STRING))
+            {
+                sqlConnection.Open();
+                using (SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Calendar WHERE Name='" + calendarName + "'", sqlConnection))
+                {
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                        if (sqlDataReader.HasRows)
+                        {
+                            while (sqlDataReader.Read())
+                            {
+                                calendar.setCalendarId(Convert.ToInt32(sqlDataReader["ID"]));
+                                calendar.setCalendarName(Convert.ToString(sqlDataReader["Name"]));
+                                calendar.setProjectName(Convert.ToString(sqlDataReader["Project"]));
+                                calendar.setUsers(Convert.ToString(sqlDataReader["Users"]));
+                             }
+                        }
+                        sqlDataReader.Close();
+                    }
+                }
+                sqlConnection.Close();
+            }
+
+            return calendar;
         }
 
     }

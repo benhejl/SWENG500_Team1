@@ -35,13 +35,56 @@ namespace ProjectManagerBLL.CalendarBLL
 
         public bool deleteCalendar(String calendarToDelete)
         {
-            return CalendarDAL.deleteCalendar(calendarToDelete);
+            int id = -1;
+            if ((id = CalendarDAL.getCalendarIdByName(calendarToDelete)) > 0) {
+                if (deleteEventsByCalendarId(id))
+                {
+                    return CalendarDAL.deleteCalendar(calendarToDelete);
+                }
+            }
+            return false;
         }
 
         public ArrayList getUsers()
         {
             ArrayList usernames = UserDAL.GetUserNamesForCalendar();
             return usernames;
+        }
+
+        public bool deleteEventsByCalendarId(int calendarToDelete)
+        {
+            return CalendarDAL.deleteEventsByCalendarId(calendarToDelete);
+        }
+
+        public ArrayList getEventsByDate(DateTime date)
+        {
+            ArrayList qualEvents = new ArrayList();
+            ArrayList events = CalendarDAL.getEvents();
+            foreach (CalendarEvent e in events)
+            {
+                DateTime start = e.getStart();
+                DateTime end = e.getEnd();
+                if (start.Day.Equals(date.Day) || end.Day.Equals(date.Day))
+                {
+                    qualEvents.Add(e);
+                }
+            }
+            return qualEvents;
+        }
+
+        public int getCalendarIdByName(String calendarName)
+        {
+            return CalendarDAL.getCalendarIdByName(calendarName);
+        }
+
+        public ProjectManagerLibrary.Models.Calendar getCalendarByName(String calendarName)
+        {
+            return CalendarDAL.getCalendarByName(calendarName);
+        }
+
+        public bool addCalendarEvent(CalendarEvent e)
+        {
+            return CalendarDAL.addNewEvent(e);
         }
     }
 }

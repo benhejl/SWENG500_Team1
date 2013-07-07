@@ -5,27 +5,67 @@ using System.Text;
 
 namespace ProjectManagerLibrary.Models
 {
-    class Calendar
+    public class Calendar
     {
-        public string Name {get; set;}
-        public Project Project {get; set;}
-        public CalendarEvent[] Events {get; set;}
-        public User[] Users {get; set;}
+        private String calendarName;
+        private int calendarId;
+        private String projectName;
+        private String users;
 
         public Calendar()
         {
-            Name = null;
-            Project = null;
-            Events = null;
-            Users = null;
+            calendarName = null;
+            calendarId = -1;
+            projectName = null;
+            users = null;
         }
 
-        public Calendar(string Name, Project Project, CalendarEvent[] Events, User[] Users)
+        public Calendar(String _calendarName, int _calendarId, String _projectName, String _users)
         {
-            this.Name = Name;
-            this.Project = Project;
-            this.Events = Events;
-            this.Users = Users;
+            calendarName = _calendarName;
+            calendarId = _calendarId;
+            projectName = _projectName;
+            users = _users;
+        }
+
+        public void setCalendarName(String _calendarName)
+        {
+            calendarName = _calendarName;
+        }
+
+        public void setCalendarId(int _calendarId)
+        {
+            calendarId = _calendarId;
+        }
+
+        public void setProjectName(String _projectName)
+        {
+            projectName = _projectName;
+        }
+
+        public void setUsers(String _users)
+        {
+            users = _users;
+        }
+
+        public String getCalendarName()
+        {
+            return calendarName;
+        }
+
+        public int getCalendarId()
+        {
+            return calendarId;
+        }
+
+        public String getProjectName()
+        {
+            return projectName;
+        }
+
+        public String getUsers()
+        {
+            return users;
         }
     }
 }
