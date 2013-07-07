@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalendarBLL\CalendarBLL.cs" />
+    <Compile Include="Forum\ForumBLL.cs" />
     <Compile Include="Issue\IssueBLL.cs" />
     <Compile Include="Project\ProjectBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -58,6 +60,7 @@
       <Name>ProjectManagerLibrary</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,6 +1,10 @@
 ﻿using ProjectManagerLibrary.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using ProjectManagerWeb;
+using Microsoft.VisualStudio.TestTools.UnitTesting.Web;
+using System.Web.UI.WebControls;
+using ProjectManagerBLL.CalendarBLL;
 
 namespace ProjectManagerTest
 {
@@ -65,23 +69,135 @@ namespace ProjectManagerTest
 
 
         /// <summary>
-        ///A test for Calendar Constructor
+        ///A test for Page_Load
         ///</summary>
         [TestMethod()]
-        public void CalendarConstructorTest()
+        public void Page_LoadTest()
         {
-            Calendar target = new Calendar();
-            Assert.IsInstanceOfType(target, typeof(Calendar));
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
         }
 
         /// <summary>
         ///A test for Calendar Constructor
         ///</summary>
         [TestMethod()]
-        public void CalendarConstructorTest1()
+        public void CalendarConstructorTest()
         {
-            Calendar target = new Calendar();
-            Assert.IsInstanceOfType(target, typeof(Calendar));
+            ProjectManagerWeb.Calendar target = new ProjectManagerWeb.Calendar();
+            Assert.IsNotNull(target);
         }
+
+        /// <summary>
+        ///A test for CreateNewCalendarClick. Method just changes panel visibility. Nothing to test.
+        ///</summary>
+        [TestMethod()]
+        public void CreateNewCalendarClickTest()
+        {
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for populateProjectsDropDown. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void populateProjectsDropDownTest()
+        {
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+
+        /// <summary>
+        ///A test for populateUsersList. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void populateUsersListTest()
+        {
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for DeleteCalendarClick. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void DeleteCalendarClickTest()
+        {
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for EditCalendarInformationClick. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void EditCalendarInformationClickTest()
+        {
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for populateNewRegisteredUsersDropDown. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void populateNewRegisteredUsersDropDownTest()
+        {
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for SaveNewCalendar. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void SaveNewCalendarTest()
+        {
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for CancelCalendar. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void CancelCalendarTest()
+        {
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for populateCalendarDropDown. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void populateCalendarDropDownTest()
+        {
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for SaveEdit_Click. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void SaveEdit_ClickTest()
+        {
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for DeleteButton_Click. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void DeleteButton_ClickTest()
+        {
+            Calendar_Accessor target = new Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
     }
 }

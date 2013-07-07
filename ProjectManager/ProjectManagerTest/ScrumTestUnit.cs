@@ -90,10 +90,31 @@ namespace ProjectManagerTest
         [TestMethod]
         public void TestEditScrum()
         {
-            ScrumController scrumController = new ScrumController();
-            ScrumModel scrum = new ScrumModel();
-            scrum.UserId = 1;
-            Assert.IsTrue(scrumController.EditScrum(scrum));
+            ScrumModel scrumModel = new ScrumModel();
+            scrumModel.AnswerList = new System.Collections.ArrayList();
+
+            Answers answers = new Answers();
+            answers.Answer = "Test Edit";
+            answers.QuestionId = 1;
+            answers.UserId = 1;
+            answers.AnswerKey = 0;
+            scrumModel.AnswerList.Add(answers);
+
+            answers = new Answers();
+            answers.Answer = "Test Edit";
+            answers.QuestionId = 2;
+            answers.UserId = 1;
+            answers.AnswerKey = 0;
+            scrumModel.AnswerList.Add(answers);
+
+            answers = new Answers();
+            answers.Answer = "None";
+            answers.QuestionId = 3;
+            answers.UserId = 1;
+            answers.AnswerKey = 0;
+            scrumModel.AnswerList.Add(answers);
+
+            Assert.IsTrue(new ScrumController().EditScrum(scrumModel));
         }
         [TestMethod]
         public void TestViewScrum()
@@ -105,7 +126,7 @@ namespace ProjectManagerTest
         public void TestViewScrumDetails()
         {
             ScrumController scrumController = new ScrumController();
-            Assert.IsTrue(scrumController.ViewScrumData().AnswerList.Count > 1);
+            Assert.IsTrue(scrumController.GetScrumDetails(0).AnswerList.Count > 1);
         }
         [TestMethod]
         public void TestGetScrumQuestions()

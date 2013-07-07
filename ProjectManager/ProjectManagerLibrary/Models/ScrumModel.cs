@@ -22,9 +22,11 @@ namespace ProjectManagerLibrary.Models
     }
     public class Answers
     {
+        public int AnswerKey { get; set; }
         public int QuestionId { get; set; }
         public int UserId { get; set; }
         public string Answer { get; set; }
+
 
     }
     public class ScrumData
@@ -32,6 +34,7 @@ namespace ProjectManagerLibrary.Models
         public DateTime DateEntered { get; set; }
         public DateTime DateModified { get; set; }
         public int AnswerId { get; set; }
+        public int AnswerKey { get; set; }
         public int QuestionId { get; set; }
         public int UserId { get; set; }
         public string Answer { get; set; }

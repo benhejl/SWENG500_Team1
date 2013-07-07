@@ -63,6 +63,7 @@
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="IssueID" Type="int" Nullable="false" />
           <Property Name="MimeType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FileData" Type="varbinary(max)" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'C:\PROJECTMANAGER\PROJECTMANAGERWEB\APP_DATA\PROJECTMANAGER.MDF.dbo.IssueCategories' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -265,6 +266,7 @@
           <Property Name="IssueID" Type="Int32" Nullable="false" />
           <Property Name="MimeType" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="User" Relationship="ProjectManagerDAL.FK_UserIssueAttachment" FromRole="IssueAttachments" ToRole="Users" />
+          <Property Type="Binary" Name="FileData" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="IssueCategoryDAL">
           <Key>
@@ -414,7 +416,8 @@
             <ScalarProperty Name="UserID" ColumnName="UserID" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="IssueAttachmentDALs"><EntityTypeMapping TypeName="ProjectManagerDAL.IssueAttachmentDAL"><MappingFragment StoreEntitySet="IssueAttachments">
-            <ScalarProperty Name="IssueAttachmentID" ColumnName="IssueAttachmentID" />
+            <ScalarProperty Name="FileData" ColumnName="FileData" />
+                <ScalarProperty Name="IssueAttachmentID" ColumnName="IssueAttachmentID" />
             <ScalarProperty Name="Filename" ColumnName="Filename" />
             <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
             <ScalarProperty Name="Description" ColumnName="Description" />

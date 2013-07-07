@@ -46,6 +46,7 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -59,10 +60,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddIssue.aspx" />
+    <Content Include="AddIssueAttachment.aspx" />
     <Content Include="App_Data\ProjectManager.mdf" />
     <Content Include="App_Data\ProjectManager_log.ldf">
       <DependentUpon>ProjectManager.mdf</DependentUpon>
     </Content>
+    <Content Include="Calendar.aspx" />
+    <Content Include="Forum\CreateNewForumPost.aspx" />
+    <Content Include="Forum\EditForumPost.aspx" />
+    <Content Include="Forum\Forum.aspx" />
+    <Content Include="Forum\ForumPostDetails.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="IssueDetails.aspx" />
     <Content Include="IssueDetailsEdit.aspx" />
@@ -96,11 +103,54 @@
     <Compile Include="AddIssue.aspx.designer.cs">
       <DependentUpon>AddIssue.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AddIssueAttachment.aspx.cs">
+      <DependentUpon>AddIssueAttachment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddIssueAttachment.aspx.designer.cs">
+      <DependentUpon>AddIssueAttachment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Calendar.aspx.cs">
+      <DependentUpon>Calendar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Calendar.aspx.designer.cs">
+      <DependentUpon>Calendar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\CalendarController.cs" />
+    <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\IssueController.cs" />
     <Compile Include="Controllers\ScrumController.cs" />
     <Compile Include="Controllers\TeamRoomController.cs" />
+    <Compile Include="Forum\CreateNewForumPost.aspx.cs">
+      <DependentUpon>CreateNewForumPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forum\CreateNewForumPost.aspx.designer.cs">
+      <DependentUpon>CreateNewForumPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forum\EditForumPost.aspx.cs">
+      <DependentUpon>EditForumPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forum\EditForumPost.aspx.designer.cs">
+      <DependentUpon>EditForumPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forum\Forum.aspx.cs">
+      <DependentUpon>Forum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forum\Forum.aspx.designer.cs">
+      <DependentUpon>Forum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forum\ForumPostDetails.aspx.cs">
+      <DependentUpon>ForumPostDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forum\ForumPostDetails.aspx.designer.cs">
+      <DependentUpon>ForumPostDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -175,6 +225,7 @@
     <Compile Include="Reports.aspx.designer.cs">
       <DependentUpon>Reports.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TopMostMessageBox.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />

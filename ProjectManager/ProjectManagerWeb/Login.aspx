@@ -24,7 +24,7 @@
 	</ul>
 </div><a id="NavigationMenu_SkipLink"></a>
             </div>
-            <table>
+            <table class="customtable">
                 <tr>
                     <td>
                         <div style="width: 199px; height: 446px; background-color:#bdbdbd;">

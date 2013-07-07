@@ -14,15 +14,15 @@ namespace ProjectManagerWeb.Controllers
         }
         public bool EditScrum(ScrumModel scrum)
         {
-            return true;
+            return new ScrumBLL().EditScrum(scrum);
         }
         public ScrumModel ViewScrumData()
         {
             return new ScrumBLL().ViewScrumData();
         }
-        public bool ViewScrumDetails(ScrumModel scrum)
+        public ScrumModel GetScrumDetails(int answerKey)
         {
-            return true;
+            return new ScrumBLL().GetScrumDetails(answerKey);
         }
         public ScrumModel GetScrumQuestions()
         {

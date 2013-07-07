@@ -51,6 +51,7 @@ namespace ProjectManagerLibrary.Models
         public User Assignee;
         public string IssueCategoryName { get; set; }
         public DateTime EntryDate { get; set; }
+        public List<IssueAttachment> IssueAttachments { get; set; }
 
         public Issue()
         {

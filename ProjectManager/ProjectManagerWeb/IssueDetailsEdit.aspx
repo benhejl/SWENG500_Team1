@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<table id="Table1" runat="server" align="left">
+<table id="Table1" runat="server" align="left" class="customtable">
     <tr>
         <th>&nbsp;</th>
         <th><center>Edit Issue Details</center></th>

@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using ProjectManagerLibrary.Models;
+using System.Collections.Generic;
 
 namespace ProjectManagerTest
 {
@@ -111,5 +112,50 @@ namespace ProjectManagerTest
         }
 
 
+
+        /// <summary>
+        ///A test for AddIssueAttachment
+        ///</summary>
+        [TestMethod()]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void AddIssueAttachmentTest()
+        {
+            IssueAttachment issueAttachment = null; // TODO: Initialize to an appropriate value
+            bool expected = false; // TODO: Initialize to an appropriate value
+            bool actual;
+            actual = IssueBLL.AddIssueAttachment(issueAttachment);
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+
+        /// <summary>
+        ///A test for GetIssueAttachment
+        ///</summary>
+        [TestMethod()]
+        public void GetIssueAttachmentTest()
+        {
+            int issueAttachmentID = 3; // TODO: Initialize to an appropriate value
+            //IssueAttachment expected = null; // TODO: Initialize to an appropriate value
+            IssueAttachment actual;
+            actual = IssueBLL.GetIssueAttachment(issueAttachmentID);
+            //Assert.AreEqual(expected, actual);
+            //Assert.Inconclusive("Verify the correctness of this test method.");
+            Assert.IsNotNull(actual);
+        }
+
+        /// <summary>
+        ///A test for GetIssueAttachmentsList
+        ///</summary>
+        [TestMethod()]
+        public void GetIssueAttachmentsListTest()
+        {
+            int issueID = 1; // TODO: Initialize to an appropriate value
+            List<IssueAttachment> expected = null; // TODO: Initialize to an appropriate value
+            List<IssueAttachment> actual;
+            actual = IssueBLL.GetIssueAttachmentsList(issueID);
+            //Assert.AreEqual(expected, actual);
+            //Assert.Inconclusive("Verify the correctness of this test method.");
+            Assert.IsNotNull(actual);
+        }
     }
 }

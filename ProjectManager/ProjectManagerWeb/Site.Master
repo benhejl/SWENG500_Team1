@@ -10,6 +10,7 @@
 </head>
 <body>
     <form runat="server">
+
     <div class="page">
         <div class="header">
             <div class="title">
@@ -47,7 +48,14 @@
                     <Items>
                         <asp:MenuItem NavigateUrl="" Text="Home"/>
                         <asp:MenuItem NavigateUrl="~/Issues.aspx" Text="Tracking"/>
+<<<<<<< HEAD
+=======
+                        <asp:MenuItem NavigateUrl="~/Calendar.aspx" Text="Calendar"/>
                         <asp:MenuItem NavigateUrl="" Text="Collaboration"/>
+                        <asp:MenuItem NavigateUrl="~/Calendar.aspx" Text="Calendar"/>
+>>>>>>> origin/Lauren_calendar
+                        <asp:MenuItem NavigateUrl="~/Scrum/EnterScrumData.aspx" Text="Scrum"/>
+                        <asp:MenuItem NavigateUrl="~/Forum/Forum.aspx" Text="Forum"/>
                         <asp:MenuItem NavigateUrl="" Text="Calendar"/>
                         <asp:MenuItem NavigateUrl="~/Reports.aspx" Text="Reports"/>
                     </Items>

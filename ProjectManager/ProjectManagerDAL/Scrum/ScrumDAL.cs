@@ -38,6 +38,34 @@ namespace ProjectManagerDAL.Scrum
             }
             return scrumModel;
         }
+        public ScrumModel GetScrumDetails(int AnswerKey)
+        {
+            ScrumModel scrumModel = new ScrumModel();
+            using (SqlConnection sqlConnection = new SqlConnection(Constants.DATABASE.CONNECTION_STRING))
+            {
+                sqlConnection.Open();
+                using (SqlCommand sqlCommand = new SqlCommand("SELECT * FROM ScrumAnswers WHERE AnswerKey=" + AnswerKey, sqlConnection))
+                {
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                        if (sqlDataReader.HasRows)
+                        {
+                            scrumModel.AnswerList = new System.Collections.ArrayList();
+                            while (sqlDataReader.Read())
+                            {
+                                Answers answers = new Answers();
+                                answers.QuestionId = Convert.ToInt32(sqlDataReader["QuestionId"]);
+                                answers.Answer = Convert.ToString(sqlDataReader["Answer"]);
+                                scrumModel.AnswerList.Add(answers);
+                            }
+                        }
+                        sqlDataReader.Close();
+                    }
+                }
+                sqlConnection.Close();
+            }
+            return scrumModel;
+        }
 
         public bool InputNewScrum(ScrumModel scrumModel)
         {
@@ -46,12 +74,34 @@ namespace ProjectManagerDAL.Scrum
                 using (SqlConnection sqlConnection = new SqlConnection(Constants.DATABASE.CONNECTION_STRING))
                 {
                     sqlConnection.Open();
+                    int sequence = 0;
+                    using (SqlCommand sqlCommand = new SqlCommand("SELECT MAX(AnswerKey) As Sequence FROM ScrumAnswers", sqlConnection))
+                    {
+                        using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                        {
+                            if (sqlDataReader.HasRows)
+                            {
+                                if (sqlDataReader.Read())
+                                {
+                                    if (sqlDataReader["Sequence"] != DBNull.Value)
+                                    {
+                                        sequence = Convert.ToInt32(sqlDataReader["Sequence"]);
+                                        sequence += 1;
+                                    }
+                                }
+
+                            }
+                            sqlDataReader.Close();
+                        }
+                    }
+
                     foreach (Answers answer in scrumModel.AnswerList)
                     {
-                        using (SqlCommand sqlCommand = new SqlCommand("INSERT INTO ScrumAnswers VALUES (@Answer, @QuestionId, @UserId, @DateEntered, @DateModified)", sqlConnection))
+                        using (SqlCommand sqlCommand = new SqlCommand("INSERT INTO ScrumAnswers VALUES (@Answer, @AnswerKey, @QuestionId, @UserId, @DateEntered, @DateModified)", sqlConnection))
                         {
 
                             sqlCommand.Parameters.Add(new SqlParameter("Answer", answer.Answer));
+                            sqlCommand.Parameters.Add(new SqlParameter("AnswerKey", sequence));
                             sqlCommand.Parameters.Add(new SqlParameter("QuestionId", answer.QuestionId));
                             sqlCommand.Parameters.Add(new SqlParameter("UserId", answer.UserId));
                             sqlCommand.Parameters.Add(new SqlParameter("DateEntered", DateTime.Now));
@@ -75,6 +125,7 @@ namespace ProjectManagerDAL.Scrum
             using (SqlConnection sqlConnection = new SqlConnection(Constants.DATABASE.CONNECTION_STRING))
             {
                 sqlConnection.Open();
+
                 string sqlString = "SELECT Users.FirstName, Users.LastName, dbo.ScrumQuestions.ScrumQuestion, ScrumAnswers. * " +
                                    "FROM ScrumAnswers " +
                                    "INNER JOIN dbo.ScrumQuestions ON dbo.ScrumQuestions.ScrumQuestionId = dbo.ScrumAnswers.QuestionId " +
@@ -94,6 +145,7 @@ namespace ProjectManagerDAL.Scrum
                                 scrumData.LastName = Convert.ToString(sqlDataReader["LastName"]);
                                 scrumData.Question = Convert.ToString(sqlDataReader["ScrumQuestion"]);
                                 scrumData.AnswerId = Convert.ToInt32(sqlDataReader["AnswerId"]);
+                                scrumData.AnswerKey = Convert.ToInt32(sqlDataReader["AnswerKey"]);
                                 scrumData.Answer = Convert.ToString(sqlDataReader["Answer"]);
                                 scrumData.QuestionId = Convert.ToInt32(sqlDataReader["QuestionId"]);
                                 scrumData.UserId = Convert.ToInt32(sqlDataReader["UserId"]);
@@ -109,6 +161,32 @@ namespace ProjectManagerDAL.Scrum
             }
             return scrumModel;
         }
-
+        public bool EditScrum(ScrumModel scrumModel)
+        {
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(Constants.DATABASE.CONNECTION_STRING))
+                {
+                    sqlConnection.Open();
+                    foreach (Answers answer in scrumModel.AnswerList)
+                    {
+                        using (SqlCommand sqlCommand = new SqlCommand("Update ScrumAnswers SET  Answer = @Answer, DateModified = @DateModified WHERE QuestionId = @QuestionId AND AnswerKey = @AnswerKey", sqlConnection))
+                        {
+                            sqlCommand.Parameters.Add(new SqlParameter("Answer", answer.Answer));
+                            sqlCommand.Parameters.Add(new SqlParameter("DateModified", DateTime.Now));
+                            sqlCommand.Parameters.Add(new SqlParameter("QuestionId", answer.QuestionId));
+                            sqlCommand.Parameters.Add(new SqlParameter("AnswerKey", answer.AnswerKey));
+                            sqlCommand.ExecuteNonQuery();
+                        }
+                    }
+                    sqlConnection.Close();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

@@ -46,6 +46,24 @@ namespace ProjectManagerBLL
         }
 
         /// <summary>
+        /// AddIssueAttachment
+        /// </summary>
+        /// <param name="issueAttachment">IssueAttachment</param>
+        /// <returns>bool</returns>
+        public static bool AddIssueAttachment(IssueAttachment issueAttachment)
+        {
+            try
+            {
+                return IssueDAL.AddIssueAttachment(issueAttachment);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+        }
+
+        /// <summary>
         /// EditIssue
         /// </summary>
         /// <param name="issue">Issue</param>
@@ -62,5 +80,45 @@ namespace ProjectManagerBLL
             }
 
         }
+
+        /// <summary>
+        /// GetIssueAttachmentsList
+        /// </summary>
+        /// <param name="issueID"></param>
+        /// <returns></returns>
+        public static List<IssueAttachment> GetIssueAttachmentsList(int issueID)
+        {
+            try
+            {
+                return IssueDAL.GetIssueAttachmentsList(issueID);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+
+        }
+
+
+        /// <summary>
+        /// GetIssueAttachment
+        /// </summary>
+        /// <param name="issueAttachmentID"></param>
+        /// <returns></returns>
+        public static IssueAttachment GetIssueAttachment(int issueAttachmentID)
+        {
+            try
+            {
+                return IssueDAL.GetIssueAttachment(issueAttachmentID);
+
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+        }
+
     }
 }

@@ -123,5 +123,141 @@ namespace ProjectManagerTest
             actual = target.ViewIssueList();
             Assert.AreEqual(expected, actual);
         }
+
+        /// <summary>
+        ///A test for IssueController Constructor
+        ///</summary>
+        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
+        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
+        // whether you are testing a page, web service, or a WCF service.
+        [TestMethod()]
+        [HostType("ASP.NET")]
+        [AspNetDevelopmentServerHost("C:\\Users\\Lauren\\Documents\\GitHub\\SWENG500_Team1\\ProjectManager\\ProjectManagerWeb", "/")]
+        [UrlToTest("http://localhost:19961/")]
+        public void IssueControllerConstructorTest()
+        {
+            IssueController target = new IssueController();
+            Assert.Inconclusive("TODO: Implement code to verify target");
+        }
+
+        /// <summary>
+        ///A test for AddAssigneeToIssue
+        ///</summary>
+        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
+        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
+        // whether you are testing a page, web service, or a WCF service.
+        [TestMethod()]
+        [HostType("ASP.NET")]
+        [AspNetDevelopmentServerHost("C:\\Users\\Lauren\\Documents\\GitHub\\SWENG500_Team1\\ProjectManager\\ProjectManagerWeb", "/")]
+        [UrlToTest("http://localhost:19961/")]
+        public void AddAssigneeToIssueTest1()
+        {
+            IssueController target = new IssueController(); // TODO: Initialize to an appropriate value
+            bool expected = false; // TODO: Initialize to an appropriate value
+            bool actual;
+            actual = target.AddAssigneeToIssue();
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+
+        /// <summary>
+        ///A test for AddNewIssue
+        ///</summary>
+        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
+        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
+        // whether you are testing a page, web service, or a WCF service.
+        [TestMethod()]
+        [HostType("ASP.NET")]
+        [AspNetDevelopmentServerHost("C:\\Users\\Lauren\\Documents\\GitHub\\SWENG500_Team1\\ProjectManager\\ProjectManagerWeb", "/")]
+        [UrlToTest("http://localhost:19961/")]
+        public void AddNewIssueTest1()
+        {
+            IssueController target = new IssueController(); // TODO: Initialize to an appropriate value
+            bool expected = false; // TODO: Initialize to an appropriate value
+            bool actual;
+            actual = target.AddNewIssue();
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+
+        /// <summary>
+        ///A test for DeleteAssigneeFromIssue
+        ///</summary>
+        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
+        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
+        // whether you are testing a page, web service, or a WCF service.
+        [TestMethod()]
+        [HostType("ASP.NET")]
+        [AspNetDevelopmentServerHost("C:\\Users\\Lauren\\Documents\\GitHub\\SWENG500_Team1\\ProjectManager\\ProjectManagerWeb", "/")]
+        [UrlToTest("http://localhost:19961/")]
+        public void DeleteAssigneeFromIssueTest1()
+        {
+            IssueController target = new IssueController(); // TODO: Initialize to an appropriate value
+            bool expected = false; // TODO: Initialize to an appropriate value
+            bool actual;
+            actual = target.DeleteAssigneeFromIssue();
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+
+        /// <summary>
+        ///A test for DeleteIssue
+        ///</summary>
+        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
+        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
+        // whether you are testing a page, web service, or a WCF service.
+        [TestMethod()]
+        [HostType("ASP.NET")]
+        [AspNetDevelopmentServerHost("C:\\Users\\Lauren\\Documents\\GitHub\\SWENG500_Team1\\ProjectManager\\ProjectManagerWeb", "/")]
+        [UrlToTest("http://localhost:19961/")]
+        public void DeleteIssueTest1()
+        {
+            IssueController target = new IssueController(); // TODO: Initialize to an appropriate value
+            bool expected = false; // TODO: Initialize to an appropriate value
+            bool actual;
+            actual = target.DeleteIssue();
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+
+        /// <summary>
+        ///A test for EditIssueDetails
+        ///</summary>
+        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
+        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
+        // whether you are testing a page, web service, or a WCF service.
+        [TestMethod()]
+        [HostType("ASP.NET")]
+        [AspNetDevelopmentServerHost("C:\\Users\\Lauren\\Documents\\GitHub\\SWENG500_Team1\\ProjectManager\\ProjectManagerWeb", "/")]
+        [UrlToTest("http://localhost:19961/")]
+        public void EditIssueDetailsTest1()
+        {
+            IssueController target = new IssueController(); // TODO: Initialize to an appropriate value
+            bool expected = false; // TODO: Initialize to an appropriate value
+            bool actual;
+            actual = target.EditIssueDetails();
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+
+        /// <summary>
+        ///A test for ViewIssueList
+        ///</summary>
+        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
+        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
+        // whether you are testing a page, web service, or a WCF service.
+        [TestMethod()]
+        [HostType("ASP.NET")]
+        [AspNetDevelopmentServerHost("C:\\Users\\Lauren\\Documents\\GitHub\\SWENG500_Team1\\ProjectManager\\ProjectManagerWeb", "/")]
+        [UrlToTest("http://localhost:19961/")]
+        public void ViewIssueListTest1()
+        {
+            IssueController target = new IssueController(); // TODO: Initialize to an appropriate value
+            bool expected = false; // TODO: Initialize to an appropriate value
+            bool actual;
+            actual = target.ViewIssueList();
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
     }
 }

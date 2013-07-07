@@ -166,6 +166,96 @@ namespace ProjectManagerDAL
             return issues;
         }
 
+
+        /// <summary>
+        /// GetIssueAttachmentsList
+        /// </summary>
+        /// <param name="issueID"></param>
+        /// <returns></returns>
+        public static List<IssueAttachment> GetIssueAttachmentsList(int issueID)
+        {
+            List<IssueAttachment> issueAttachments = new List<IssueAttachment>();
+
+            try
+            {
+                using (var db = new ProjectManagerEntities())
+                {
+                    // get the list of file attachments for a specific Issue.
+                    var query = from i in db.IssueAttachmentDALs
+                                where i.IssueID == issueID
+                                select i;
+
+                    foreach (var item in query)
+                    {
+                        // build the issue  attachment object.
+                        var fileAttachment = new IssueAttachment()
+                        {
+                            IssueAttachmentID = item.IssueAttachmentID,
+                            FileName = item.Filename,
+                            EntryDate = item.EntryDate,
+                            Description = item.Description,
+                            UserID = item.UserID,
+                            IssueID = item.IssueID,
+                            MimeType = item.MimeType
+                        };
+
+                        issueAttachments.Add(fileAttachment);
+                    }
+
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return issueAttachments;
+
+        }
+
+
+        /// <summary>
+        /// GetIssueAttachment
+        /// </summary>
+        /// <param name="issueAttachmentID">int</param>
+        /// <returns></returns>
+        public static IssueAttachment GetIssueAttachment(int issueAttachmentID)
+        {
+            var issueAttachments = new IssueAttachment();
+
+            try
+            {
+                using (var db = new ProjectManagerEntities())
+                {
+                    // get the file attachment.
+                    var query = (from i in db.IssueAttachmentDALs
+                                 where i.IssueAttachmentID == issueAttachmentID
+                                select i).First();
+
+                    if (query != null)
+                    {
+                        issueAttachments.IssueID = query.IssueAttachmentID;
+                        issueAttachments.FileName = query.Filename;
+                        issueAttachments.EntryDate = query.EntryDate;
+                        issueAttachments.Description = query.Description;
+                        issueAttachments.IssueID = query.IssueID;
+                        issueAttachments.UserID = query.UserID;
+                        issueAttachments.MimeType = query.MimeType;
+                        issueAttachments.FileData = query.FileData;
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return issueAttachments;
+
+        }
+
         /// <summary>
         /// AddIssue - Add New Issue
         /// </summary>
@@ -232,6 +322,47 @@ namespace ProjectManagerDAL
             }
         }
 
+
+        /// <summary>
+        /// AddIssueAttachment
+        /// </summary>
+        /// <param name="issueAttachment">IssueAttachment</param>
+        /// <returns>bool</returns>
+        public static bool AddIssueAttachment(IssueAttachment issueAttachment)
+        {
+            var returnValue = false;
+
+            try
+            {
+                using (var db = new ProjectManagerEntities())
+                {
+                    db.Connection.Open();
+                    var ia = new IssueAttachmentDAL();
+                    ia.Filename = issueAttachment.FileName;
+                    ia.EntryDate = issueAttachment.EntryDate;
+                    ia.Description = issueAttachment.Description;
+                    ia.IssueID = issueAttachment.IssueID;
+                    ia.UserID = issueAttachment.UserID;
+                    ia.MimeType = issueAttachment.MimeType;
+                    ia.FileData = issueAttachment.FileData;
+
+                    // save issue Attachment.
+                    db.IssueAttachmentDALs.AddObject(ia);
+                    db.SaveChanges();
+
+                }
+
+                returnValue = true;
+               
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+
+            return returnValue;
+        }
 
         /// <summary>
         /// EditIssue

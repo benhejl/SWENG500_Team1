@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.SqlClient;
@@ -72,6 +73,46 @@ namespace ProjectManagerDAL
         }
 
         /// <summary>
+        /// GetUserGivenLogonName
+        /// </summary>
+        /// <param name="logonName"></param>
+        /// <returns></returns>
+        public static User GetUserGivenLogonName(string logonName)
+        {
+            var user = new User();
+
+            try
+            {
+
+                using (var db = new ProjectManagerEntities())
+                {
+                    var query = (from u in db.UserDALs
+                                where u.UserName == logonName
+                                select u).First();
+
+                    if (query != null)
+                    {
+                        user.UserId = query.UserID;
+                        user.UserName = query.UserName;
+                        user.Password = query.Password;
+                        user.UserRole = query.UserRole;
+                        user.FirstName = query.FirstName;
+                        user.LastName = query.LastName;
+                        user.Email = query.Email;
+                        user.PhoneNumber = query.PhoneNumber;
+                        user.Position = query.Position;
+                        user.TeamName = query.Position;
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return user;
+        }
+        /// <summary>
         /// GetUserInfo
         /// </summary>
         /// <param name="userName"></param>
@@ -108,5 +149,31 @@ namespace ProjectManagerDAL
             }
             return user;
         }
+
+        //Functions for the calendar
+        public static ArrayList GetUserNamesForCalendar() {
+            ArrayList list = new ArrayList();
+            using (SqlConnection sqlConnection = new SqlConnection(Constants.DATABASE.CONNECTION_STRING))
+            {
+                sqlConnection.Open();
+                using (SqlCommand sqlCommand = new SqlCommand("SELECT UserName FROM USERS", sqlConnection))
+                {
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                        if (sqlDataReader.HasRows)
+                        {
+                            while (sqlDataReader.Read())
+                            {
+                                list.Add(Convert.ToString(sqlDataReader["UserName"]));
+                            }
+                        }
+                        sqlDataReader.Close();
+                    }
+                }
+                sqlConnection.Close();
+            }
+            return list;
+        }
     }
+
 }
