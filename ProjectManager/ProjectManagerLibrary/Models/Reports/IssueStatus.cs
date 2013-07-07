@@ -10,6 +10,9 @@ namespace ProjectManagerLibrary.Models.Reports
     {
         public override TableRow[] SummaryForProject(Project project)
         {
+            if (null == project)
+                return new TableRow[0];
+
             List<TableRow> rows = new List<TableRow>(4);
             rows.Add(HeaderRow("Issue Status"));
             rows.Add(CreateRow("Status", "Count", true));
