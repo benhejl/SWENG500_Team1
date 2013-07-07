@@ -76,6 +76,8 @@
     <Compile Include="IssueBLLTest.cs" />
     <Compile Include="IssueControllerTest.cs" />
     <Compile Include="DateRangeTest.cs" />
+    <Compile Include="IssuesByUserTest.cs" />
+    <Compile Include="IssueStatusTest.cs" />
     <Compile Include="IssueTest.cs" />
     <Compile Include="IssueTransitionTest.cs" />
     <Compile Include="OpenVsResolvedStrategyTest.cs" />

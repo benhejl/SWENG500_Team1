@@ -3,6 +3,7 @@ using System;
 using ProjectManagerLibrary.Models.Reports;
 using ProjectManagerLibrary.Models;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace ProjectManagerTest
 {
@@ -72,14 +73,12 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void DisplayTest()
         {
-            ProjectSummary target = new ProjectSummary(); // TODO: Initialize to an appropriate value
-            Project project = null; // TODO: Initialize to an appropriate value
-            DateRange range = null; // TODO: Initialize to an appropriate value
-            Control expected = null; // TODO: Initialize to an appropriate value
-            Control actual;
-            actual = target.Display(project, range);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            ProjectSummary target = new ProjectSummary();
+            Project project = new Project(0, "Name", DateTime.Now, DateTime.Now, "", "", "", DateTime.Now);
+            Control control = target.Display(project, new DateRange(DateTime.Now, DateTime.Now));
+            Assert.IsInstanceOfType(control, typeof(Table));
+            Table table = control as Table;
+            Assert.AreEqual(4, table.Rows.Count);
         }
 
         /// <summary>
@@ -108,7 +107,7 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void CurrentDateRangeTest()
         {
-            ProjectSummary target = new ProjectSummary(); // TODO: Initialize to an appropriate value
+            ProjectSummary target = new ProjectSummary();
             DateRange actual = target.CurrentDateRange;
             Assert.IsNotNull(target.CurrentDateRange);
             Assert.IsTrue(actual.StartTime.AddSeconds(2).CompareTo(DateTime.Now) > 0);
