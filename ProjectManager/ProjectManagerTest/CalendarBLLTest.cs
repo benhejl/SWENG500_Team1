@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Data;
 using System.Collections;
+using ProjectManagerLibrary.Models;
 
 namespace ProjectManagerTest
 {
@@ -155,6 +156,74 @@ namespace ProjectManagerTest
             bool expected = true;
             bool actual;
             actual = target.updateCalendarInfo(currentName, newName, newProject, newUsers);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for deleteEventsByCalendarId
+        ///</summary>
+        [TestMethod()]
+        public void deleteEventsByCalendarIdTest()
+        {
+            CalendarBLL target = new CalendarBLL(); // TODO: Initialize to an appropriate value
+            int calendarToDelete = 1;
+            bool expected = true;
+            bool actual;
+            actual = target.deleteEventsByCalendarId(calendarToDelete);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for getEventsByDate
+        ///</summary>
+        [TestMethod()]
+        public void getEventsByDateTest()
+        {
+            CalendarBLL target = new CalendarBLL(); 
+            ArrayList expected = new ArrayList(); 
+            ArrayList actual;
+            actual = target.getEventsByDate(DateTime.Now);
+            Assert.AreEqual(expected.Count, actual.Count);
+        }
+
+        /// <summary>
+        ///A test for getCalendarIdByName
+        ///</summary>
+        [TestMethod()]
+        public void getCalendarIdByNameTest()
+        {
+            CalendarBLL target = new CalendarBLL();
+            string calendarName = "UnitTestName";
+            int expected = 1; 
+            int actual;
+            actual = target.getCalendarIdByName(calendarName);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for getCalendarByName
+        ///</summary>
+        [TestMethod()]
+        public void getCalendarByNameTest()
+        {
+            CalendarBLL target = new CalendarBLL();
+            string calendarName = "UnitTestName";
+            Calendar actual;
+            actual = target.getCalendarByName(calendarName);
+            Assert.IsNotNull(actual);
+        }
+
+        /// <summary>
+        ///A test for addCalendarEvent
+        ///</summary>
+        [TestMethod()]
+        public void addCalendarEventTest()
+        {
+            CalendarBLL target = new CalendarBLL();
+            CalendarEvent e = new CalendarEvent(1, "EventName", DateTime.Now, DateTime.Now, 1);
+            bool expected = true;
+            bool actual;
+            actual = target.addCalendarEvent(e);
             Assert.AreEqual(expected, actual);
         }
     }

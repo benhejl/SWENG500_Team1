@@ -74,7 +74,7 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void Page_LoadTest()
         {
-            Calendar_Accessor target = new Calendar_Accessor();
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
             Assert.IsNotNull(target);
         }
 
@@ -94,7 +94,7 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void CreateNewCalendarClickTest()
         {
-            Calendar_Accessor target = new Calendar_Accessor();
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
             Assert.IsNotNull(target);
         }
 
@@ -104,7 +104,7 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void populateProjectsDropDownTest()
         {
-            Calendar_Accessor target = new Calendar_Accessor();
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
             Assert.IsNotNull(target);
         }
 
@@ -115,7 +115,7 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void populateUsersListTest()
         {
-            Calendar_Accessor target = new Calendar_Accessor();
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
             Assert.IsNotNull(target);
         }
 
@@ -125,7 +125,7 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void DeleteCalendarClickTest()
         {
-            Calendar_Accessor target = new Calendar_Accessor();
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
             Assert.IsNotNull(target);
         }
 
@@ -135,7 +135,7 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void EditCalendarInformationClickTest()
         {
-            Calendar_Accessor target = new Calendar_Accessor();
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
             Assert.IsNotNull(target);
         }
 
@@ -145,7 +145,7 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void populateNewRegisteredUsersDropDownTest()
         {
-            Calendar_Accessor target = new Calendar_Accessor();
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
             Assert.IsNotNull(target);
         }
 
@@ -155,7 +155,7 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void SaveNewCalendarTest()
         {
-            Calendar_Accessor target = new Calendar_Accessor();
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
             Assert.IsNotNull(target);
         }
 
@@ -165,7 +165,7 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void CancelCalendarTest()
         {
-            Calendar_Accessor target = new Calendar_Accessor();
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
             Assert.IsNotNull(target);
         }
 
@@ -175,7 +175,7 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void populateCalendarDropDownTest()
         {
-            Calendar_Accessor target = new Calendar_Accessor();
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
             Assert.IsNotNull(target);
         }
 
@@ -185,7 +185,7 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void SaveEdit_ClickTest()
         {
-            Calendar_Accessor target = new Calendar_Accessor();
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
             Assert.IsNotNull(target);
         }
 
@@ -195,9 +195,109 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void DeleteButton_ClickTest()
         {
-            Calendar_Accessor target = new Calendar_Accessor();
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
             Assert.IsNotNull(target);
         }
 
+        /// <summary>
+        ///A test for ViewCalendarClick. Method returns void. Cannot verify.
+        ///</summary>
+        public void ViewCalendarClickTest()
+        {
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+
+        /// <summary>
+        ///A test for populateViewCalendarDropDown. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void populateViewCalendarDropDownTest()
+        {
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor(); 
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for PMCalendar_SelectionChanged. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void PMCalendar_SelectionChangedTest()
+        {
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor(); 
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for CancelNewCalendar_Click. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void CancelNewCalendar_ClickTest()
+        {
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for CancelDelete_Click. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void CancelDelete_ClickTest()
+        {
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+
+        /// <summary>
+        ///A test for CancelEdit_Click. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void CancelEdit_ClickTest()
+        {
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for Back_Click. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void Back_ClickTest()
+        {
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for AddEvent_Click. Method returns void. Cannot verify.
+        ///</summary>
+        [TestMethod()]
+        public void AddEvent_ClickTest()
+        {
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for SaveNewEvent_Click
+        ///</summary>
+        [TestMethod()]
+        public void SaveNewEvent_ClickTest()
+        {
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for CancelNewEvent_Click
+        ///</summary>
+        [TestMethod()]
+        public void CancelNewEvent_ClickTest()
+        {
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
     }
 }
