@@ -8,8 +8,6 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Windows.Forms;
 using ProjectManagerBLL.CalendarBLL;
-using DayPilot.Utils;
-using DayPilot.Web.Ui;
 using ProjectManagerLibrary.Models;
 
 namespace ProjectManagerWeb
