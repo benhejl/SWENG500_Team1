@@ -82,6 +82,23 @@ namespace ProjectManagerBLL
         }
 
         /// <summary>
+        /// DeleteIssueAttachment
+        /// </summary>
+        /// <param name="issueAttachmentID">int</param>
+        /// <returns>bool</returns>
+        public static bool DeleteIssueAttachment(int issueAttachmentID)
+        {
+            try
+            {
+                return IssueDAL.DeleteIssueAttachment(issueAttachmentID);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+        /// <summary>
         /// GetIssueAttachmentsList
         /// </summary>
         /// <param name="issueID"></param>
