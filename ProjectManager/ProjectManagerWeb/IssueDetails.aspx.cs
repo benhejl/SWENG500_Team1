@@ -23,12 +23,14 @@ namespace ProjectManagerWeb
             else
                 ClientScript.RegisterStartupScript(this.GetType(), "selecttab", "javascript:$('#tab-1').hide();$('#tabs ul li:has(a[href=\"#tab-2\"])').click();", true);
 
-            // if querystring IssueAttachmentID is not null, download file.
             if (!string.IsNullOrEmpty(Request.QueryString["IssueAttachmentID"]))
             {
-                // download file.
-                GetFileAttachment(Request.QueryString["IssueAttachmentID"]);
+                var action = Request.QueryString["Action"].ToLower();
 
+                if (action == "download") // download file.
+                    GetFileAttachment(Request.QueryString["IssueAttachmentID"]);
+                else if (action == "delete") // delete attachment
+                    DeleteIssueAttachment(Request.QueryString["IssueAttachmentID"]);
             }
 
         }
@@ -137,9 +139,19 @@ namespace ProjectManagerWeb
                         var tcell5 = new HtmlTableCell();
                         var link = new HtmlAnchor();
                         link.InnerText = "Download";
-                        link.HRef = "~/IssueDetails.aspx?IssueAttachmentID=" + issueAttachments[j].IssueAttachmentID.ToString();
+                        link.HRef = "~/IssueDetails.aspx?Action=Download&IssueAttachmentID=" + issueAttachments[j].IssueAttachmentID.ToString() + "&IssueID=" + Request.QueryString["IssueID"];
                         tcell5.Controls.Add(link);
                         trow.Cells.Add(tcell5);
+
+                        // Delete link
+                        var tcell6 = new HtmlTableCell();
+                        var linkDel = new HtmlAnchor();
+                        linkDel.InnerText = "Delete";
+                        linkDel.Attributes.Add("ID", "hplDelete");
+                        linkDel.Attributes.Add("class", "clkdelete");
+                        linkDel.HRef = "~/IssueDetails.aspx?Action=Delete&IssueAttachmentID=" + issueAttachments[j].IssueAttachmentID.ToString() + "&IssueID=" + Request.QueryString["IssueID"];
+                        tcell6.Controls.Add(linkDel);
+                        trow.Cells.Add(tcell6);
 
                     }
                 }
@@ -197,6 +209,30 @@ namespace ProjectManagerWeb
 
         }
 
+        /// <summary>
+        /// DeleteIssueAttachment
+        /// </summary>
+        /// <param name="issueAttachmentID"></param>
+        protected void DeleteIssueAttachment(string issueAttachmentID)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(issueAttachmentID))
+                {
+                    var id = Int32.Parse(issueAttachmentID);
+                    // Delete Issue Attachment.
+                    IssueBLL.DeleteIssueAttachment(id);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            // set the tab selection hidden field to issue attachments - tab id 2.
+            Response.Redirect("~/IssueDetails.aspx?tab=2&IssueID="  + Request.QueryString["IssueID"] );
+        }
+
 
         /// <summary>
         /// btnUpload_Click
@@ -248,6 +284,8 @@ namespace ProjectManagerWeb
                 lblErrorMessage.Text = "ERROR: " + ex.Message.ToString();
             }
 
+            // set the tab selection hidden field to issue attachments - tab id 2.
+            Response.Redirect("~/IssueDetails.aspx?tab=2&IssueID=" + Request.QueryString["IssueID"]);
         }
 
         /// <summary>

@@ -438,5 +438,41 @@ namespace ProjectManagerDAL
                 throw;
             }
         }
+
+        /// <summary>
+        /// DeleteIssueAttachment
+        /// </summary>
+        /// <param name="issueAttachmentID">int</param>
+        /// <returns>bool</returns>
+        public static bool DeleteIssueAttachment(int issueAttachmentID)
+        {
+            var returnValue = false;
+            try
+            {
+                using (var db = new ProjectManagerEntities())
+                {
+                    // get the file attachment.
+                    var query = (from i in db.IssueAttachmentDALs
+                                 where i.IssueAttachmentID == issueAttachmentID
+                                 select i).First();
+
+                    if (query != null)
+                    {
+                        // delete the file attachment.
+                        db.DeleteObject(query);
+                        db.SaveChanges();
+                    }
+                }
+
+                returnValue = true;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return returnValue;
+        }
+
     }
 }

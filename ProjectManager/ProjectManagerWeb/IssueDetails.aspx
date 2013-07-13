@@ -37,9 +37,27 @@
             $("#divAddAttachment").hide();
         });
 
+        // if tab 2 is selected - for issue attachment.
+        var tabquerystring = getParameterByName('tab');
+        if (tabquerystring == 2) {
+            $("#divAddAttachment").hide();
+            $('#tabs ul li').removeClass('active'); // Remove active class from links
+            $('body ul:nth-child(1) li:nth-child(2)').addClass('active'); //Set parent of clicked link class to active
+            $('#tab-1').hide();
+            $('#tab-2').show();
+
+        }
+
     });
 
-    
+    // get query string value
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+        return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+        
 </script>
 
 <div id="tabs">
@@ -152,6 +170,7 @@
         <td><asp:Label ID="lblMimeType" runat="server"></asp:Label></td>
         <td><asp:Label ID="lblAttachmentDescription" runat="server"></asp:Label></td>
         <td><asp:HyperLink ID="hplAttachment" Text="" runat="server" /></td>
+        <td><asp:HyperLink ID="hplDelete" Text="" runat="server" /></td>
     </tr>
 
 </table>
