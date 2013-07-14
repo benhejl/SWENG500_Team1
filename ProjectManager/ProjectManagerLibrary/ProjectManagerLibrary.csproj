@@ -35,8 +35,10 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,10 +54,15 @@
     <Compile Include="Models\DateRange.cs" />
     <Compile Include="Models\ForumModel.cs" />
     <Compile Include="Models\IssueAttachment.cs" />
-    <Compile Include="Models\Graphs\ProjectData.cs" />
+    <Compile Include="Models\ProjectData.cs" />
+    <Compile Include="Models\Reports\IssuesByUser.cs" />
+    <Compile Include="Models\Reports\IssueStatus.cs" />
+    <Compile Include="Models\Reports\ProjectSummary.cs" />
     <Compile Include="Models\Issue.cs" />
     <Compile Include="Models\Graphs\OpenVsResolvedStrategy.cs" />
+    <Compile Include="Models\IssueTransition.cs" />
     <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\Reports\SummaryBase.cs" />
     <Compile Include="Models\ScrumModel.cs" />
     <Compile Include="Models\Task.cs" />
     <Compile Include="Models\TeamRoom.cs" />

@@ -50,7 +50,10 @@
                         <asp:MenuItem NavigateUrl="~/Issues.aspx" Text="Tracking"/>
                         <asp:MenuItem NavigateUrl="~/Calendar.aspx" Text="Calendar"/>
                         <asp:MenuItem NavigateUrl="" Text="Collaboration"/>
+<<<<<<< HEAD
                         <asp:MenuItem NavigateUrl="~/Calendar.aspx" Text="Calendar"/>
+=======
+>>>>>>> origin/master
                         <asp:MenuItem NavigateUrl="~/Scrum/EnterScrumData.aspx" Text="Scrum"/>
                         <asp:MenuItem NavigateUrl="~/Forum/Forum.aspx" Text="Forum"/>
                         <asp:MenuItem NavigateUrl="" Text="Calendar"/>

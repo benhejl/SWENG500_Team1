@@ -4,6 +4,7 @@ using System;
 using ProjectManagerLibrary.Models;
 using System.Web.UI.DataVisualization.Charting;
 using System.Collections.Generic;
+using System.Web.UI;
 
 namespace ProjectManagerTest
 {
@@ -123,6 +124,44 @@ namespace ProjectManagerTest
             OpenVsResolvedStrategy target = new OpenVsResolvedStrategy(); // TODO: Initialize to an appropriate value
             string actual = target.DataTitle;
             Assert.AreEqual(actual, "Open vs. Resolved Defects");
+        }
+
+        /// <summary>
+        ///A test for Display
+        ///</summary>
+        [TestMethod()]
+        public void DisplayTest()
+        {
+            OpenVsResolvedStrategy target = new OpenVsResolvedStrategy(); // TODO: Initialize to an appropriate value
+            Project project = null; // TODO: Initialize to an appropriate value
+            DateRange range = null; // TODO: Initialize to an appropriate value
+            Control expected = null; // TODO: Initialize to an appropriate value
+            Control actual;
+            actual = target.Display(project, range);
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+
+        /// <summary>
+        ///A test for RequiresDateRange
+        ///</summary>
+        [TestMethod()]
+        public void RequiresDateRangeTest()
+        {
+            OpenVsResolvedStrategy target = new OpenVsResolvedStrategy(); // TODO: Initialize to an appropriate value
+            Assert.AreEqual(true, target.RequiresDateRange);
+        }
+
+        /// <summary>
+        ///A test for CurrentDateRange
+        ///</summary>
+        [TestMethod()]
+        public void CurrentDateRangeTest()
+        {
+            OpenVsResolvedStrategy target = new OpenVsResolvedStrategy(); // TODO: Initialize to an appropriate value
+            DateRange actual;
+            actual = target.CurrentDateRange;
+            Assert.IsNotNull(target.CurrentDateRange);
         }
     }
 }

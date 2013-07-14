@@ -12,33 +12,15 @@
         <asp:Label ID="ErrorLabel" runat="server" 
             Text="No projects exist.  Create a new project before generating reports."></asp:Label>
     </p>
+    <asp:Panel ID="ReportMenuPanel" runat="server">
+        <asp:Menu ID="ReportMenu" runat="server" onmenuitemclick="ReportMenuClick" 
+            Orientation="Horizontal">
+        </asp:Menu>
+    </asp:Panel>
+    <asp:Panel ID="ContentPanel" runat="server" Height="300" Width="600">
+    </asp:Panel>
     <p>
-        <asp:Table ID="Table1" runat="server">
-            <asp:TableRow runat="server">
-                <asp:TableCell runat="server">Report</asp:TableCell>
-                <asp:TableCell runat="server">Open vs. Resolved</asp:TableCell>
-            </asp:TableRow>
-        </asp:Table>
-</p>
-    <p>
-        <asp:Table ID="IssuesTable" runat="server">
-            <asp:TableRow runat="server">
-                <asp:TableCell runat="server">Issue Type</asp:TableCell>
-                <asp:TableCell runat="server">Count</asp:TableCell>
-            </asp:TableRow>
-            <asp:TableRow runat="server">
-                <asp:TableCell runat="server">Open Issues</asp:TableCell>
-                <asp:TableCell ID="OpenIssues" runat="server"></asp:TableCell>
-            </asp:TableRow>
-            <asp:TableRow runat="server">
-                <asp:TableCell runat="server">Resolved Issues</asp:TableCell>
-                <asp:TableCell ID="ResolvedIssues" runat="server"></asp:TableCell>
-            </asp:TableRow>
-        </asp:Table>
-    </p>
-    <p>
-        <asp:Chart ID="ProjectChart" runat="server" Width="600px" />
-        <asp:Table ID="Table2" runat="server" Width="600px">
+        <asp:Table ID="DateRange" runat="server" Width="600px">
             <asp:TableRow runat="server">
                 <asp:TableCell runat="server">Start Date</asp:TableCell>
                 <asp:TableCell runat="server">End Date</asp:TableCell>

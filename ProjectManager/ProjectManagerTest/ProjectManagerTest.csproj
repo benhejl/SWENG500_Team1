@@ -79,10 +79,15 @@
     <Compile Include="IssueBLLTest.cs" />
     <Compile Include="IssueControllerTest.cs" />
     <Compile Include="DateRangeTest.cs" />
+    <Compile Include="IssuesByUserTest.cs" />
+    <Compile Include="IssueStatusTest.cs" />
     <Compile Include="IssueTest.cs" />
+    <Compile Include="IssueTransitionTest.cs" />
     <Compile Include="OpenVsResolvedStrategyTest.cs" />
+    <Compile Include="ProjectSummaryTest.cs" />
     <Compile Include="ProjectTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportBLLTest.cs" />
     <Compile Include="ScrumControllerTest.cs" />
     <Compile Include="ScrumTestUnit.cs" />
     <Compile Include="TaskTest.cs" />
