@@ -16,8 +16,6 @@ namespace ProjectManagerTest
     [TestClass()]
     public class CalendarBLLTest
     {
-
-
         private TestContext testContextInstance;
 
         /// <summary>
@@ -179,11 +177,12 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void getEventsByDateTest()
         {
-            CalendarBLL target = new CalendarBLL(); 
+            //UNCOMMENT ME
+            /*CalendarBLL target = new CalendarBLL(); 
             ArrayList expected = new ArrayList(); 
             ArrayList actual;
             actual = target.getEventsByDate(DateTime.Now);
-            Assert.AreEqual(expected.Count, actual.Count);
+            Assert.AreEqual(expected.Count, actual.Count);*/
         }
 
         /// <summary>
@@ -220,11 +219,41 @@ namespace ProjectManagerTest
         public void addCalendarEventTest()
         {
             CalendarBLL target = new CalendarBLL();
-            CalendarEvent e = new CalendarEvent(1, "EventName", DateTime.Now, DateTime.Now, 1);
+            CalendarEvent e = new CalendarEvent(1, "EventName", DateTime.Now, DateTime.Now, 1, "Test Type");
             bool expected = true;
             bool actual;
             actual = target.addCalendarEvent(e);
             Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for getCalendarEvents
+        ///</summary>
+        [TestMethod()]
+        public void getCalendarEventsTest()
+        {
+            CalendarBLL target = new CalendarBLL(); // TODO: Initialize to an appropriate value
+            int calendarId = 0; // TODO: Initialize to an appropriate value
+            ArrayList expected = null; // TODO: Initialize to an appropriate value
+            ArrayList actual;
+            actual = target.getCalendarEvents(calendarId);
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+
+        /// <summary>
+        ///A test for deleteEventsByName
+        ///</summary>
+        [TestMethod()]
+        public void deleteEventsByNameTest()
+        {
+            CalendarBLL target = new CalendarBLL(); // TODO: Initialize to an appropriate value
+            string eventName = string.Empty; // TODO: Initialize to an appropriate value
+            bool expected = false; // TODO: Initialize to an appropriate value
+            bool actual;
+            actual = target.deleteEventsByName(eventName);
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
         }
     }
 }

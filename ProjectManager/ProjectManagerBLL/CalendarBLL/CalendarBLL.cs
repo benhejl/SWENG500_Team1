@@ -56,14 +56,19 @@ namespace ProjectManagerBLL.CalendarBLL
             return CalendarDAL.deleteEventsByCalendarId(calendarToDelete);
         }
 
-        public ArrayList getEventsByDate(DateTime date)
+        public ArrayList getEventsByDate(DateTime date, int calendarId)
         {
             ArrayList qualEvents = new ArrayList();
-            ArrayList events = CalendarDAL.getEvents();
+            ArrayList events = CalendarDAL.getEventsByCalendarId(calendarId);
+            System.Diagnostics.Trace.WriteLine("Date Day: " + date.Day);
+            System.Diagnostics.Trace.WriteLine("Number of events: " + events.Count);
             foreach (CalendarEvent e in events)
             {
                 DateTime start = e.getStart();
                 DateTime end = e.getEnd();
+                System.Diagnostics.Trace.WriteLine("Date Day: " + date.Day);
+                System.Diagnostics.Trace.WriteLine("Start Day: " + start.Day);
+                System.Diagnostics.Trace.WriteLine("End Day: " + end.Day);
                 if (start.Day.Equals(date.Day) || end.Day.Equals(date.Day))
                 {
                     qualEvents.Add(e);
@@ -85,6 +90,16 @@ namespace ProjectManagerBLL.CalendarBLL
         public bool addCalendarEvent(CalendarEvent e)
         {
             return CalendarDAL.addNewEvent(e);
+        }
+
+        public ArrayList getCalendarEvents(int calendarId)
+        {
+            return CalendarDAL.getEventsByCalendarId(calendarId);
+        }
+
+        public bool deleteEventsByName(String eventName)
+        {
+            return CalendarDAL.deleteEventsByName(eventName);
         }
     }
 }

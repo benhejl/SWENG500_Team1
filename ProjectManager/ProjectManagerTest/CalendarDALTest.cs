@@ -165,7 +165,7 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void addNewEventTest()
         {
-            CalendarEvent e = new CalendarEvent(1, "EventTest", DateTime.Now, DateTime.Now, 1);
+            CalendarEvent e = new CalendarEvent(1, "EventTest", DateTime.Now, DateTime.Now, 1, "Test Type");
             bool expected = true;
             bool actual;
             actual = CalendarDAL.addNewEvent(e);
@@ -181,6 +181,20 @@ namespace ProjectManagerTest
             string calendarName = "UnitTestName";
             ProjectManagerLibrary.Models.Calendar actual = CalendarDAL.getCalendarByName(calendarName);
             Assert.IsNotNull(actual);
+        }
+
+        /// <summary>
+        ///A test for deleteEventsByName
+        ///</summary>
+        [TestMethod()]
+        public void deleteEventsByNameTest()
+        {
+            string eventName = string.Empty; // TODO: Initialize to an appropriate value
+            bool expected = false; // TODO: Initialize to an appropriate value
+            bool actual;
+            actual = CalendarDAL.deleteEventsByName(eventName);
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
         }
     }
 }

@@ -13,6 +13,7 @@ namespace ProjectManagerLibrary.Models
         private DateTime start;
         private DateTime end;
         private int calendarId;
+        private String type;
 
         public CalendarEvent()
         {
@@ -21,15 +22,17 @@ namespace ProjectManagerLibrary.Models
             start = DateTime.MinValue;
             end = DateTime.MinValue;
             calendarId = -1;
+            type = null;
         }
 
-        public CalendarEvent(int _id, String _name, DateTime _start, DateTime _end, int _calendarId)
+        public CalendarEvent(int _id, String _name, DateTime _start, DateTime _end, int _calendarId, String _type)
         {
             id = _id;
             name = _name;
             start = _start;
             end = _end;
             calendarId = _calendarId;
+            type = _type;
         }
 
         public void setId(int _id)
@@ -57,6 +60,11 @@ namespace ProjectManagerLibrary.Models
             calendarId = _calendarId;
         }
 
+        public void setType(String _type)
+        {
+            type = _type;
+        }
+
         public int getId()
         {
             return id;
@@ -80,6 +88,11 @@ namespace ProjectManagerLibrary.Models
         public int getCalendarId()
         {
             return calendarId;
+        }
+
+        public String getType()
+        {
+            return type;
         }
     }
 }

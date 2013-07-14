@@ -299,5 +299,55 @@ namespace ProjectManagerTest
             ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
             Assert.IsNotNull(target);
         }
+
+        /// <summary>
+        ///A test for DeleteEventPageClick. Returns null, cannot test.
+        ///</summary>
+        [TestMethod()]
+        public void DeleteEventPageClickTest()
+        {
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for CancelDeleteEventClick. Cannot test, returns void.
+        ///</summary>
+        [TestMethod()]
+        public void CancelDeleteEventClickTest()
+        {
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for populateDeleteEventDropDown. Cannot test, returns void
+        ///</summary>
+        [TestMethod()]
+        public void populateDeleteEventDropDownTest()
+        {
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for DeleteEvent. Cannot test, returns void.
+        ///</summary>
+        [TestMethod()]
+        public void DeleteEventTest()
+        {
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
+
+        /// <summary>
+        ///A test for populateDeleteEventCheckBox
+        ///</summary>
+        [TestMethod()]
+        public void populateDeleteEventCheckBoxTest()
+        {
+            ProjectManagerWeb.Calendar_Accessor target = new ProjectManagerWeb.Calendar_Accessor();
+            Assert.IsNotNull(target);
+        }
     }
 }
