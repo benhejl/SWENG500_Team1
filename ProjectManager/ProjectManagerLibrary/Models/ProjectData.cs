@@ -12,5 +12,6 @@ namespace ProjectManagerLibrary.Models.Graphs
         string DataTitle {get;}
         bool RequiresDateRange { get; }
         DateRange CurrentDateRange { get; }
+        int SortOrder { get; }
     }
 }

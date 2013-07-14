@@ -90,8 +90,10 @@ namespace ProjectManagerTest
 
             // TODO: Insert issues
 
-            Assert.AreEqual(results[0].Points.Count, 5);
-            Assert.AreEqual(results[1].Points.Count, 5);
+            Assert.AreEqual(results[0].Points.Count, 10);
+            Assert.AreEqual(results[1].Points.Count, 10);
+
+            Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
 
@@ -133,12 +135,12 @@ namespace ProjectManagerTest
         public void DisplayTest()
         {
             OpenVsResolvedStrategy target = new OpenVsResolvedStrategy(); // TODO: Initialize to an appropriate value
-            Project project = null; // TODO: Initialize to an appropriate value
-            DateRange range = null; // TODO: Initialize to an appropriate value
-            Control expected = null; // TODO: Initialize to an appropriate value
-            Control actual;
-            actual = target.Display(project, range);
-            Assert.AreEqual(expected, actual);
+            Project project = BuildDefaultProject();
+            DateRange range = new DateRange(DateTime.Now.Subtract(TimeSpan.FromDays(10)), DateTime.Now);
+            Control actual = target.Display(project, range);
+
+            Assert.IsInstanceOfType(actual, typeof(Chart));
+
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
@@ -162,6 +164,41 @@ namespace ProjectManagerTest
             DateRange actual;
             actual = target.CurrentDateRange;
             Assert.IsNotNull(target.CurrentDateRange);
+
+            DateTime start = DateTime.Parse("1/1/2013");
+            DateTime finish = DateTime.Parse("2/1/2013");
+
+            target.EvaluateProject(new Project(1, " ", start, finish, "", "", "", finish), new DateRange(start, finish));
+            actual = target.CurrentDateRange;
+            Assert.AreEqual(start, actual.StartTime);
+            Assert.AreEqual(finish, actual.FinishTime);
+        }
+
+        /// <summary>
+        ///A test for SortOrder
+        ///</summary>
+        [TestMethod()]
+        public void SortOrderTest()
+        {
+            OpenVsResolvedStrategy target = new OpenVsResolvedStrategy();
+            Assert.AreEqual(1, target.SortOrder);
+        }
+
+        /// <summary>
+        ///A test for ConfigureAxis
+        ///</summary>
+        [TestMethod()]
+        [DeploymentItem("ProjectManagerLibrary.dll")]
+        public void ConfigureAxisTest()
+        {
+            OpenVsResolvedStrategy_Accessor target = new OpenVsResolvedStrategy_Accessor(); // TODO: Initialize to an appropriate value
+            Axis axis = new Axis();
+            target.ConfigureAxis(axis);
+            Assert.AreEqual(System.Drawing.Color.LightGray, axis.LineColor);
+            Assert.AreEqual(System.Drawing.Color.LightGray, axis.MajorTickMark.LineColor);
+            Assert.AreEqual(System.Drawing.Color.LightGray, axis.MinorTickMark.LineColor);
+            Assert.IsFalse(axis.MinorGrid.Enabled);
+            Assert.IsFalse(axis.MinorGrid.Enabled);
         }
     }
 }

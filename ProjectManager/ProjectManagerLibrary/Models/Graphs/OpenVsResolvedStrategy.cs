@@ -16,7 +16,13 @@ namespace ProjectManagerLibrary.Models.Graphs
         private Title title;
 
         public bool RequiresDateRange { get { return true; } }
-        public DateRange CurrentDateRange { get { return null; } }
+        public DateRange CurrentDateRange { get; private set; }
+        public int SortOrder { get { return 1; } }
+
+        public OpenVsResolvedStrategy()
+        {
+            CurrentDateRange = new DateRange(DateTime.Now, DateTime.Now);
+        }
 
         /// <summary>
         /// Add and format the selected data to the current chart object.  
@@ -52,6 +58,7 @@ namespace ProjectManagerLibrary.Models.Graphs
         public System.Web.UI.Control Display(Project project, DateRange range)
         {
             Chart chart = new Chart();
+            chart.ImageStorageMode = ImageStorageMode.UseImageLocation;
 
             chartArea = new ChartArea();
             chart.ChartAreas.Clear();
@@ -91,18 +98,46 @@ namespace ProjectManagerLibrary.Models.Graphs
             if ((null == project) || (null == range))
                 throw new ArgumentNullException();
 
+            DateTime current = DateTime.Now;
+            DateTime first = current.Subtract(TimeSpan.FromDays(9));
+
+            int[] open = new int[10];
+            int[] resolved = new int[10];
+
             List<Series> data = new List<Series>(2);
             data.Add(new Series(OpenSeriesName));
             data.Add(new Series(ResolvedSeriesName));
 
-            for (int i = 0; i < 5; i++)
+            DateTime date = first;
+            for (int i = 0; i < 10; i++)
             {
-                data[0].Points.AddY(4 - i);
-                data[1].Points.AddY(i);
+                foreach (Issue issue in project.Issues)
+                {
+                    if (date >= issue.EntryDate)
+                    {
+                        if (issue.CurrentStatus == Issue.IssueStatus.Unresolved)
+                        {
+                            open[i]++;
+                        }
+                        else if (issue.CurrentStatus == Issue.IssueStatus.Resolved)
+                        {
+                            resolved[i]++;
+                        }
+                    }
+                }
+                date = date.AddDays(1);
+            }
+
+            for (int i = 0; i < open.Length; i++)
+            {
+                data[0].Points.AddY(open[i]);
+                data[1].Points.AddY(resolved[i]);
             }
 
             data[0].ChartType = SeriesChartType.Line;
             data[1].ChartType = SeriesChartType.Line;
+
+            CurrentDateRange = range;
 
             return data;
         }

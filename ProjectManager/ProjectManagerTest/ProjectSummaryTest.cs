@@ -113,5 +113,15 @@ namespace ProjectManagerTest
             Assert.IsTrue(actual.StartTime.AddSeconds(2).CompareTo(DateTime.Now) > 0);
             Assert.IsTrue(actual.FinishTime.AddSeconds(2).CompareTo(DateTime.Now) > 0);
         }
+
+        /// <summary>
+        ///A test for SortOrder
+        ///</summary>
+        [TestMethod()]
+        public void SortOrderTest()
+        {
+            ProjectSummary target = new ProjectSummary();
+            Assert.AreEqual(0, target.SortOrder);
+        }
     }
 }

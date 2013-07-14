@@ -27,5 +27,6 @@ namespace ProjectManagerLibrary.Models.Reports
         public string DataTitle { get { return "Summary"; } }
         public bool RequiresDateRange { get { return false; } }
         public DateRange CurrentDateRange { get { return new DateRange(DateTime.Now, DateTime.Now); } }
+        public int SortOrder { get { return 0; } }
     }
 }

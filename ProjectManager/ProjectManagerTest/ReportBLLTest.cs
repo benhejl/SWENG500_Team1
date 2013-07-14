@@ -2,6 +2,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using ProjectManagerLibrary.Models.Graphs;
+using ProjectManagerLibrary.Models.Reports;
+using System.Linq;
 
 namespace ProjectManagerTest
 {
@@ -75,6 +78,33 @@ namespace ProjectManagerTest
             Assert.AreEqual(actual.Count, 2);
             Assert.IsTrue(actual.Contains(typeof(ProjectManagerLibrary.Models.Graphs.OpenVsResolvedStrategy)));
             Assert.IsTrue(actual.Contains(typeof(ProjectManagerLibrary.Models.Reports.ProjectSummary)));
+        }
+
+        /// <summary>
+        ///A test for OrderReportTypes
+        ///</summary>
+        [TestMethod()]
+        public void OrderReportTypesTest()
+        {
+            List<Type> availableReports = new List<Type>(new Type[] { typeof(OpenVsResolvedStrategy) });
+            List<Type> expected = new List<Type>(new Type[] { typeof(OpenVsResolvedStrategy) });
+            List<Type> actual = ReportBLL.OrderReportTypes(availableReports);
+            Assert.IsTrue(Enumerable.SequenceEqual(expected, actual));
+
+            availableReports = new List<Type>(new Type[] { typeof(ProjectSummary) });
+            expected = new List<Type>(new Type[] { typeof(ProjectSummary) });
+            actual = ReportBLL.OrderReportTypes(availableReports);
+            Assert.IsTrue(Enumerable.SequenceEqual(expected, actual));
+
+            availableReports = new List<Type>(new Type[] { typeof(ProjectSummary), typeof(OpenVsResolvedStrategy) });
+            expected = new List<Type>(new Type[] { typeof(ProjectSummary), typeof(OpenVsResolvedStrategy) });
+            actual = ReportBLL.OrderReportTypes(availableReports);
+            Assert.IsTrue(Enumerable.SequenceEqual(expected, actual));
+
+            availableReports = new List<Type>(new Type[] { typeof(OpenVsResolvedStrategy), typeof(ProjectSummary) });
+            expected = new List<Type>(new Type[] { typeof(ProjectSummary), typeof(OpenVsResolvedStrategy) });
+            actual = ReportBLL.OrderReportTypes(availableReports);
+            Assert.IsTrue(Enumerable.SequenceEqual(expected, actual));
         }
     }
 }

@@ -25,7 +25,7 @@ namespace ProjectManagerBLL.Report
                         var types = assemblies.SelectMany(s => s.GetTypes())
                             .Where(p => type.IsAssignableFrom(p) && p.IsInterface == false);
 
-                        return new List<Type>(types.AsEnumerable<Type>());
+                        return OrderReportTypes(new List<Type>(types.AsEnumerable<Type>()));
                     }
                 }
             }
@@ -33,6 +33,31 @@ namespace ProjectManagerBLL.Report
             {
             }
             return new List<Type>();
+        }
+
+        public static List<Type> OrderReportTypes(List<Type> availableReports)
+        {
+            List<ProjectData> instances = new List<ProjectData>(availableReports.Count);
+
+            foreach (Type report in availableReports)
+            {
+                ProjectData obj = (ProjectData)Activator.CreateInstance(report);
+                instances.Add(obj);
+            }
+
+            instances.Sort(delegate(ProjectData first, ProjectData second)
+            {
+                if (second.SortOrder != first.SortOrder)
+                    return first.SortOrder - second.SortOrder;
+                return first.DataTitle.CompareTo(second.DataTitle);
+            });
+
+            List<Type> orderedList = new List<Type>(availableReports.Count);
+            foreach (ProjectData obj in instances)
+            {
+                orderedList.Add(obj.GetType());
+            }
+            return orderedList;
         }
     }
 
