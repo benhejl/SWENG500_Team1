@@ -23,6 +23,11 @@ namespace ProjectManagerWeb.Controllers
             return true;
         }
 
+        public bool FilterByIssueStatus()
+        {
+            return true;
+        }
+
         public bool AddAssigneeToIssue()
         {
             return true;
