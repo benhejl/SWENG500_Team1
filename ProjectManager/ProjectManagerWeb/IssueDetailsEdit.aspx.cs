@@ -32,7 +32,13 @@ namespace ProjectManagerWeb
                     var userList = UserBLL.GetUserListForView();
                     // Add "Unassigned" to the list
                     userList.Add(new KeyValuePair<string, int>("-- Unassigned --", 0));
-                    ddlAssignee.DataSource = userList;
+
+                    // sort list by value.
+                    var sortedlist = from pair in userList
+                                     orderby pair.Value ascending
+                                     select pair;
+
+                    ddlAssignee.DataSource = sortedlist;
                     ddlAssignee.DataTextField = "Key";
                     ddlAssignee.DataValueField = "Value";
                     ddlAssignee.DataBind();
