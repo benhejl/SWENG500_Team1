@@ -161,7 +161,7 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void deleteEventsByCalendarIdTest()
         {
-            CalendarBLL target = new CalendarBLL(); // TODO: Initialize to an appropriate value
+            CalendarBLL target = new CalendarBLL(); 
             int calendarToDelete = 1;
             bool expected = true;
             bool actual;
@@ -236,7 +236,6 @@ namespace ProjectManagerTest
             ArrayList actual;
             actual = target.getCalendarEvents(calendarId);
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
@@ -251,7 +250,6 @@ namespace ProjectManagerTest
             bool actual;
             actual = target.deleteEventsByName(eventName);
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
         }
     }
 }

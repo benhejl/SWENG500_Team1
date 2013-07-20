@@ -69,16 +69,16 @@ namespace ProjectManagerBLL.CalendarBLL
         {
             ArrayList qualEvents = new ArrayList();
             ArrayList events = CalendarDAL.getEventsByCalendarId(calendarId);
-            System.Diagnostics.Trace.WriteLine("Date Day: " + date.Day);
-            System.Diagnostics.Trace.WriteLine("Number of events: " + events.Count);
+            System.Diagnostics.Trace.WriteLine(calendarId);
             foreach (CalendarEvent e in events)
             {
                 DateTime start = e.getStart();
                 DateTime end = e.getEnd();
-                System.Diagnostics.Trace.WriteLine("Date Day: " + date.Day);
-                System.Diagnostics.Trace.WriteLine("Start Day: " + start.Day);
-                System.Diagnostics.Trace.WriteLine("End Day: " + end.Day);
-                if (start.Day.Equals(date.Day) || end.Day.Equals(date.Day))
+               
+
+                System.Diagnostics.Trace.WriteLine(start.ToString());
+                System.Diagnostics.Trace.WriteLine(end.ToString());
+                if ((start.Month.Equals(date.Month) || end.Month.Equals(date.Month) && (start.Day.Equals(date.Day) || end.Day.Equals(date.Day))))
                 {
                     qualEvents.Add(e);
                 }

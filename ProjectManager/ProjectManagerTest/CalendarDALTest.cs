@@ -187,12 +187,33 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void deleteEventsByNameTest()
         {
-            string eventName = string.Empty; // TODO: Initialize to an appropriate value
-            bool expected = false; // TODO: Initialize to an appropriate value
+            string eventName = string.Empty;
             bool actual;
             actual = CalendarDAL.deleteEventsByName(eventName);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            Assert.IsNotNull(actual);
+        }
+
+        /// <summary>
+        ///A test for getProjectNames
+        ///</summary>
+        [TestMethod()]
+        public void getProjectNamesTest()
+        {
+            ArrayList actual;
+            actual = CalendarDAL.getProjectNames();
+            Assert.IsNotNull(actual);
+        }
+
+        /// <summary>
+        ///A test for getProjectIdByName
+        ///</summary>
+        [TestMethod()]
+        public void getProjectIdByNameTest()
+        {
+            string projectName = string.Empty;
+            int actual;
+            actual = CalendarDAL.getProjectIdByName(projectName);
+            Assert.IsNotNull(actual);
         }
     }
 }

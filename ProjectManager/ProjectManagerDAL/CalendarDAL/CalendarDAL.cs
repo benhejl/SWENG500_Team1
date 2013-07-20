@@ -252,7 +252,7 @@ namespace ProjectManagerDAL.CalendarDAL
             using (SqlConnection sqlConnection = new SqlConnection(CONNECTION_STRING))
             {
                 sqlConnection.Open();
-                using (SqlCommand sqlCommand = new SqlCommand("DELETE FROM CalendarEvent WHERE Name=" + eventName, sqlConnection))
+                using (SqlCommand sqlCommand = new SqlCommand("DELETE FROM CalendarEvent WHERE Name='" + eventName + "'", sqlConnection))
                 {
                     System.Diagnostics.Trace.WriteLine(sqlCommand.CommandText);
                     using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())

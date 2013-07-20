@@ -20,7 +20,7 @@ namespace ProjectManagerWeb
         {
 
             System.Diagnostics.Trace.WriteLine("Page_load");
-
+            
             if (!Page.IsPostBack)
             {
                 InitPanel.Visible = true;
@@ -29,13 +29,15 @@ namespace ProjectManagerWeb
                 DeleteCalendarPanel.Visible = false;
                 ViewCalendarPanel.Visible = false;
                 DeleteEventPanel.Visible = false;
+                AddEventPanel.Visible = false;
                 populateCalendarDropDown(CalendarDropDown);
+                System.Diagnostics.Trace.WriteLine("Not Post Back");
+                populateDeleteEventDropDown();
+                populateViewCalendarDropDown();
             }
             else
             {
                 System.Diagnostics.Trace.WriteLine("Post back");
-                populateViewCalendarDropDown();
-                populateDeleteEventDropDown();
             }
         }
 
@@ -128,6 +130,26 @@ namespace ProjectManagerWeb
             String calendarToEdit = CalendarDropDown.SelectedValue;
             String newName = EditNameTextBox.Text;
 
+            ArrayList currentCalendars = new ArrayList();
+            if ((currentCalendars = calendarBLL.getCalendars()) != null)
+            {
+                foreach (String n in currentCalendars)
+                {
+                    if (newName.Equals(n))
+                    {
+                        TopMostMessageBox.Show("A calendar with that name already exists.", "Error");
+                        return;
+                    }
+                }
+            }
+
+            if (newName.Length == 0) 
+            {
+                TopMostMessageBox.Show("Please enter a calendar name.", "Error");
+                return;
+            }
+
+
             String newProject = NewProjectDropDown.SelectedValue;
 
             if (calendarBLL.updateCalendarInfo(calendarToEdit, newName, newProject))
@@ -161,6 +183,8 @@ namespace ProjectManagerWeb
             currentCalendar.setCalendarId(calendar.getCalendarId());
             currentCalendar.setProjectId(calendar.getProjectId());
 
+            System.Diagnostics.Trace.WriteLine("Current calendar set at " + currentCalendar.getCalendarId());
+
             InitPanel.Visible = false;
             ViewCalendarPanel.Visible = true;
         }
@@ -169,6 +193,10 @@ namespace ProjectManagerWeb
         {
             CalendarBLL calendarBLL = new CalendarBLL();
             ArrayList calendarNames = calendarBLL.getCalendars();
+            foreach (String name in calendarNames)
+            {
+                System.Diagnostics.Trace.WriteLine(name);
+            }
             ViewDropDown.DataSource = calendarNames;
             ViewDropDown.DataBind();
         }
@@ -176,7 +204,6 @@ namespace ProjectManagerWeb
         protected void PMCalendar_SelectionChanged(object sender, EventArgs e)
         {
             CalendarBLL calendarBLL = new CalendarBLL();
-            System.Diagnostics.Trace.WriteLine("Calendar id: " + currentCalendar.getCalendarId());
             ArrayList events = calendarBLL.getEventsByDate(PMCalendar.SelectedDate, currentCalendar.getCalendarId());
             if (events.Count == 0)
             {
@@ -187,8 +214,8 @@ namespace ProjectManagerWeb
                 String eventsString = "";
                 foreach (CalendarEvent calEvent in events)
                 {
-                    eventsString += calEvent.getName() + ": " + calEvent.getStart().Date + " - " +
-                            calEvent.getEnd().Date + System.Environment.NewLine;
+                    eventsString += calEvent.getName() + ": " + calEvent.getStart().ToString() + " - " +
+                            calEvent.getEnd().ToString() + System.Environment.NewLine;
                 }
                 TopMostMessageBox.Show(eventsString, PMCalendar.SelectedDate.ToString());
             }
@@ -244,7 +271,65 @@ namespace ProjectManagerWeb
         protected void SaveNewEvent_Click(object sender, EventArgs e)
         {
             CalendarEvent newEvent = new CalendarEvent();
+
+            if (NewEventNameTextBox.Text.Length == 0) 
+            {
+                TopMostMessageBox.Show("Please enter an event name.", "Error", MessageBoxButtons.RetryCancel);
+                return;
+            }
             newEvent.setName(NewEventNameTextBox.Text);
+
+            if (StartYear.Text.Length == 0)
+            {
+                TopMostMessageBox.Show("Please enter a start year.", "Error", MessageBoxButtons.RetryCancel);
+                return;
+            }
+            else if (StartMonth.Text.Length == 0)
+            {
+                TopMostMessageBox.Show("Please enter a start month.", "Error", MessageBoxButtons.RetryCancel);
+                return;
+            }
+            else if (StartDay.Text.Length == 0)
+            {
+                TopMostMessageBox.Show("Please enter a start day.", "Error", MessageBoxButtons.RetryCancel);
+                return;
+            }
+            else if (StartHour.Text.Length == 0)
+            {
+                TopMostMessageBox.Show("Please enter a start hour.", "Error", MessageBoxButtons.RetryCancel);
+                return;
+            }
+            else if (StartMinute.Text.Length == 0)
+            {
+                TopMostMessageBox.Show("Please enter a start minute.", "Error", MessageBoxButtons.RetryCancel);
+                return;
+            }
+
+            if (EndYear.Text.Length == 0)
+            {
+                TopMostMessageBox.Show("Please enter a end year.", "Error", MessageBoxButtons.RetryCancel);
+                return;
+            }
+            else if (EndMonth.Text.Length == 0)
+            {
+                TopMostMessageBox.Show("Please enter a end month.", "Error", MessageBoxButtons.RetryCancel);
+                return;
+            }
+            else if (EndDay.Text.Length == 0)
+            {
+                TopMostMessageBox.Show("Please enter a end day.", "Error", MessageBoxButtons.RetryCancel);
+                return;
+            }
+            else if (EndHour.Text.Length == 0)
+            {
+                TopMostMessageBox.Show("Please enter a end hour.", "Error", MessageBoxButtons.RetryCancel);
+                return;
+            }
+            else if (EndMinute.Text.Length == 0)
+            {
+                TopMostMessageBox.Show("Please enter a end minute.", "Error", MessageBoxButtons.RetryCancel);
+                return;
+            }
 
             int startYear = Convert.ToInt32(StartYear.Text);
             int startMonth = Convert.ToInt32(StartMonth.Text);
@@ -257,8 +342,12 @@ namespace ProjectManagerWeb
             int endHour = Convert.ToInt32(EndHour.Text);
             int endMinute = Convert.ToInt32(EndMinute.Text);
 
-            DateTime startTime = new DateTime(startYear, startMonth, startDay, startHour, startMinute, endMinute);
-            DateTime endTime = new DateTime(startYear, startMonth, startDay, startHour, startMinute, endMinute);
+            DateTime startTime = new DateTime(startYear, startMonth, startDay, startHour, startMinute, 0);
+            DateTime endTime = new DateTime(endYear, endMonth, endDay, endHour, endMinute, 0);
+
+            System.Diagnostics.Trace.WriteLine(startTime.ToString());
+            System.Diagnostics.Trace.WriteLine(endTime.ToString());
+
             newEvent.setStart(startTime);
             newEvent.setEnd(endTime);
             newEvent.setCalendarId(currentCalendar.getCalendarId());
@@ -296,15 +385,20 @@ namespace ProjectManagerWeb
 
         protected void DeleteEvent(object sender, EventArgs e)
         {
-            String eventName = DeleteEventCheckBox.SelectedValue;
-            CalendarBLL calendarBLL = new CalendarBLL();
-            if (calendarBLL.deleteEventsByName(eventName))
-            {
-                TopMostMessageBox.Show(eventName + " successfully deleted.", "message");
-            }
-            else
-            {
-                TopMostMessageBox.Show("Could not delete " + eventName + ".", "message");
+            for (int i = 0; i < DeleteEventCheckBox.Items.Count; i ++) {
+                if (DeleteEventCheckBox.Items[i].Selected) {
+                    String eventName = DeleteEventCheckBox.Items[i].Text;
+                    CalendarBLL calendarBLL = new CalendarBLL();
+                    System.Diagnostics.Trace.WriteLine(eventName);
+                    if (calendarBLL.deleteEventsByName(eventName))
+                    {
+                        TopMostMessageBox.Show(eventName + " successfully deleted.", "message");
+                    }
+                    else
+                    {
+                        TopMostMessageBox.Show("Could not delete " + eventName + ".", "message");
+                    }
+                }
             }
 
             DeleteEventPanel.Visible = false;
@@ -323,7 +417,14 @@ namespace ProjectManagerWeb
         {
             CalendarBLL calendarBLL = new CalendarBLL();
             ArrayList events = calendarBLL.getCalendarEvents(currentCalendar.getCalendarId());
-            DeleteEventCheckBox.DataSource = events;
+
+            ArrayList names = new ArrayList();
+            foreach (CalendarEvent e in events)
+            {
+                names.Add(e.getName());
+            }
+
+            DeleteEventCheckBox.DataSource = names;
             DeleteEventCheckBox.DataBind();
         }
 
