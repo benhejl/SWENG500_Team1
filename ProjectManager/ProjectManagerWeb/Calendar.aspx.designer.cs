@@ -103,15 +103,6 @@ namespace ProjectManagerWeb {
         protected global::System.Web.UI.WebControls.TextBox calendarName;
         
         /// <summary>
-        /// RegisteredUsersList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList RegisteredUsersList;
-        
-        /// <summary>
         /// ProjectsDropDown control.
         /// </summary>
         /// <remarks>
@@ -173,15 +164,6 @@ namespace ProjectManagerWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox EditNameTextBox;
-        
-        /// <summary>
-        /// NewRegisteredUsersDropDown control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList NewRegisteredUsersDropDown;
         
         /// <summary>
         /// NewProjectDropDown control.

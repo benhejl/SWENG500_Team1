@@ -7,65 +7,52 @@ namespace ProjectManagerLibrary.Models
 {
     public class CurrentCalendar
     {
-        private String currentCalendarName;
-        private int currentCalendarId;
-        private String currentProjectName;
-        private String currentUsers;
+        private String calendarName;
+        private int calendarId;
+        private int project;
 
         public CurrentCalendar()
         {
-            currentCalendarName = null;
-            currentCalendarId = -1;
-            currentProjectName = null;
-            currentUsers = null;
+            calendarName = null;
+            calendarId = -1;
+            project = -1;
         }
 
-        public CurrentCalendar(String _calendarName, int _calendarId, String _projectName, String _users)
+        public CurrentCalendar(String _calendarName, int _calendarId, int _project)
         {
-            currentCalendarName = _calendarName;
-            currentCalendarId = _calendarId;
-            currentProjectName = _projectName;
-            currentUsers = _users;
+            calendarName = _calendarName;
+            calendarId = _calendarId;
+            project = _project;
         }
 
         public void setCalendarName(String _calendarName)
         {
-            currentCalendarName = _calendarName;
+            calendarName = _calendarName;
         }
 
         public void setCalendarId(int _calendarId)
         {
-            currentCalendarId = _calendarId;
+            calendarId = _calendarId;
         }
 
-        public void setProjectName(String _projectName)
+        public void setProjectId(int _project)
         {
-            currentProjectName = _projectName;
-        }
-
-        public void setUsers(String _users)
-        {
-            currentUsers = _users;
+            project = _project;
         }
 
         public String getCalendarName()
         {
-            return currentCalendarName;
+            return calendarName;
         }
 
         public int getCalendarId()
         {
-            return currentCalendarId;
+            return calendarId;
         }
 
-        public String getProjectName()
+        public int getProjectId()
         {
-            return currentProjectName;
-        }
-
-        public String getUsers()
-        {
-            return currentUsers;
+            return project;
         }
     }
 }

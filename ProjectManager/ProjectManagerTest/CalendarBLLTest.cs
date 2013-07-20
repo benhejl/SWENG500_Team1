@@ -3,11 +3,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Data;
 using System.Collections;
+using System.Collections.Generic;
 using ProjectManagerLibrary.Models;
 
 namespace ProjectManagerTest
 {
-    
     
     /// <summary>
     ///This is a test class for CalendarBLLTest and is intended
@@ -82,11 +82,10 @@ namespace ProjectManagerTest
         {
             CalendarBLL target = new CalendarBLL();
             string name = "UnitTestName";
-            string projectName = "UnitTestProject";
-            string usernames = "UnitTestUsers";
+            String projectName = "UnitTestProject";
             bool expected = true;
             bool actual;
-            actual = target.createCalendar(name, projectName, usernames);
+            actual = target.createCalendar(name, projectName);
             Assert.AreEqual(expected, actual);
         }
 
@@ -150,10 +149,9 @@ namespace ProjectManagerTest
             string currentName = "UnitTestName";
             string newName = "UnitTestChangeName";
             string newProject = "UnitTestProject";
-            string newUsers = "UnitTestUsers";
             bool expected = true;
             bool actual;
-            actual = target.updateCalendarInfo(currentName, newName, newProject, newUsers);
+            actual = target.updateCalendarInfo(currentName, newName, newProject);
             Assert.AreEqual(expected, actual);
         }
 

@@ -14,7 +14,7 @@
             <br />
             <br />
             <asp:Button ID="EditButton" runat="server" 
-                onclick="EditCalendarInformationClick" Text="Edit Calendar Information" />
+                onclick="EditCalendarInformationClick" Text="Edit Calendar Information" Width="219px" />
             <br />
             <br />
             Choose a Calendar to Delete Events:
@@ -36,15 +36,13 @@
             <br />
            
 
-            Calendar Name: <asp:TextBox ID="calendarName" runat="server" ></asp:TextBox>
+                        Calendar Name:&nbsp; <asp:TextBox ID="calendarName" runat="server" ></asp:TextBox>
 
             
                         <br />
 
             
-            <br />
-                        Registered Users:<br /> <asp:CheckBoxList ID="RegisteredUsersList" runat="server"></asp:CheckBoxList>
-                        &nbsp;<br /> Project:<asp:DropDownList ID="ProjectsDropDown" runat="server">
+                        <br /> Project:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:DropDownList ID="ProjectsDropDown" runat="server">
                         </asp:DropDownList>
                         <br />
                         <br />
@@ -70,10 +68,6 @@
                          <asp:TextBox ID="EditNameTextBox" runat="server"></asp:TextBox>
            
                         <br />
-                        <br />
-                        New Registered Users:<br />
-                        <asp:CheckBoxList ID="NewRegisteredUsersDropDown" runat="server">
-                        </asp:CheckBoxList>
                         <br />
                         New Project:<br />
                         <br />

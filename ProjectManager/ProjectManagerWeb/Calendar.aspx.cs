@@ -43,7 +43,6 @@ namespace ProjectManagerWeb
         {
             InitPanel.Visible = false;
             CreatePanel.Visible = true;
-            populateUsersList();
             populateProjectsDropDown();
         }
 
@@ -53,14 +52,6 @@ namespace ProjectManagerWeb
             ArrayList projects = calendarBLL.getProjectNames();
             ProjectsDropDown.DataSource = projects;
             ProjectsDropDown.DataBind();
-        }
-
-        private void populateUsersList()
-        {
-            CalendarBLL calendarBLL = new CalendarBLL();
-            ArrayList users = calendarBLL.getUsers();
-            RegisteredUsersList.DataSource = users;
-            RegisteredUsersList.DataBind();
         }
 
         protected void DeleteCalendarClick(object sender, EventArgs e)
@@ -75,15 +66,7 @@ namespace ProjectManagerWeb
             InitPanel.Visible = false;
             populateCalendarDropDown(CalendarDropDown);
             EditPanel.Visible = true;
-            populateNewRegisteredUsersDropDown();
             populateNewProjectDropDown();
-        }
-
-        private void populateNewRegisteredUsersDropDown()
-        {
-            CalendarBLL temp = new CalendarBLL();
-            NewRegisteredUsersDropDown.DataSource = temp.getUsers();
-            NewRegisteredUsersDropDown.DataBind();
         }
 
         private void populateNewProjectDropDown()
@@ -117,20 +100,6 @@ namespace ProjectManagerWeb
                 }
             }
 
-            String usernames = "";
-            foreach (ListItem item in RegisteredUsersList.Items)
-            {
-                if (item.Selected)
-                {
-                    if (usernames.Length != 0)
-                    {
-                        usernames += ", ";
-                    }
-
-                    usernames += item.Text;
-                }
-            }
-
             String projectName = ProjectsDropDown.SelectedValue;
 
             if (projectName == null || projectName.Length == 0)
@@ -139,7 +108,7 @@ namespace ProjectManagerWeb
                 return;
             }
 
-            calendarBLL.createCalendar(name, projectName, usernames);
+            calendarBLL.createCalendar(name, projectName);
             InitPanel.Visible = true;
             CreatePanel.Visible = false;
         }
@@ -161,20 +130,7 @@ namespace ProjectManagerWeb
 
             String newProject = NewProjectDropDown.SelectedValue;
 
-            String newUsers = "";
-            foreach (ListItem item in NewRegisteredUsersDropDown.Items)
-            {
-                if (item.Selected)
-                {
-                    if (newUsers.Length != 0)
-                    {
-                        newUsers += ", ";
-                    }
-                    newUsers += item.Text;
-                }
-            }
-
-            if (calendarBLL.updateCalendarInfo(calendarToEdit, newName, newProject, newUsers))
+            if (calendarBLL.updateCalendarInfo(calendarToEdit, newName, newProject))
             {
                 TopMostMessageBox.Show("Successfully updated " + newName, "Message", MessageBoxButtons.OKCancel);
             }
@@ -200,12 +156,10 @@ namespace ProjectManagerWeb
         {
             CalendarBLL calendarBLL = new CalendarBLL();
             String calendarToView = ViewDropDown.SelectedValue;
-            System.Diagnostics.Trace.WriteLine(calendarToView);
             ProjectManagerLibrary.Models.Calendar calendar = calendarBLL.getCalendarByName(calendarToView);
             currentCalendar.setCalendarName(calendarToView);
             currentCalendar.setCalendarId(calendar.getCalendarId());
-            currentCalendar.setProjectName(calendar.getProjectName());
-            currentCalendar.setUsers(calendar.getUsers());
+            currentCalendar.setProjectId(calendar.getProjectId());
 
             InitPanel.Visible = false;
             ViewCalendarPanel.Visible = true;
@@ -332,8 +286,7 @@ namespace ProjectManagerWeb
             ProjectManagerLibrary.Models.Calendar calendar = calendarBLL.getCalendarByName(calendarToDeleteEvents);
             currentCalendar.setCalendarName(calendarToDeleteEvents);
             currentCalendar.setCalendarId(calendar.getCalendarId());
-            currentCalendar.setProjectName(calendar.getProjectName());
-            currentCalendar.setUsers(calendar.getUsers());
+            currentCalendar.setProjectId(calendar.getProjectId());
 
             populateDeleteEventCheckBox();
 

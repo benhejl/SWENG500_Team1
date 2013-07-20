@@ -9,23 +9,20 @@ namespace ProjectManagerLibrary.Models
     {
         private String calendarName;
         private int calendarId;
-        private String projectName;
-        private String users;
+        private int project;
 
         public Calendar()
         {
             calendarName = null;
             calendarId = -1;
-            projectName = null;
-            users = null;
+            project = -1;
         }
 
-        public Calendar(String _calendarName, int _calendarId, String _projectName, String _users)
+        public Calendar(String _calendarName, int _calendarId, int _project)
         {
             calendarName = _calendarName;
             calendarId = _calendarId;
-            projectName = _projectName;
-            users = _users;
+            project = _project;
         }
 
         public void setCalendarName(String _calendarName)
@@ -38,14 +35,9 @@ namespace ProjectManagerLibrary.Models
             calendarId = _calendarId;
         }
 
-        public void setProjectName(String _projectName)
+        public void setProjectId(int _project)
         {
-            projectName = _projectName;
-        }
-
-        public void setUsers(String _users)
-        {
-            users = _users;
+            project = _project;
         }
 
         public String getCalendarName()
@@ -58,14 +50,9 @@ namespace ProjectManagerLibrary.Models
             return calendarId;
         }
 
-        public String getProjectName()
+        public int getProjectId()
         {
-            return projectName;
-        }
-
-        public String getUsers()
-        {
-            return users;
+            return project;
         }
     }
 }

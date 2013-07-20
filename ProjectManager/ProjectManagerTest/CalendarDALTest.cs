@@ -96,12 +96,11 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void insertNewCalendarTest()
         {
-            string calendarName = "UnitTestName"; 
-            string users = "UnitTestUsers"; 
-            string projectName = "UnitTestProject";
+            string calendarName = "UnitTestName";
+            int projectId = 1;
             bool expected = true;
             bool actual;
-            actual = CalendarDAL.insertNewCalendar(calendarName, users, projectName);
+            actual = CalendarDAL.insertNewCalendar(calendarName, projectId);
             Assert.AreEqual(expected, actual);
         }
 
@@ -113,11 +112,10 @@ namespace ProjectManagerTest
         {
             string currentName = "UnitTestName";
             string newName = "UnitTestChangeName";
-            string projectName = "UnitTestProject";
-            string users = "UnitTestUsers";
+            int projectId = 1;
             bool expected = true;
             bool actual;
-            actual = CalendarDAL.updateCalendar(currentName, newName, projectName, users);
+            actual = CalendarDAL.updateCalendar(currentName, newName, projectId);
             Assert.AreEqual(expected, actual);
         }
 

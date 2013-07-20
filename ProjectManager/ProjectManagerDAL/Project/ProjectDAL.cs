@@ -136,32 +136,5 @@ namespace ProjectManagerDAL
                 throw;
             }
         }
-
-        //Functions for calendar
-        public static ArrayList getProjectNames()
-        {
-            ArrayList projectNames = new ArrayList();
-            using (SqlConnection sqlConnection = new SqlConnection(Constants.DATABASE.CONNECTION_STRING))
-            {
-                sqlConnection.Open();
-                using (SqlCommand sqlCommand = new SqlCommand("SELECT Name FROM Projects", sqlConnection))
-                {
-                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
-                    {
-                        if (sqlDataReader.HasRows)
-                        {
-                            while (sqlDataReader.Read())
-                            {
-                                projectNames.Add(Convert.ToString(sqlDataReader["Name"]));
-                            }
-                        }
-                        sqlDataReader.Close();
-                    }
-                }
-                sqlConnection.Close();
-            }
-            return projectNames;
-        }
-
     }
 }
