@@ -80,20 +80,44 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void EvaluateProjectTest()
         {
-            OpenVsResolvedGraph target = new OpenVsResolvedGraph();
+            OpenVsResolvedGraph_Accessor target = new OpenVsResolvedGraph_Accessor();
             Project project = BuildDefaultProject();
 
             List<Series> results = target.EvaluateProject(project, new DateRange(DateTime.Now, DateTime.Now));
+            Assert.IsNotNull(results);
+            Assert.AreEqual(results.Count, 2);
+            Assert.AreEqual(1, results[0].Points.Count);
+            Assert.AreEqual(0, results[0].Points[0].YValues[0]);
+            Assert.AreEqual(1, results[1].Points.Count);
+            Assert.AreEqual(0, results[1].Points[0].YValues[0]);
+
+            AddIssues(project, 3, 2);
+
+            results = target.EvaluateProject(project, new DateRange(DateTime.Now, DateTime.Now));
 
             Assert.IsNotNull(results);
             Assert.AreEqual(results.Count, 2);
+            Assert.AreEqual(1, results[0].Points.Count);
+            Assert.AreEqual(2, results[0].Points[0].YValues[0]);
+            Assert.AreEqual(1, results[1].Points.Count);
+            Assert.AreEqual(3, results[1].Points[0].YValues[0]);
+        }
 
-            // TODO: Insert issues
-
-            Assert.AreEqual(results[0].Points.Count, 1);
-            Assert.AreEqual(results[1].Points.Count, 1);
-
-            Assert.Inconclusive("Verify the correctness of this test method.");
+        private static void AddIssues(Project project, int resolved, int unresolved)
+        {
+            Issue issue;
+            for (int i = 0; i < resolved; i++)
+            {
+                issue = new Issue();
+                issue.CurrentStatus = Issue.IssueStatus.Resolved;
+                project.Issues.Add(issue);
+            }
+            for (int i = 0; i < unresolved; i++)
+            {
+                issue = new Issue();
+                issue.CurrentStatus = Issue.IssueStatus.Unresolved;
+                project.Issues.Add(issue);
+            }
         }
 
 
@@ -104,7 +128,7 @@ namespace ProjectManagerTest
         [ExpectedException(typeof(ArgumentNullException))]
         public void EvaluateProjectNullProjectTest()
         {
-            OpenVsResolvedGraph target = new OpenVsResolvedGraph();
+            OpenVsResolvedGraph_Accessor target = new OpenVsResolvedGraph_Accessor();
             target.EvaluateProject(null, null);
         }
 
@@ -113,7 +137,7 @@ namespace ProjectManagerTest
         [ExpectedException(typeof(ArgumentNullException))]
         public void EvaluateProjectNullRangeTest()
         {
-            OpenVsResolvedGraph target = new OpenVsResolvedGraph();
+            OpenVsResolvedGraph_Accessor target = new OpenVsResolvedGraph_Accessor();
             target.EvaluateProject(BuildDefaultProject(), null);
         }
 
@@ -125,7 +149,7 @@ namespace ProjectManagerTest
         {
             OpenVsResolvedGraph target = new OpenVsResolvedGraph(); // TODO: Initialize to an appropriate value
             string actual = target.DataTitle;
-            Assert.AreEqual(actual, "Open vs. Resolved Defects");
+            Assert.AreEqual(actual, "Open vs. Resolved Issues");
         }
 
         /// <summary>
@@ -136,12 +160,20 @@ namespace ProjectManagerTest
         {
             OpenVsResolvedGraph target = new OpenVsResolvedGraph(); // TODO: Initialize to an appropriate value
             Project project = BuildDefaultProject();
+            AddIssues(project, 5, 1);
             DateRange range = new DateRange(DateTime.Now.Subtract(TimeSpan.FromDays(10)), DateTime.Now);
             Control actual = target.Display(project, range);
 
             Assert.IsInstanceOfType(actual, typeof(Chart));
 
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            Chart chart = actual as Chart;
+            Assert.AreEqual(2, chart.Series.Count);
+            Assert.AreEqual(1, chart.Series[0].Points.Count);
+            Assert.AreEqual(1, chart.Series[0].Points[0].YValues[0]);
+            Assert.AreEqual(1, chart.Series[1].Points.Count);
+            Assert.AreEqual(5, chart.Series[1].Points[0].YValues[0]);
+            Assert.AreEqual(1, chart.Legends.Count);
+            Assert.AreEqual(1, chart.Titles.Count);
         }
 
         /// <summary>
@@ -151,7 +183,7 @@ namespace ProjectManagerTest
         public void RequiresDateRangeTest()
         {
             OpenVsResolvedGraph target = new OpenVsResolvedGraph(); // TODO: Initialize to an appropriate value
-            Assert.AreEqual(true, target.RequiresDateRange);
+            Assert.AreEqual(false, target.RequiresDateRange);
         }
 
         /// <summary>
@@ -160,7 +192,7 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void CurrentDateRangeTest()
         {
-            OpenVsResolvedGraph target = new OpenVsResolvedGraph(); // TODO: Initialize to an appropriate value
+            OpenVsResolvedGraph_Accessor target = new OpenVsResolvedGraph_Accessor(); // TODO: Initialize to an appropriate value
             DateRange actual;
             actual = target.CurrentDateRange;
             Assert.IsNotNull(target.CurrentDateRange);
@@ -170,8 +202,8 @@ namespace ProjectManagerTest
 
             target.EvaluateProject(new Project(1, " ", start, finish, "", "", "", finish), new DateRange(start, finish));
             actual = target.CurrentDateRange;
-            Assert.AreEqual(start, actual.StartTime);
-            Assert.AreEqual(finish, actual.FinishTime);
+            Assert.AreEqual(DateTime.MinValue, actual.StartTime);
+            Assert.AreEqual(DateTime.MaxValue, actual.FinishTime);
         }
 
         /// <summary>
