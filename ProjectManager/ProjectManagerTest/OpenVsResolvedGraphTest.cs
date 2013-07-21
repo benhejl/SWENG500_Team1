@@ -15,7 +15,7 @@ namespace ProjectManagerTest
     ///to contain all OpenVsResolvedStrategyTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class OpenVsResolvedStrategyTest
+    public class OpenVsResolvedGraphTest
     {
 
 
@@ -80,7 +80,7 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void EvaluateProjectTest()
         {
-            OpenVsResolvedStrategy target = new OpenVsResolvedStrategy();
+            OpenVsResolvedGraph target = new OpenVsResolvedGraph();
             Project project = BuildDefaultProject();
 
             List<Series> results = target.EvaluateProject(project, new DateRange(DateTime.Now, DateTime.Now));
@@ -90,8 +90,8 @@ namespace ProjectManagerTest
 
             // TODO: Insert issues
 
-            Assert.AreEqual(results[0].Points.Count, 10);
-            Assert.AreEqual(results[1].Points.Count, 10);
+            Assert.AreEqual(results[0].Points.Count, 1);
+            Assert.AreEqual(results[1].Points.Count, 1);
 
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
@@ -104,7 +104,7 @@ namespace ProjectManagerTest
         [ExpectedException(typeof(ArgumentNullException))]
         public void EvaluateProjectNullProjectTest()
         {
-            OpenVsResolvedStrategy target = new OpenVsResolvedStrategy();
+            OpenVsResolvedGraph target = new OpenVsResolvedGraph();
             target.EvaluateProject(null, null);
         }
 
@@ -113,7 +113,7 @@ namespace ProjectManagerTest
         [ExpectedException(typeof(ArgumentNullException))]
         public void EvaluateProjectNullRangeTest()
         {
-            OpenVsResolvedStrategy target = new OpenVsResolvedStrategy();
+            OpenVsResolvedGraph target = new OpenVsResolvedGraph();
             target.EvaluateProject(BuildDefaultProject(), null);
         }
 
@@ -123,7 +123,7 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void DataTitleTest()
         {
-            OpenVsResolvedStrategy target = new OpenVsResolvedStrategy(); // TODO: Initialize to an appropriate value
+            OpenVsResolvedGraph target = new OpenVsResolvedGraph(); // TODO: Initialize to an appropriate value
             string actual = target.DataTitle;
             Assert.AreEqual(actual, "Open vs. Resolved Defects");
         }
@@ -134,7 +134,7 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void DisplayTest()
         {
-            OpenVsResolvedStrategy target = new OpenVsResolvedStrategy(); // TODO: Initialize to an appropriate value
+            OpenVsResolvedGraph target = new OpenVsResolvedGraph(); // TODO: Initialize to an appropriate value
             Project project = BuildDefaultProject();
             DateRange range = new DateRange(DateTime.Now.Subtract(TimeSpan.FromDays(10)), DateTime.Now);
             Control actual = target.Display(project, range);
@@ -150,7 +150,7 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void RequiresDateRangeTest()
         {
-            OpenVsResolvedStrategy target = new OpenVsResolvedStrategy(); // TODO: Initialize to an appropriate value
+            OpenVsResolvedGraph target = new OpenVsResolvedGraph(); // TODO: Initialize to an appropriate value
             Assert.AreEqual(true, target.RequiresDateRange);
         }
 
@@ -160,7 +160,7 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void CurrentDateRangeTest()
         {
-            OpenVsResolvedStrategy target = new OpenVsResolvedStrategy(); // TODO: Initialize to an appropriate value
+            OpenVsResolvedGraph target = new OpenVsResolvedGraph(); // TODO: Initialize to an appropriate value
             DateRange actual;
             actual = target.CurrentDateRange;
             Assert.IsNotNull(target.CurrentDateRange);
@@ -180,7 +180,7 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void SortOrderTest()
         {
-            OpenVsResolvedStrategy target = new OpenVsResolvedStrategy();
+            OpenVsResolvedGraph target = new OpenVsResolvedGraph();
             Assert.AreEqual(1, target.SortOrder);
         }
 
@@ -191,7 +191,7 @@ namespace ProjectManagerTest
         [DeploymentItem("ProjectManagerLibrary.dll")]
         public void ConfigureAxisTest()
         {
-            OpenVsResolvedStrategy_Accessor target = new OpenVsResolvedStrategy_Accessor(); // TODO: Initialize to an appropriate value
+            OpenVsResolvedGraph_Accessor target = new OpenVsResolvedGraph_Accessor(); // TODO: Initialize to an appropriate value
             Axis axis = new Axis();
             target.ConfigureAxis(axis);
             Assert.AreEqual(System.Drawing.Color.LightGray, axis.LineColor);

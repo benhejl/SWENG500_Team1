@@ -53,14 +53,14 @@
     <Compile Include="Models\CurrentCalendar.cs" />
     <Compile Include="Models\DateRange.cs" />
     <Compile Include="Models\ForumModel.cs" />
+    <Compile Include="Models\Graphs\IssuePriorityGraph.cs" />
     <Compile Include="Models\IssueAttachment.cs" />
     <Compile Include="Models\ProjectData.cs" />
-    <Compile Include="Models\ProjectMap.cs" />
     <Compile Include="Models\Reports\IssuesByUser.cs" />
     <Compile Include="Models\Reports\IssueStatus.cs" />
     <Compile Include="Models\Reports\ProjectSummary.cs" />
     <Compile Include="Models\Issue.cs" />
-    <Compile Include="Models\Graphs\OpenVsResolvedStrategy.cs" />
+    <Compile Include="Models\Graphs\OpenVsResolvedGraph.cs" />
     <Compile Include="Models\IssueTransition.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Reports\SummaryBase.cs" />

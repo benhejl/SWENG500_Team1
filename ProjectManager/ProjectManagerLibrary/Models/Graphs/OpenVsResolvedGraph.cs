@@ -6,7 +6,7 @@ using System.Web.UI.DataVisualization.Charting;
 
 namespace ProjectManagerLibrary.Models.Graphs
 {
-    public class OpenVsResolvedStrategy : ProjectData
+    public class OpenVsResolvedGraph : ProjectData
     {
         static string OpenSeriesName = "Open";
         static string ResolvedSeriesName = "Resolved";
@@ -15,11 +15,11 @@ namespace ProjectManagerLibrary.Models.Graphs
         private Legend legend;
         private Title title;
 
-        public bool RequiresDateRange { get { return true; } }
+        public bool RequiresDateRange { get { return false; } }
         public DateRange CurrentDateRange { get; private set; }
         public int SortOrder { get { return 1; } }
 
-        public OpenVsResolvedStrategy()
+        public OpenVsResolvedGraph()
         {
             CurrentDateRange = new DateRange(DateTime.Now, DateTime.Now);
         }
@@ -64,6 +64,7 @@ namespace ProjectManagerLibrary.Models.Graphs
             chart.ChartAreas.Clear();
             chart.ChartAreas.Add(chartArea);
             chartArea.AxisX.IsMarginVisible = false;
+            chartArea.AxisX.LabelStyle.Enabled = false;
             chartArea.BorderDashStyle = ChartDashStyle.NotSet;
 
             ConfigureAxis(chartArea.AxisX);
@@ -101,41 +102,30 @@ namespace ProjectManagerLibrary.Models.Graphs
             DateTime current = DateTime.Now;
             DateTime first = current.Subtract(TimeSpan.FromDays(9));
 
-            int[] open = new int[10];
-            int[] resolved = new int[10];
+            int open = 0;
+            int resolved = 0;
 
             List<Series> data = new List<Series>(2);
             data.Add(new Series(OpenSeriesName));
             data.Add(new Series(ResolvedSeriesName));
 
-            DateTime date = first;
-            for (int i = 0; i < 10; i++)
+            foreach (Issue issue in project.Issues)
             {
-                foreach (Issue issue in project.Issues)
+                if (issue.CurrentStatus == Issue.IssueStatus.Unresolved)
                 {
-                    if (date >= issue.EntryDate)
-                    {
-                        if (issue.CurrentStatus == Issue.IssueStatus.Unresolved)
-                        {
-                            open[i]++;
-                        }
-                        else if (issue.CurrentStatus == Issue.IssueStatus.Resolved)
-                        {
-                            resolved[i]++;
-                        }
-                    }
+                    open++;
                 }
-                date = date.AddDays(1);
+                else if (issue.CurrentStatus == Issue.IssueStatus.Resolved)
+                {
+                    resolved++;
+                }
             }
 
-            for (int i = 0; i < open.Length; i++)
-            {
-                data[0].Points.AddY(open[i]);
-                data[1].Points.AddY(resolved[i]);
-            }
+            data[0].Points.AddY(open);
+            data[0].ChartType = SeriesChartType.Column;
 
-            data[0].ChartType = SeriesChartType.Line;
-            data[1].ChartType = SeriesChartType.Line;
+            data[1].Points.AddY(resolved);
+            data[1].ChartType = SeriesChartType.Column;
 
             CurrentDateRange = range;
 

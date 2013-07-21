@@ -76,7 +76,7 @@ namespace ProjectManagerTest
         {
             List<Type> actual = ReportBLL.ReportTypes();
             Assert.AreEqual(actual.Count, 2);
-            Assert.IsTrue(actual.Contains(typeof(ProjectManagerLibrary.Models.Graphs.OpenVsResolvedStrategy)));
+            Assert.IsTrue(actual.Contains(typeof(ProjectManagerLibrary.Models.Graphs.OpenVsResolvedGraph)));
             Assert.IsTrue(actual.Contains(typeof(ProjectManagerLibrary.Models.Reports.ProjectSummary)));
         }
 
@@ -86,8 +86,8 @@ namespace ProjectManagerTest
         [TestMethod()]
         public void OrderReportTypesTest()
         {
-            List<Type> availableReports = new List<Type>(new Type[] { typeof(OpenVsResolvedStrategy) });
-            List<Type> expected = new List<Type>(new Type[] { typeof(OpenVsResolvedStrategy) });
+            List<Type> availableReports = new List<Type>(new Type[] { typeof(OpenVsResolvedGraph) });
+            List<Type> expected = new List<Type>(new Type[] { typeof(OpenVsResolvedGraph) });
             List<Type> actual = ReportBLL.OrderReportTypes(availableReports);
             Assert.IsTrue(Enumerable.SequenceEqual(expected, actual));
 
@@ -96,13 +96,13 @@ namespace ProjectManagerTest
             actual = ReportBLL.OrderReportTypes(availableReports);
             Assert.IsTrue(Enumerable.SequenceEqual(expected, actual));
 
-            availableReports = new List<Type>(new Type[] { typeof(ProjectSummary), typeof(OpenVsResolvedStrategy) });
-            expected = new List<Type>(new Type[] { typeof(ProjectSummary), typeof(OpenVsResolvedStrategy) });
+            availableReports = new List<Type>(new Type[] { typeof(ProjectSummary), typeof(OpenVsResolvedGraph) });
+            expected = new List<Type>(new Type[] { typeof(ProjectSummary), typeof(OpenVsResolvedGraph) });
             actual = ReportBLL.OrderReportTypes(availableReports);
             Assert.IsTrue(Enumerable.SequenceEqual(expected, actual));
 
-            availableReports = new List<Type>(new Type[] { typeof(OpenVsResolvedStrategy), typeof(ProjectSummary) });
-            expected = new List<Type>(new Type[] { typeof(ProjectSummary), typeof(OpenVsResolvedStrategy) });
+            availableReports = new List<Type>(new Type[] { typeof(OpenVsResolvedGraph), typeof(ProjectSummary) });
+            expected = new List<Type>(new Type[] { typeof(ProjectSummary), typeof(OpenVsResolvedGraph) });
             actual = ReportBLL.OrderReportTypes(availableReports);
             Assert.IsTrue(Enumerable.SequenceEqual(expected, actual));
         }
