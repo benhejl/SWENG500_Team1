@@ -53,6 +53,7 @@
     <Compile Include="Models\CurrentCalendar.cs" />
     <Compile Include="Models\DateRange.cs" />
     <Compile Include="Models\ForumModel.cs" />
+    <Compile Include="Models\Graphs\GraphBase.cs" />
     <Compile Include="Models\Graphs\IssuePriorityGraph.cs" />
     <Compile Include="Models\IssueAttachment.cs" />
     <Compile Include="Models\ProjectData.cs" />

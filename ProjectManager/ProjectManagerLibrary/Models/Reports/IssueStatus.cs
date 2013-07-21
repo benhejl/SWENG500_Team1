@@ -14,7 +14,7 @@ namespace ProjectManagerLibrary.Models.Reports
                 return new TableRow[0];
 
             List<TableRow> rows = new List<TableRow>(4);
-            rows.Add(HeaderRow("Issue Status"));
+            rows.Add(HeaderRow("Issues by Status"));
             rows.Add(CreateRow("Status", "Count", true));
             rows.Add(CreateRow("Open", project.OpenIssues().ToString()));
             rows.Add(CreateRow("Resolved", project.ResolvedIssues().ToString()));

@@ -14,7 +14,7 @@ namespace ProjectManagerLibrary.Models.Reports
                 return new TableRow[0];
 
             List<TableRow> rows = new List<TableRow>(4);
-            rows.Add(HeaderRow("Issue Status"));
+            rows.Add(HeaderRow("Issues by Assignee"));
             rows.Add(CreateRow("Status", "Count", true));
 
             Dictionary<string, int> issuesByUser = FindIssuesByUser(project);

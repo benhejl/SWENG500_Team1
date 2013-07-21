@@ -6,19 +6,16 @@ using System.Web.UI.DataVisualization.Charting;
 
 namespace ProjectManagerLibrary.Models.Graphs
 {
-    class IssuePriorityGraph : ProjectData
+    class IssuePriorityGraph : GraphBase, ProjectData
     {
         static string HighSeriesName = "High";
         static string MediumSeriesName = "Medium";
         static string LowSeriesName = "Low";
 
-        private ChartArea chartArea;
-        private Legend legend;
-        private Title title;
-
         public bool RequiresDateRange { get { return false; } }
         public DateRange CurrentDateRange { get; private set; }
         public int SortOrder { get { return 1; } }
+        public string DataTitle { get { return "Issues By Priority"; } }
 
         public IssuePriorityGraph()
         {
@@ -28,39 +25,11 @@ namespace ProjectManagerLibrary.Models.Graphs
 
         public System.Web.UI.Control Display(Project project, DateRange range)
         {
-            Chart chart = new Chart();
-            chart.ImageStorageMode = ImageStorageMode.UseImageLocation;
-
-            chartArea = new ChartArea();
-            chartArea.Area3DStyle.Enable3D = true;
-            chart.ChartAreas.Clear();
-            chart.ChartAreas.Add(chartArea);
-
-            legend = new Legend();
-            chart.Legends.Clear();
-            chart.Legends.Add(legend);
-            legend.LegendStyle = LegendStyle.Row;
-            legend.Docking = Docking.Bottom;
-            legend.Alignment = System.Drawing.StringAlignment.Center;
-
-            title = new Title();
-            chart.Titles.Clear();
-            chart.Titles.Add(title);
-            title.Docking = Docking.Top;
-            title.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
-            title.Font = new System.Drawing.Font(legend.Font.FontFamily, 18);
-
-            List<Series> data = EvaluateProject(project, range);
-            foreach (Series series in data)
-            {
-                chart.Series.Add(series);
-            }
-
-            return chart;
+            return BuildChart(project, range);
         }
 
 
-        public List<Series> EvaluateProject(Project project, DateRange range)
+        override protected List<Series> EvaluateProject(Project project, DateRange range)
         {
             if ((null == project) || (null == range))
                 throw new ArgumentNullException();
@@ -83,6 +52,12 @@ namespace ProjectManagerLibrary.Models.Graphs
             return new List<Series>(new Series[] {data});
         }
 
-        public string DataTitle { get { return "Issues By Priority"; } }
+
+        override protected ChartArea CreateChartArea()
+        {
+            ChartArea chartArea = new ChartArea();
+            chartArea.Area3DStyle.Enable3D = true;
+            return chartArea;
+        }
     }
 }
