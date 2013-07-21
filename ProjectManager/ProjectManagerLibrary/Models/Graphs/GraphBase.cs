@@ -12,11 +12,11 @@ namespace ProjectManagerLibrary.Models.Graphs
         abstract protected List<Series> EvaluateProject(Project project, DateRange range);
 
 
-        protected Chart BuildChart(Project project, DateRange range)
+        protected Chart BuildChart(Project project, DateRange range, string title)
         {
             Chart chart = CreateChart();
             FormatLegend(chart);
-            FormatTitle(chart);
+            FormatTitle(chart, title);
 
             chart.ChartAreas.Clear();
             chart.ChartAreas.Add(CreateChartArea());
@@ -48,9 +48,9 @@ namespace ProjectManagerLibrary.Models.Graphs
         }
 
 
-        private Chart FormatTitle(Chart chart)
+        private Chart FormatTitle(Chart chart, string titleText)
         {
-            Title title = new Title();
+            Title title = new Title(titleText);
             chart.Titles.Clear();
             chart.Titles.Add(title);
             title.Docking = Docking.Top;

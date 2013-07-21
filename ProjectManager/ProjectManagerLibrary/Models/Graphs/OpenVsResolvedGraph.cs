@@ -25,7 +25,7 @@ namespace ProjectManagerLibrary.Models.Graphs
 
         public System.Web.UI.Control Display(Project project, DateRange range)
         {
-            return BuildChart(project, range);
+            return BuildChart(project, range, DataTitle);
         }
 
 
