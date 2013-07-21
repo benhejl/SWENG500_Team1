@@ -28,6 +28,11 @@ namespace ProjectManagerWeb.Controllers
             return true;
         }
 
+        public bool FilterByIssueOwner()
+        {
+            return true;
+        }
+
         public bool AddAssigneeToIssue()
         {
             return true;

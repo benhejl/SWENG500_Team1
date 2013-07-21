@@ -105,6 +105,16 @@ namespace ProjectManagerTest
         }
 
         [TestMethod()]
+        public void FilterByIssueOwnerTest()
+        {
+            IssueController target = new IssueController();
+            bool expected = true;
+            bool actual;
+            actual = target.FilterByIssueOwner();
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
         public void AddAssigneeToIssueTest()
         {
             IssueController target = new IssueController();
