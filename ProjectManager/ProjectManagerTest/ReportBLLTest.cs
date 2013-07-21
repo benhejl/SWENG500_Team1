@@ -75,9 +75,10 @@ namespace ProjectManagerTest
         public void ReportTypesTest()
         {
             List<Type> actual = ReportBLL.ReportTypes();
-            Assert.AreEqual(actual.Count, 2);
+            Assert.AreEqual(actual.Count, 3);
             Assert.IsTrue(actual.Contains(typeof(ProjectManagerLibrary.Models.Graphs.OpenVsResolvedGraph)));
             Assert.IsTrue(actual.Contains(typeof(ProjectManagerLibrary.Models.Reports.ProjectSummary)));
+            Assert.IsTrue(actual.Contains(typeof(ProjectManagerLibrary.Models.Graphs.IssuePriorityGraph)));
         }
 
         /// <summary>

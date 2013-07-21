@@ -10,7 +10,8 @@ namespace ProjectManagerLibrary.Models.Graphs
     {
         abstract protected ChartArea CreateChartArea();
         abstract protected List<Series> EvaluateProject(Project project, DateRange range);
-
+        virtual protected string XAxisTitle { get { return ""; } }
+        virtual protected string YAxisTitle { get { return ""; } }
 
         protected Chart BuildChart(Project project, DateRange range, string title)
         {
@@ -18,8 +19,11 @@ namespace ProjectManagerLibrary.Models.Graphs
             FormatLegend(chart);
             FormatTitle(chart, title);
 
+            ChartArea chartArea = CreateChartArea();
+            chartArea.AxisX.Title = XAxisTitle;
+            chartArea.AxisY.Title = YAxisTitle;
             chart.ChartAreas.Clear();
-            chart.ChartAreas.Add(CreateChartArea());
+            chart.ChartAreas.Add(chartArea);
 
             List<Series> data = EvaluateProject(project, range);
             AddChartData(chart, data);

@@ -10,6 +10,7 @@ namespace ProjectManagerLibrary.Models.Graphs
     {
         static string OpenSeriesName = "Open";
         static string ResolvedSeriesName = "Resolved";
+        protected override string YAxisTitle { get { return "Issue Count"; } }
 
         public bool RequiresDateRange { get { return false; } }
         public DateRange CurrentDateRange { get; private set; }
@@ -19,7 +20,7 @@ namespace ProjectManagerLibrary.Models.Graphs
 
         public OpenVsResolvedGraph()
         {
-            CurrentDateRange = new DateRange(DateTime.Now, DateTime.Now);
+            CurrentDateRange = new DateRange(DateTime.MinValue, DateTime.MaxValue);
         }
 
 
@@ -48,35 +49,14 @@ namespace ProjectManagerLibrary.Models.Graphs
             if ((null == project) || (null == range))
                 throw new ArgumentNullException();
 
-            DateTime current = DateTime.Now;
-            DateTime first = current.Subtract(TimeSpan.FromDays(9));
-
-            int open = 0;
-            int resolved = 0;
-
             List<Series> data = new List<Series>(2);
             data.Add(new Series(OpenSeriesName));
-            data.Add(new Series(ResolvedSeriesName));
-
-            foreach (Issue issue in project.Issues)
-            {
-                if (issue.CurrentStatus == Issue.IssueStatus.Unresolved)
-                {
-                    open++;
-                }
-                else if (issue.CurrentStatus == Issue.IssueStatus.Resolved)
-                {
-                    resolved++;
-                }
-            }
-
-            data[0].Points.AddY(open);
+            data[0].Points.AddY(project.OpenIssues());
             data[0].ChartType = SeriesChartType.Column;
 
-            data[1].Points.AddY(resolved);
+            data.Add(new Series(ResolvedSeriesName));
+            data[1].Points.AddY(project.ResolvedIssues());
             data[1].ChartType = SeriesChartType.Column;
-
-            CurrentDateRange = range;
 
             return data;
         }

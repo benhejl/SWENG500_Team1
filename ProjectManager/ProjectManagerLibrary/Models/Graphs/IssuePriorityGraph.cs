@@ -19,7 +19,7 @@ namespace ProjectManagerLibrary.Models.Graphs
 
         public IssuePriorityGraph()
         {
-            CurrentDateRange = new DateRange(DateTime.Now, DateTime.Now);
+            CurrentDateRange = new DateRange(DateTime.MinValue, DateTime.MaxValue);
         }
 
 
