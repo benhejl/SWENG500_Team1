@@ -28,5 +28,13 @@ namespace ProjectManagerWeb.Controllers
         {
             return new ScrumBLL().GetScrumQuestions();
         }
+        public bool ScrumByDate()
+        {
+            return true;
+        }
+        public bool ViewTeamMembersScrum()
+        {
+            return true;
+        }
     }
 }

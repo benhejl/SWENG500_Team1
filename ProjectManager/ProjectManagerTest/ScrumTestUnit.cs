@@ -135,5 +135,17 @@ namespace ProjectManagerTest
             ScrumModel scrum = scrumController.GetScrumQuestions();
             Assert.IsTrue(scrum.QuestionList.Count == 3);
         }
+        [TestMethod]
+        public void TestViewTeamMembersScrum()
+        {
+            ScrumController scrumController = new ScrumController();
+            Assert.IsTrue(scrumController.ViewTeamMembersScrum());
+        }
+        [TestMethod]
+        public void TestScrumByDate()
+        {
+            ScrumController scrumController = new ScrumController();
+            Assert.IsTrue(scrumController.ScrumByDate());
+        }
     }
 }
