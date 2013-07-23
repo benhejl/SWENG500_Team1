@@ -159,7 +159,7 @@ namespace ProjectManagerTest
             ScrumController target = new ScrumController(); // TODO: Initialize to an appropriate value
             ScrumModel expected = null; // TODO: Initialize to an appropriate value
             ScrumModel actual;
-            actual = target.ViewScrumData();
+            actual = target.ViewScrumData(1);
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }

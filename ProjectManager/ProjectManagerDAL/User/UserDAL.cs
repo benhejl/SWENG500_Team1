@@ -149,6 +149,35 @@ namespace ProjectManagerDAL
             }
             return user;
         }
+        /// <summary>
+        /// GetAllUsers
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns>User Object</returns>
+        public List<KeyValuePair<string, int>> GetAllUserNames()
+        {
+            List<KeyValuePair<string, int>> userList = new List<KeyValuePair<string, int>>();
+            using (SqlConnection sqlConnection = new SqlConnection(Constants.DATABASE.CONNECTION_STRING))
+            {
+                sqlConnection.Open();
+                using (SqlCommand sqlCommand = new SqlCommand("SELECT FirstName, LastName, UserID FROM USERS", sqlConnection))
+                {
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                        if (sqlDataReader.HasRows)
+                        {
+                            while (sqlDataReader.Read())
+                            {
+                                userList.Add(new KeyValuePair<string, int>(Convert.ToString(sqlDataReader["FirstName"]) + " " + Convert.ToString(sqlDataReader["LastName"]), Convert.ToInt32(sqlDataReader["UserID"])));
+                            }
+                        }
+                        sqlDataReader.Close();
+                    }
+                }
+                sqlConnection.Close();
+            }
+            return userList;
+        }
 
         //Functions for the calendar
         public static ArrayList GetUserNamesForCalendar() {

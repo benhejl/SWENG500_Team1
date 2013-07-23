@@ -16,9 +16,9 @@ namespace ProjectManagerWeb.Controllers
         {
             return new ScrumBLL().EditScrum(scrum);
         }
-        public ScrumModel ViewScrumData()
+        public ScrumModel ViewScrumData(int userId)
         {
-            return new ScrumBLL().ViewScrumData();
+            return new ScrumBLL().ViewScrumData(userId);
         }
         public ScrumModel GetScrumDetails(int answerKey)
         {
@@ -28,9 +28,10 @@ namespace ProjectManagerWeb.Controllers
         {
             return new ScrumBLL().GetScrumQuestions();
         }
-        public bool ScrumByDate()
+        public ScrumModel ScrumByDate(string date, string nextDay)
         {
-            return true;
+            return new ScrumBLL().ViewScrumDataByDate(date, nextDay);
+
         }
         public bool ViewTeamMembersScrum()
         {

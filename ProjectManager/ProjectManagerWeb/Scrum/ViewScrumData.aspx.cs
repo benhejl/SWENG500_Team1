@@ -15,7 +15,7 @@ namespace ProjectManagerWeb.Scrum
         protected void Page_Load(object sender, EventArgs e)
         {
             ScrumController scrumController = new ScrumController();
-            ScrumModel scrumModel = scrumController.ViewScrumData();
+            ScrumModel scrumModel = scrumController.ViewScrumData(1);
 
             if (scrumModel.ScrumList != null)
             {

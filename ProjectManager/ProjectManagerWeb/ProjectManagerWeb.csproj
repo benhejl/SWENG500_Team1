@@ -77,7 +77,9 @@
     <Content Include="Login.aspx" />
     <Content Include="Scrum\EditScrumData.aspx" />
     <Content Include="Scrum\EnterScrumData.aspx" />
+    <Content Include="Scrum\SearchScrumByDate.aspx" />
     <Content Include="Scrum\ViewScrumData.aspx" />
+    <Content Include="Scrum\ViewScrumTeamMember.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
@@ -204,12 +206,26 @@
     <Compile Include="Scrum\EnterScrumData.aspx.designer.cs">
       <DependentUpon>EnterScrumData.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Scrum\SearchScrumByDate.aspx.cs">
+      <DependentUpon>SearchScrumByDate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Scrum\SearchScrumByDate.aspx.designer.cs">
+      <DependentUpon>SearchScrumByDate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Scrum\ViewScrumData.aspx.cs">
       <DependentUpon>ViewScrumData.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Scrum\ViewScrumData.aspx.designer.cs">
       <DependentUpon>ViewScrumData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Scrum\ViewScrumTeamMember.aspx.cs">
+      <DependentUpon>ViewScrumTeamMember.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Scrum\ViewScrumTeamMember.aspx.designer.cs">
+      <DependentUpon>ViewScrumTeamMember.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

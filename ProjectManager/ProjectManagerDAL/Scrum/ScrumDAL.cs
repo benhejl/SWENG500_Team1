@@ -119,7 +119,7 @@ namespace ProjectManagerDAL.Scrum
                 return false;
             }
         }
-        public ScrumModel ViewScrumData()
+        public ScrumModel ViewScrumData(int userId)
         {
             ScrumModel scrumModel = new ScrumModel();
             using (SqlConnection sqlConnection = new SqlConnection(Constants.DATABASE.CONNECTION_STRING))
@@ -129,7 +129,7 @@ namespace ProjectManagerDAL.Scrum
                 string sqlString = "SELECT Users.FirstName, Users.LastName, dbo.ScrumQuestions.ScrumQuestion, ScrumAnswers. * " +
                                    "FROM ScrumAnswers " +
                                    "INNER JOIN dbo.ScrumQuestions ON dbo.ScrumQuestions.ScrumQuestionId = dbo.ScrumAnswers.QuestionId " +
-                                   "INNER JOIN dbo.Users ON dbo.Users.UserID = dbo.ScrumAnswers.UserId " +
+                                   "INNER JOIN dbo.Users ON dbo.Users.UserID = dbo.ScrumAnswers.UserId WHERE Users.UserId = " + userId +
                                    "ORDER BY ScrumAnswers.DateEntered, Users.LastName, ScrumAnswers.QuestionId";
                 using (SqlCommand sqlCommand = new SqlCommand(sqlString, sqlConnection))
                 {
@@ -187,6 +187,50 @@ namespace ProjectManagerDAL.Scrum
             {
                 return false;
             }
+        }
+        public ScrumModel ViewScrumDataByDate(string date, string nextDay)
+        {
+            ScrumModel scrumModel = new ScrumModel();
+            using (SqlConnection sqlConnection = new SqlConnection(Constants.DATABASE.CONNECTION_STRING))
+            {
+                sqlConnection.Open();
+
+                string sqlString = "SELECT Users.FirstName, Users.LastName, dbo.ScrumQuestions.ScrumQuestion, ScrumAnswers. * " +
+                                   "FROM ScrumAnswers " +
+                                   "INNER JOIN dbo.ScrumQuestions ON dbo.ScrumQuestions.ScrumQuestionId = dbo.ScrumAnswers.QuestionId " +
+                                   "INNER JOIN dbo.Users ON dbo.Users.UserID = dbo.ScrumAnswers.UserId WHERE " +
+                                   "ScrumAnswers.DateEntered >= '"  + date + "' " +
+                                   "AND ScrumAnswers.DateEntered < '" + nextDay + "' " +
+                                   "ORDER BY ScrumAnswers.DateEntered, Users.LastName, ScrumAnswers.QuestionId";
+                using (SqlCommand sqlCommand = new SqlCommand(sqlString, sqlConnection))
+                {
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                        if (sqlDataReader.HasRows)
+                        {
+                            scrumModel.ScrumList = new System.Collections.ArrayList();
+                            while (sqlDataReader.Read())
+                            {
+                                ScrumData scrumData = new ScrumData();
+                                scrumData.FirstName = Convert.ToString(sqlDataReader["FirstName"]);
+                                scrumData.LastName = Convert.ToString(sqlDataReader["LastName"]);
+                                scrumData.Question = Convert.ToString(sqlDataReader["ScrumQuestion"]);
+                                scrumData.AnswerId = Convert.ToInt32(sqlDataReader["AnswerId"]);
+                                scrumData.AnswerKey = Convert.ToInt32(sqlDataReader["AnswerKey"]);
+                                scrumData.Answer = Convert.ToString(sqlDataReader["Answer"]);
+                                scrumData.QuestionId = Convert.ToInt32(sqlDataReader["QuestionId"]);
+                                scrumData.UserId = Convert.ToInt32(sqlDataReader["UserId"]);
+                                scrumData.DateEntered = Convert.ToDateTime(sqlDataReader["DateEntered"]);
+                                scrumData.DateModified = Convert.ToDateTime(sqlDataReader["DateModified"]);
+                                scrumModel.ScrumList.Add(scrumData);
+                            }
+                        }
+                        sqlDataReader.Close();
+                    }
+                }
+                sqlConnection.Close();
+            }
+            return scrumModel;
         }
     }
 }

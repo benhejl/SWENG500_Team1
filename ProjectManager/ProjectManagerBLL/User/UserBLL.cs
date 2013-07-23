@@ -92,6 +92,22 @@ namespace ProjectManagerBLL
             
 
         }
+        /// <summary>
+        /// GetAllUsers
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns>User Object</returns>
+        public List<KeyValuePair<string, int>> GetAllUserNames()
+        {
+            try
+            {
+                return new ProjectManagerDAL.UserDAL().GetAllUserNames();
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+        }
     }
 }

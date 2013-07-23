@@ -120,7 +120,7 @@ namespace ProjectManagerTest
         public void TestViewScrum()
         {
             ScrumController scrumController = new ScrumController();
-            Assert.IsTrue(scrumController.ViewScrumData().ScrumList.Count > 0);
+            Assert.IsTrue(scrumController.ViewScrumData(1).ScrumList.Count > 0);
         }
         [TestMethod]
         public void TestViewScrumDetails()
@@ -145,7 +145,7 @@ namespace ProjectManagerTest
         public void TestScrumByDate()
         {
             ScrumController scrumController = new ScrumController();
-            Assert.IsTrue(scrumController.ScrumByDate());
+            Assert.IsTrue(scrumController.ScrumByDate("2013-07-02", "2013-07-03").ScrumList.Count > 0);
         }
     }
 }

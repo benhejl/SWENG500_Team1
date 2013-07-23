@@ -17,9 +17,9 @@ namespace ProjectManagerBLL.Scrum
         {
             return new ScrumDAL().InputNewScrum(scrum);
         }
-        public ScrumModel ViewScrumData()
+        public ScrumModel ViewScrumData(int userId)
         {
-            return new ScrumDAL().ViewScrumData();
+            return new ScrumDAL().ViewScrumData(userId);
         }
         public ScrumModel GetScrumDetails(int answerKey)
         {
@@ -28,6 +28,10 @@ namespace ProjectManagerBLL.Scrum
         public bool EditScrum(ScrumModel scrum)
         {
             return new ScrumDAL().EditScrum(scrum);
+        }
+        public ScrumModel ViewScrumDataByDate(string date, string nextDay)
+        {
+            return new ScrumDAL().ViewScrumDataByDate(date, nextDay);
         }
     }
 }

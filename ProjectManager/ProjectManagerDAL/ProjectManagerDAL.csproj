@@ -159,6 +159,7 @@
     <None Include="ProgramManagerDataSet.xss">
       <DependentUpon>ProgramManagerDataSet.xsd</DependentUpon>
     </None>
+    <None Include="Properties\DataSources\ProjectManagerEntities.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
