@@ -182,7 +182,7 @@ namespace ProjectManagerWeb
             ProjectManagerLibrary.Models.Calendar calendar = calendarBLL.getCalendarByName(calendarToView);
             currentCalendar.setCalendarName(calendarToView);
             currentCalendar.setCalendarId(calendar.getCalendarId());
-            currentCalendar.setProjectId(calendar.getProjectId());
+            //currentCalendar.setProjectId(calendar.getProjectId());
 
             System.Diagnostics.Trace.WriteLine("Current calendar set at " + currentCalendar.getCalendarId());
 
@@ -376,7 +376,7 @@ namespace ProjectManagerWeb
             ProjectManagerLibrary.Models.Calendar calendar = calendarBLL.getCalendarByName(calendarToDeleteEvents);
             currentCalendar.setCalendarName(calendarToDeleteEvents);
             currentCalendar.setCalendarId(calendar.getCalendarId());
-            currentCalendar.setProjectId(calendar.getProjectId());
+            //currentCalendar.setProjectId(calendar.getProjectId());
 
             populateDeleteEventCheckBox();
 
