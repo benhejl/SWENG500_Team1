@@ -13,12 +13,12 @@ namespace ProjectManagerDAL.CalendarDAL
     {
         private const String CONNECTION_STRING = "Data Source=ProgramManager.db.11222717.hostedresource.com;Initial Catalog=ProgramManager;Persist Security Info=True;User ID=ProgramManager;Password=Asd123!@#";
 
-        public static bool insertNewCalendar(String calendarName, int projectId)
+        public static bool insertNewCalendar(String calendarName)
         {
             using (SqlConnection sqlConnection = new SqlConnection(CONNECTION_STRING))
             {
                 sqlConnection.Open();
-                using (SqlCommand sqlCommand = new SqlCommand("INSERT INTO Calendar (Name, Project) VALUES ('" + calendarName + "','" + projectId + "')", sqlConnection))
+                using (SqlCommand sqlCommand = new SqlCommand("INSERT INTO Calendar (Name) VALUES ('" + calendarName + "')", sqlConnection))
                 {
                     using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                     {
@@ -55,13 +55,12 @@ namespace ProjectManagerDAL.CalendarDAL
             return calendarNames;
         }
 
-        public static bool updateCalendar(String currentName, String newName, int id)
+        public static bool updateCalendar(String currentName, String newName)
         {
             using (SqlConnection sqlConnection = new SqlConnection(CONNECTION_STRING))
             {
                 sqlConnection.Open();
-                using (SqlCommand sqlCommand = new SqlCommand("UPDATE Calendar SET Name='" +  newName + "',Project=" +
-                    id + " WHERE Name='" + currentName + "'", sqlConnection))
+                using (SqlCommand sqlCommand = new SqlCommand("UPDATE Calendar SET Name='" +  newName + "' WHERE Name='" + currentName + "'", sqlConnection))
                 {
                     using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                     {
@@ -206,7 +205,6 @@ namespace ProjectManagerDAL.CalendarDAL
                             {
                                 calendar.setCalendarId(Convert.ToInt32(sqlDataReader["ID"]));
                                 calendar.setCalendarName(Convert.ToString(sqlDataReader["Name"]));
-                                calendar.setProjectId(Convert.ToInt32(sqlDataReader["Project"]));
                              }
                         }
                         sqlDataReader.Close();
@@ -266,7 +264,7 @@ namespace ProjectManagerDAL.CalendarDAL
             return true;
         }
 
-        public static ArrayList getProjectNames()
+        /*public static ArrayList getProjectNames()
         {
             ArrayList projectInfo = new ArrayList();
             using (SqlConnection sqlConnection = new SqlConnection(CONNECTION_STRING))
@@ -316,7 +314,7 @@ namespace ProjectManagerDAL.CalendarDAL
             }
 
             return id;
-        }
+        }*/
 
     }
 }

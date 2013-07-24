@@ -97,10 +97,9 @@ namespace ProjectManagerTest
         public void insertNewCalendarTest()
         {
             string calendarName = "UnitTestName";
-            int projectId = 1;
             bool expected = true;
             bool actual;
-            actual = CalendarDAL.insertNewCalendar(calendarName, projectId);
+            actual = CalendarDAL.insertNewCalendar(calendarName);
             Assert.AreEqual(expected, actual);
         }
 
@@ -112,10 +111,9 @@ namespace ProjectManagerTest
         {
             string currentName = "UnitTestName";
             string newName = "UnitTestChangeName";
-            int projectId = 1;
             bool expected = true;
             bool actual;
-            actual = CalendarDAL.updateCalendar(currentName, newName, projectId);
+            actual = CalendarDAL.updateCalendar(currentName, newName);
             Assert.AreEqual(expected, actual);
         }
 
@@ -193,7 +191,7 @@ namespace ProjectManagerTest
             Assert.IsNotNull(actual);
         }
 
-        /// <summary>
+       /* /// <summary>
         ///A test for getProjectNames
         ///</summary>
         [TestMethod()]
@@ -214,6 +212,6 @@ namespace ProjectManagerTest
             int actual;
             actual = CalendarDAL.getProjectIdByName(projectName);
             Assert.IsNotNull(actual);
-        }
+        }*/
     }
 }

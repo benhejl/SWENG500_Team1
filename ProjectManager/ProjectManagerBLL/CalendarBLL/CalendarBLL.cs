@@ -13,9 +13,9 @@ namespace ProjectManagerBLL.CalendarBLL
 {
     public class CalendarBLL
     {
-        public bool createCalendar(String name, String projectName)
+        public bool createCalendar(String name)
         {
-            int id = CalendarDAL.getProjectIdByName(projectName);
+            /*int id = CalendarDAL.getProjectIdByName(projectName);
             if (id > 0)
             {
                 return CalendarDAL.insertNewCalendar(name, id);
@@ -23,7 +23,9 @@ namespace ProjectManagerBLL.CalendarBLL
             else
             {
                 return false;
-            }
+            }*/
+
+            return CalendarDAL.insertNewCalendar(name);
         }
 
         public ArrayList getCalendars()
@@ -31,15 +33,14 @@ namespace ProjectManagerBLL.CalendarBLL
             return CalendarDAL.getCalendarNames();
         }
 
-        public ArrayList getProjectNames()
+        /*public ArrayList getProjectNames()
         {
             return CalendarDAL.getProjectNames();
-        }
+        }*/
 
-        public bool updateCalendarInfo(String currentName, String newName, String newProject)
+        public bool updateCalendarInfo(String currentName, String newName)
         {
-            int id = CalendarDAL.getProjectIdByName(newProject);
-            return CalendarDAL.updateCalendar(currentName, newName, id);
+            return CalendarDAL.updateCalendar(currentName, newName);
         }
 
         public bool deleteCalendar(String calendarToDelete)

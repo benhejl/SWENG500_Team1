@@ -42,9 +42,7 @@
                         <br />
 
             
-                        <br /> Project:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:DropDownList ID="ProjectsDropDown" runat="server">
-                        </asp:DropDownList>
-                        <br />
+                        
                         <br />
                         <asp:Button ID="SaveCalendar" runat="server" 
                             onclick="SaveNewCalendar" Text="Save" />
@@ -69,13 +67,7 @@
            
                         <br />
                         <br />
-                        New Project:<br />
-                        <br />
-                        <asp:DropDownList ID="NewProjectDropDown" runat="server">
-                        </asp:DropDownList>
-                        <br />
-           
-                        <br />
+                       
                         <asp:Button ID="SaveEdit" runat="server" onclick="SaveEdit_Click" Text="Save"/>
                         <asp:Button ID="CancelEdit" runat="server" onclick="CancelEdit_Click" ForeColor="Red" Text="Cancel"/>
 

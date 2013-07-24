@@ -20,7 +20,11 @@ namespace ProjectManagerWeb
         {
 
             System.Diagnostics.Trace.WriteLine("Page_load");
-            
+
+
+            populateCalendarDropDown(CalendarDropDown);
+            populateDeleteEventDropDown();
+
             if (!Page.IsPostBack)
             {
                 InitPanel.Visible = true;
@@ -30,9 +34,6 @@ namespace ProjectManagerWeb
                 ViewCalendarPanel.Visible = false;
                 DeleteEventPanel.Visible = false;
                 AddEventPanel.Visible = false;
-                populateCalendarDropDown(CalendarDropDown);
-                System.Diagnostics.Trace.WriteLine("Not Post Back");
-                populateDeleteEventDropDown();
                 populateViewCalendarDropDown();
             }
             else
@@ -45,16 +46,16 @@ namespace ProjectManagerWeb
         {
             InitPanel.Visible = false;
             CreatePanel.Visible = true;
-            populateProjectsDropDown();
+            //populateProjectsDropDown();
         }
 
-        private void populateProjectsDropDown()
+        /*private void populateProjectsDropDown()
         {
             CalendarBLL calendarBLL = new CalendarBLL();
             ArrayList projects = calendarBLL.getProjectNames();
             ProjectsDropDown.DataSource = projects;
             ProjectsDropDown.DataBind();
-        }
+        }*/
 
         protected void DeleteCalendarClick(object sender, EventArgs e)
         {
@@ -68,15 +69,15 @@ namespace ProjectManagerWeb
             InitPanel.Visible = false;
             populateCalendarDropDown(CalendarDropDown);
             EditPanel.Visible = true;
-            populateNewProjectDropDown();
+            //populateNewProjectDropDown();
         }
 
-        private void populateNewProjectDropDown()
+        /*private void populateNewProjectDropDown()
         {
             CalendarBLL temp = new CalendarBLL();
             NewProjectDropDown.DataSource = temp.getProjectNames();
             NewProjectDropDown.DataBind();
-        }
+        }*/
 
         protected void SaveNewCalendar(object sender, EventArgs e)
         {
@@ -102,15 +103,15 @@ namespace ProjectManagerWeb
                 }
             }
 
-            String projectName = ProjectsDropDown.SelectedValue;
+            /*String projectName = ProjectsDropDown.SelectedValue;
 
             if (projectName == null || projectName.Length == 0)
             {
                 TopMostMessageBox.Show("Project cannot be empty", "Error");
                 return;
-            }
+            }*/
 
-            calendarBLL.createCalendar(name, projectName);
+            calendarBLL.createCalendar(name);
             InitPanel.Visible = true;
             CreatePanel.Visible = false;
         }
@@ -150,12 +151,12 @@ namespace ProjectManagerWeb
             }
 
 
-            String newProject = NewProjectDropDown.SelectedValue;
+            /*String newProject = NewProjectDropDown.SelectedValue;
 
             if (calendarBLL.updateCalendarInfo(calendarToEdit, newName, newProject))
             {
                 TopMostMessageBox.Show("Successfully updated " + newName, "Message", MessageBoxButtons.OKCancel);
-            }
+            }*/
 
             InitPanel.Visible = true;
             EditPanel.Visible = false;

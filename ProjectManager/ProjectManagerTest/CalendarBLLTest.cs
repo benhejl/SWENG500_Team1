@@ -82,10 +82,9 @@ namespace ProjectManagerTest
         {
             CalendarBLL target = new CalendarBLL();
             string name = "UnitTestName";
-            String projectName = "UnitTestProject";
             bool expected = true;
             bool actual;
-            actual = target.createCalendar(name, projectName);
+            actual = target.createCalendar(name);
             Assert.AreEqual(expected, actual);
         }
 
@@ -115,7 +114,7 @@ namespace ProjectManagerTest
             Assert.IsNotNull(actual);
         }
 
-        /// <summary>
+        /*/// <summary>
         ///A test for getProjectNames
         ///</summary>
         [TestMethod()]
@@ -125,7 +124,7 @@ namespace ProjectManagerTest
             ArrayList actual;
             actual = target.getProjectNames();
             Assert.IsNotNull(actual);
-        }
+        }*/
 
         /// <summary>
         ///A test for getUsers
@@ -148,10 +147,9 @@ namespace ProjectManagerTest
             CalendarBLL target = new CalendarBLL();
             string currentName = "UnitTestName";
             string newName = "UnitTestChangeName";
-            string newProject = "UnitTestProject";
             bool expected = true;
             bool actual;
-            actual = target.updateCalendarInfo(currentName, newName, newProject);
+            actual = target.updateCalendarInfo(currentName, newName);
             Assert.AreEqual(expected, actual);
         }
 

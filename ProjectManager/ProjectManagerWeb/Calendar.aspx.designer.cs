@@ -103,15 +103,6 @@ namespace ProjectManagerWeb {
         protected global::System.Web.UI.WebControls.TextBox calendarName;
         
         /// <summary>
-        /// ProjectsDropDown control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ProjectsDropDown;
-        
-        /// <summary>
         /// SaveCalendar control.
         /// </summary>
         /// <remarks>
@@ -164,15 +155,6 @@ namespace ProjectManagerWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox EditNameTextBox;
-        
-        /// <summary>
-        /// NewProjectDropDown control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList NewProjectDropDown;
         
         /// <summary>
         /// SaveEdit control.
