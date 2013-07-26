@@ -77,6 +77,7 @@
     <Content Include="Login.aspx" />
     <Content Include="Scrum\EditScrumData.aspx" />
     <Content Include="Scrum\EnterScrumData.aspx" />
+    <Content Include="Scrum\Scrum.aspx" />
     <Content Include="Scrum\SearchScrumByDate.aspx" />
     <Content Include="Scrum\ViewScrumData.aspx" />
     <Content Include="Scrum\ViewScrumTeamMember.aspx" />
@@ -205,6 +206,13 @@
     </Compile>
     <Compile Include="Scrum\EnterScrumData.aspx.designer.cs">
       <DependentUpon>EnterScrumData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Scrum\Scrum.aspx.cs">
+      <DependentUpon>Scrum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Scrum\Scrum.aspx.designer.cs">
+      <DependentUpon>Scrum.aspx</DependentUpon>
     </Compile>
     <Compile Include="Scrum\SearchScrumByDate.aspx.cs">
       <DependentUpon>SearchScrumByDate.aspx</DependentUpon>
