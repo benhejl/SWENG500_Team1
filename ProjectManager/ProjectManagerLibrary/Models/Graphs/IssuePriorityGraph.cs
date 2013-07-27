@@ -38,10 +38,9 @@ namespace ProjectManagerLibrary.Models.Graphs
             string[] titles = { HighSeriesName, MediumSeriesName, LowSeriesName };
             Series data = new Series();
 
-            foreach (Issue issue in project.Issues)
-            {
-                counts[(int)issue.CurrentPriority]++;
-            }
+            counts[(int)Issue.IssuePriority.High] = project.Issues.Count(x => x.CurrentPriority == Issue.IssuePriority.High);
+            counts[(int)Issue.IssuePriority.Medium] = project.Issues.Count(x => x.CurrentPriority == Issue.IssuePriority.Medium);
+            counts[(int)Issue.IssuePriority.Low] = project.Issues.Count(x => x.CurrentPriority == Issue.IssuePriority.Low);
 
             data.Points.DataBindXY(titles, counts);
             data.ChartType = SeriesChartType.Pie;
