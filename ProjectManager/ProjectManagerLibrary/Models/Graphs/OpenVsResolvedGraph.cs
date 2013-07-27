@@ -15,7 +15,7 @@ namespace ProjectManagerLibrary.Models.Graphs
         public bool RequiresDateRange { get { return false; } }
         public DateRange CurrentDateRange { get; private set; }
         public int SortOrder { get { return 1; } }
-        public string DataTitle { get { return "Open vs. Resolved Issues"; } }
+        public string DataTitle { get { return "Issues By Status"; } }
 
 
         public OpenVsResolvedGraph()
