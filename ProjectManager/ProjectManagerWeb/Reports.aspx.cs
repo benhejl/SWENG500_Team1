@@ -70,6 +70,7 @@ namespace ProjectManagerWeb
                 }
             }
             ContentPanel.Visible = selectedProject != null;
+            ContentPanel.Controls.Clear();
         }
 
         protected void ReportMenuClick(object sender, MenuEventArgs e)

@@ -14,7 +14,7 @@ namespace ProjectManagerLibrary.Models.Reports
             Table table = new Table();
             if (project != null)
             {
-                string[] SummaryNames = new string[] { "IssueStatus", "IssuesByUser" };
+                string[] SummaryNames = new string[] { "IssuesByUser", "IssueStatus", "IssuePriorityReport" };
                 foreach (string name in SummaryNames)
                 {
                     SummaryBase summary = Activator.CreateInstance("ProjectManagerLibrary", "ProjectManagerLibrary.Models.Reports." + name).Unwrap() as SummaryBase;

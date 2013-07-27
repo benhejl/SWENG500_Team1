@@ -78,7 +78,7 @@ namespace ProjectManagerTest
             Control control = target.Display(project, new DateRange(DateTime.Now, DateTime.Now));
             Assert.IsInstanceOfType(control, typeof(Table));
             Table table = control as Table;
-            Assert.AreEqual(4, table.Rows.Count);
+            Assert.AreEqual(9, table.Rows.Count);
         }
 
         /// <summary>

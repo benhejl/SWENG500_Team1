@@ -74,6 +74,7 @@
     <Compile Include="IssueControllerTest.cs" />
     <Compile Include="DateRangeTest.cs" />
     <Compile Include="IssuePriorityGraphTest.cs" />
+    <Compile Include="IssuePriorityReportTest.cs" />
     <Compile Include="IssuesByUserTest.cs" />
     <Compile Include="IssueStatusTest.cs" />
     <Compile Include="IssueTest.cs" />
@@ -84,7 +85,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportBLLTest.cs" />
     <Compile Include="ScrumTestUnit.cs" />
-    <Compile Include="TaskTest.cs" />
+    <Compile Include="SummaryBaseTest.cs" />
     <Compile Include="TeamRoomTestUnit.cs" />
     <Compile Include="UserTestUnit.cs" />
   </ItemGroup>

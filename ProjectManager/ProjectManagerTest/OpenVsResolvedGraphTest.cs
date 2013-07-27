@@ -149,7 +149,7 @@ namespace ProjectManagerTest
         {
             OpenVsResolvedGraph target = new OpenVsResolvedGraph(); // TODO: Initialize to an appropriate value
             string actual = target.DataTitle;
-            Assert.AreEqual(actual, "Open vs. Resolved Issues");
+            Assert.AreEqual(actual, "Issues By Status");
         }
 
         /// <summary>
