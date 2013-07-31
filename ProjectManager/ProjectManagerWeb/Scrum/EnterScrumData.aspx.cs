@@ -30,25 +30,26 @@ namespace ProjectManagerWeb.Scrum
 
         protected void submit_Click(object sender, EventArgs e)
         {
+            User user = (User)Session["User"];
             ScrumModel scrumModel = new ScrumModel();
             scrumModel.AnswerList = new System.Collections.ArrayList();
 
             Answers answers = new Answers();
             answers.Answer = answer1.Text;
             answers.QuestionId = Convert.ToInt32(answer1.ID);
-            answers.UserId = 1;
+            answers.UserId = user.UserId;
             scrumModel.AnswerList.Add(answers);
 
             answers = new Answers();
             answers.Answer = answer2.Text;
             answers.QuestionId = Convert.ToInt32(answer2.ID);
-            answers.UserId = 1;
+            answers.UserId = user.UserId;
             scrumModel.AnswerList.Add(answers);
 
             answers = new Answers();
             answers.Answer = answer3.Text;
             answers.QuestionId = Convert.ToInt32(answer3.ID);
-            answers.UserId = 1;
+            answers.UserId = user.UserId;
             scrumModel.AnswerList.Add(answers);
 
             bool dataInserted = new ScrumController().InputNewScrum(scrumModel);

@@ -14,8 +14,9 @@ namespace ProjectManagerWeb.Scrum
         public ArrayList ScrumList;
         protected void Page_Load(object sender, EventArgs e)
         {
+            User user = (User)Session["User"];
             ScrumController scrumController = new ScrumController();
-            ScrumModel scrumModel = scrumController.ViewScrumData(1);
+            ScrumModel scrumModel = scrumController.ViewScrumData(user.UserId);
 
             if (scrumModel.ScrumList != null)
             {

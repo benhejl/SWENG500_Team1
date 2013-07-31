@@ -23,7 +23,8 @@ namespace ProjectManagerWeb.Forum
                 ForumModel forumModel = new ForumModel();
                 forumModel.Subject = txtBoxSubject.Text;
                 forumModel.ForumPost = txtBoxPost.Text;
-                forumModel.UserId = 1;
+                User user = (User)Session["User"];
+                forumModel.UserId = user.UserId;
                 new ForumController().CreateNewForum(forumModel);
                 Response.Redirect("~/Forum/Forum.aspx");
             }

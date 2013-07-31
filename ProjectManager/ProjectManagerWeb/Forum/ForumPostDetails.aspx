@@ -33,10 +33,10 @@
                 <asp:Panel ID="pnlPost" runat="server"><%=ForumModel.ForumPost%></asp:Panel>
             </td>
         </tr>
-        <%--<%
-            if(Session["UserId"] != null && Session["UserId"].ToString().Equals(ForumModel.UserId))
+        <%
+            if(Session["User"] != null && ((ProjectManagerLibrary.Models.User)Session["User"]).UserId.Equals(ForumModel.UserId))
             {
-        %>--%>
+        %>
         <tr>
             <td class="tdcss" colspan="3" style="height:100px; adding:10px; text-align:center;">
                 <asp:Button ID="btnEdit" Text="Edit Post" runat="server" Width="79px" 
@@ -45,9 +45,9 @@
                    />
             </td>
         </tr>
-        <%--<%
+        <%
             } 
-        %>--%>
+        %>
         <tr>
             <td class="tdcss" colspan="3" style="word-wrap: break-word; vertical-align:top; padding:10px;">
                <b>Replies</b>

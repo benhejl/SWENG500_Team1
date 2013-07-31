@@ -30,7 +30,8 @@ namespace ProjectManagerWeb.Forum
             {
                 Controllers.ForumController forumController = new Controllers.ForumController();
                 ReplyModel replyModel = new ReplyModel();
-                replyModel.UserId = 1;
+                User user = (User)Session["User"];
+                replyModel.UserId = user.UserId;
                 replyModel.ForumId = ForumModel.ForumId;
                 replyModel.ReplyPost = txtBoxReply.Text;
                 ForumModel = forumController.ReplyForumPost(replyModel);
